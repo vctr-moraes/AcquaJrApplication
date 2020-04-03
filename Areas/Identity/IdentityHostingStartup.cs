@@ -1,5 +1,5 @@
 ﻿using System;
-using AquaJrApplication.Data;
+using AcquaJrApplication.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: HostingStartup(typeof(AquaJrApplication.Areas.Identity.IdentityHostingStartup))]
-namespace AquaJrApplication.Areas.Identity
+[assembly: HostingStartup(typeof(AcquaJrApplication.Areas.Identity.IdentityHostingStartup))]
+namespace AcquaJrApplication.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

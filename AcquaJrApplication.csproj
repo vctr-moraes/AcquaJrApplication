@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-AquaJrApplication-0B102698-827E-4D3B-AE19-4520D9E7E81A</UserSecretsId>
+    <UserSecretsId>aspnet-AcquaJrApplication-0B102698-827E-4D3B-AE19-4520D9E7E81A</UserSecretsId>
   </PropertyGroup>
 
 

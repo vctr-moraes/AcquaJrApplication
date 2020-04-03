@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using AquaJrApplication.Models;
+using AcquaJrApplication.Models;
 
-namespace AquaJrApplication.Data
+namespace AcquaJrApplication.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

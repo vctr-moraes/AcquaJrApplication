@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AquaJrApplication.Models
+namespace AcquaJrApplication.Models
 {
     public abstract class Entity
     {

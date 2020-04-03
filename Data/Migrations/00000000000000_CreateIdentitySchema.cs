@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AquaJrApplication.Data.Migrations
+namespace AcquaJrApplication.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
