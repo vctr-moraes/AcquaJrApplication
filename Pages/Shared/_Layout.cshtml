@@ -22,10 +22,19 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1 mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">A Ácqua Jr.</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Privacy">A Ácqua Jr.</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Diretoria">Diretoria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Servicos">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Contato">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -38,16 +47,12 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-gray text-muted">
         <div class="container">
-            &copy; 2020 - Ácqua Jr. Application é um projeto desenvolvido e mantido por <a href="https://about.me/vctr.moraes" target="_blank">Victor Moraes</a>
+            &copy; @DateTime.Now.Year - Ácqua Jr. Application é um projeto desenvolvido e mantido por <a href="https://about.me/vctr.moraes" target="_blank">Victor Moraes</a>
         </div>
     </footer>
-
-    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>*@
-
+    
     <script src="~/lib/bootstrap/dist/js/core/bootstrap-material-design.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/core/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/core/popper.min.js"></script>
