@@ -18,10 +18,8 @@ namespace AcquaJrApplication.Models
         private string _telefone;
         private bool _temSeguro;
         private bool _temCnh;
-
         private Curso _curso;
         private string _matriculaAcademica;
-
         private Cargo _cargo;
         private DateTime _dataEntrada;
         private DateTime? _dataSaida;
@@ -34,7 +32,7 @@ namespace AcquaJrApplication.Models
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Nome é obrigatório.");
                 DomainException.When(value.Trim().Length > 100, "O campo Nome não pode conter mais que 100 caracteres.");
-                _nome = value;
+                _nome = value.Trim();
             }
         }
 
@@ -46,7 +44,7 @@ namespace AcquaJrApplication.Models
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo CPF é obrigatório.");
                 DomainException.When(value.Trim().Length > 11, "O campo CPF não pode conter mais que 11 caracteres.");
-                _cpf = value;
+                _cpf = value.Trim();
             }
         }
 
@@ -70,7 +68,7 @@ namespace AcquaJrApplication.Models
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Logradouro é obrigatório.");
                 DomainException.When(value.Trim().Length > 150, "O campo Logradouro não pode conter mais que 150 caracteres.");
-                _logradouro = value;
+                _logradouro = value.Trim();
             }
         }
 
@@ -82,7 +80,7 @@ namespace AcquaJrApplication.Models
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Bairro é obrigatório.");
                 DomainException.When(value.Trim().Length > 100, "O campo Bairro não pode conter mais que 100 caracteres.");
-                _bairro = value;
+                _bairro = value.Trim();
             }
         }
 
@@ -94,7 +92,7 @@ namespace AcquaJrApplication.Models
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Cidade é obrigatório.");
                 DomainException.When(value.Trim().Length > 50, "O campo Cidade não pode conter mais que 50 caracteres.");
-                _cidade = value;
+                _cidade = value.Trim();
             }
         }
 
@@ -105,7 +103,7 @@ namespace AcquaJrApplication.Models
             set
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Estado é obrigatório.");
-                _estado = value;
+                _estado = value.Trim();
             }
         }
 
@@ -117,7 +115,7 @@ namespace AcquaJrApplication.Models
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo E-mail é obrigatório.");
                 DomainException.When(value.Trim().Length > 100, "O campo E-mail não pode conter mais que 100 caracteres.");
-                _email = value;
+                _email = value.Trim();
             }
         }
 
@@ -129,7 +127,7 @@ namespace AcquaJrApplication.Models
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Telefone é obrigatório.");
                 DomainException.When(value.Trim().Length > 11, "O campo Telefone não pode conter mais que 11 caracteres.");
-                _telefone = value;
+                _telefone = value.Trim();
             }
         }
 
@@ -172,7 +170,7 @@ namespace AcquaJrApplication.Models
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Matrícula Acadêmica é obrigatório.");
                 DomainException.When(value.Trim().Length > 11, "O campo Matrícula Acadêmica não pode conter mais que 20 caracteres.");
-                _matriculaAcademica = value;
+                _matriculaAcademica = value.Trim();
             }
         }
 
@@ -193,7 +191,7 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                _dataNascimento = value;
+                _dataEntrada = value;
             }
         }
 
