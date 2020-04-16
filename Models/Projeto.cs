@@ -11,9 +11,11 @@ namespace AcquaJrApplication.Models
         private string _descricao;
         private Cliente _cliente;
         private Servico _servico;
+        private decimal _orcamento;
+        private readonly List<Membro> _responsaveis = new List<Membro>();
         private DateTime _dataContrato;
-        private DateTime _dataInicio;
-        private DateTime _dataConclusao;
+        private DateTime? _dataInicio;
+        private DateTime? _dataConclusao;
 
         public string Nome
         {
@@ -45,7 +47,7 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(value == null, "O campo Cliente é obrigatório");
+                DomainException.When(value == null, "O campo Cliente é obrigatório.");
                 _cliente = value;
             }
         }
@@ -56,8 +58,51 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(value == null, "O campo Serviço é obrigatório");
+                DomainException.When(value == null, "O campo Serviço é obrigatório.");
                 _servico = value;
+            }
+        }
+
+        public decimal Orcamento
+        {
+            get => _orcamento;
+
+            set
+            {
+                DomainException.When(value == 0, "O campo Orçamento é obrigatório.");
+                _orcamento = value;
+            }
+        }
+
+        public ICollection<Membro> Responsaveis => _responsaveis;
+
+        public DateTime DataContrato
+        {
+            get => _dataContrato;
+
+            set
+            {
+                _dataContrato = value;
+            }
+        }
+
+        public DateTime? DataInicio
+        {
+            get => _dataInicio;
+
+            set
+            {
+                _dataInicio = value;
+            }
+        }
+
+        public DateTime? DataConclusao
+        {
+            get => _dataConclusao;
+
+            set
+            {
+                _dataConclusao = value;
             }
         }
     }

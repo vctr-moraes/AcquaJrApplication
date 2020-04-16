@@ -12,6 +12,8 @@ using AcquaJrApplication.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AcquaJrApplication.Extensions;
+using AcquaJrApplication.Configurations;
 
 namespace AcquaJrApplication
 {
@@ -28,10 +30,12 @@ namespace AcquaJrApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddErrorDescriber<IdentityMensagensPortugues>();
+
             services.AddRazorPages();
         }
 
@@ -57,6 +61,8 @@ namespace AcquaJrApplication
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseGlobalizationConfig();
 
             app.UseEndpoints(endpoints =>
             {
