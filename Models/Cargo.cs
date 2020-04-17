@@ -17,8 +17,8 @@ namespace AcquaJrApplication.Models
         [Display(Name = "Diretor Financeiro")]
         DiretorFinanceiro = 3,
 
-        [Display(Name = "Diretor de Projeto")]
-        DiretorProjeto = 4,
+        [Display(Name = "Diretor de Projetos")]
+        DiretorProjetos = 4,
 
         [Display(Name = "Diretor Administrativo")]
         DiretorAdministrativo = 5,
