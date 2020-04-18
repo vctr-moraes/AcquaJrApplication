@@ -169,7 +169,7 @@ namespace AcquaJrApplication.Models
             set
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Matrícula Acadêmica é obrigatório.");
-                DomainException.When(value.Trim().Length > 11, "O campo Matrícula Acadêmica não pode conter mais que 20 caracteres.");
+                DomainException.When(value.Trim().Length > 20, "O campo Matrícula Acadêmica não pode conter mais que 20 caracteres.");
                 _matriculaAcademica = value.Trim();
             }
         }
@@ -191,6 +191,8 @@ namespace AcquaJrApplication.Models
 
             set
             {
+                DateTime result;
+                DomainException.When(!DateTime.TryParse(value.ToString(), out result), "A Data de Entrada informada é inválida.");
                 _dataEntrada = value;
             }
         }
