@@ -18,7 +18,7 @@ namespace AcquaJrApplication.Data.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(100)");
 
-            builder.Property(m => m.cpf)
+            builder.Property(m => m.Cpf)
                 .IsRequired()
                 .HasColumnType("varchar(11)");
 

@@ -36,7 +36,7 @@ namespace AcquaJrApplication.Models
             }
         }
 
-        public string cpf
+        public string Cpf
         {
             get => _cpf;
 

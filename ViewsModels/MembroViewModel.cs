@@ -69,7 +69,7 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Curso")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        public int Curso { get; set; }
+        public Curso Curso { get; set; }
 
         [Display(Name = "Matrícula Acadêmica")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
@@ -78,7 +78,7 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Cargo")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        public int Cargo { get; set; }
+        public Cargo Cargo { get; set; }
 
         [Display(Name = "Data de Entrada")]
         [DataType(DataType.Date)]
