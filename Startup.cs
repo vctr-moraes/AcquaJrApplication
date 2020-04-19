@@ -15,6 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AcquaJrApplication.Extensions;
 using AcquaJrApplication.Configurations;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.Data.Repository;
 
 namespace AcquaJrApplication
 {
@@ -40,6 +42,9 @@ namespace AcquaJrApplication
             services.AddAutoMapper(typeof(Startup));
 
             services.AddRazorPages();
+
+            services.AddScoped<ApplicationDbContext>();
+            services.AddScoped<IMembroRepository, MembroRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
