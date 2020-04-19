@@ -1,0 +1,111 @@
+﻿@page
+@model AcquaJrApplication.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>MembroViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MembroViewModel.Id" />
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Nome" class="control-label"></label>
+                <input asp-for="MembroViewModel.Nome" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Cpf" class="control-label"></label>
+                <input asp-for="MembroViewModel.Cpf" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Cpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.DataNascimento" class="control-label"></label>
+                <input asp-for="MembroViewModel.DataNascimento" class="form-control" />
+                <span asp-validation-for="MembroViewModel.DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Logradouro" class="control-label"></label>
+                <input asp-for="MembroViewModel.Logradouro" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Logradouro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Bairro" class="control-label"></label>
+                <input asp-for="MembroViewModel.Bairro" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Bairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Cidade" class="control-label"></label>
+                <input asp-for="MembroViewModel.Cidade" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Cidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Estado" class="control-label"></label>
+                <input asp-for="MembroViewModel.Estado" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Email" class="control-label"></label>
+                <input asp-for="MembroViewModel.Email" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Telefone" class="control-label"></label>
+                <input asp-for="MembroViewModel.Telefone" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MembroViewModel.TemSeguro" /> @Html.DisplayNameFor(model => model.MembroViewModel.TemSeguro)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MembroViewModel.TemCnh" /> @Html.DisplayNameFor(model => model.MembroViewModel.TemCnh)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Curso" class="control-label"></label>
+                <input asp-for="MembroViewModel.Curso" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Curso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.MatriculaAcademica" class="control-label"></label>
+                <input asp-for="MembroViewModel.MatriculaAcademica" class="form-control" />
+                <span asp-validation-for="MembroViewModel.MatriculaAcademica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.Cargo" class="control-label"></label>
+                <input asp-for="MembroViewModel.Cargo" class="form-control" />
+                <span asp-validation-for="MembroViewModel.Cargo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.DataEntrada" class="control-label"></label>
+                <input asp-for="MembroViewModel.DataEntrada" class="form-control" />
+                <span asp-validation-for="MembroViewModel.DataEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MembroViewModel.DataSaida" class="control-label"></label>
+                <input asp-for="MembroViewModel.DataSaida" class="form-control" />
+                <span asp-validation-for="MembroViewModel.DataSaida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

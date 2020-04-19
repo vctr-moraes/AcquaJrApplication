@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Data
 {
@@ -22,5 +23,7 @@ namespace AcquaJrApplication.Data
 
             base.OnModelCreating(builder);
         }
+
+        public DbSet<AcquaJrApplication.ViewsModels.MembroViewModel> MembroViewModel { get; set; }
     }
 }
