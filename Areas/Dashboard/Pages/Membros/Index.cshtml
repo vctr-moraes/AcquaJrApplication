@@ -2,15 +2,16 @@
 @model AcquaJrApplication.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Membros";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h2>@ViewData["Title"]</h2>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Novo membro</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -18,110 +19,32 @@
                 @Html.DisplayNameFor(model => model.MembroViewModel[0].Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].Cpf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].DataNascimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].Logradouro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].Bairro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].Cidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].TemSeguro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].TemCnh)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.MembroViewModel[0].Curso)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].MatriculaAcademica)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.MembroViewModel[0].Cargo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].DataEntrada)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MembroViewModel[0].DataSaida)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.MembroViewModel) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cpf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataNascimento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Logradouro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bairro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TemSeguro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TemCnh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Curso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatriculaAcademica)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cargo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataEntrada)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataSaida)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.MembroViewModel) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cargo)
+                </td>
+                <td class="text-right">
+                    <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-primary">Editar</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-primary">Detalhes</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-primary">Deletar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
