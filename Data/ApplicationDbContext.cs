@@ -17,6 +17,7 @@ namespace AcquaJrApplication.Data
         }
 
         public DbSet<Membro> Membros { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -26,7 +27,6 @@ namespace AcquaJrApplication.Data
 
             base.OnModelCreating(builder);
         }
-
         public DbSet<AcquaJrApplication.ViewsModels.MembroViewModel> MembroViewModel { get; set; }
     }
 }

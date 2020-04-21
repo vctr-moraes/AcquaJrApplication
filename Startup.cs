@@ -45,6 +45,7 @@ namespace AcquaJrApplication
 
             services.AddScoped<ApplicationDbContext>();
             services.AddScoped<IMembroRepository, MembroRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
