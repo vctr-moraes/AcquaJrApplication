@@ -29,7 +29,10 @@ namespace AcquaJrApplication.Models
         [Display(Name = "Diretor de Extensão")]
         DiretorExtensao = 7,
 
-        [Display(Name = "Técnico")]
-        Tecnico = 8
+        [Display(Name = "Honorário")]
+        Honorario = 8,
+
+        [Display(Name = "Trainne")]
+        Trainne = 9
     }
 }
