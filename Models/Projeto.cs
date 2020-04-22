@@ -12,7 +12,7 @@ namespace AcquaJrApplication.Models
         private Cliente _cliente;
         private Servico _servico;
         private decimal _orcamento;
-        private readonly List<Membro> _responsaveis = new List<Membro>();
+        private readonly List<MembroProjeto> _membros = new List<MembroProjeto>();
         private DateTime _dataContrato;
         private DateTime? _dataInicio;
         private DateTime? _dataConclusao;
@@ -74,7 +74,9 @@ namespace AcquaJrApplication.Models
             }
         }
 
-        public ICollection<Membro> Responsaveis => _responsaveis;
+        public ICollection<MembroProjeto> Membros => _membros;
+
+        public void AdicionarMembro(MembroProjeto membroProjeto) => _membros.Add(membroProjeto);
 
         public DateTime DataContrato
         {

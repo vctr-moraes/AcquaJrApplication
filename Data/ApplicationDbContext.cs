@@ -11,10 +11,7 @@ namespace AcquaJrApplication.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Membro> Membros { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
