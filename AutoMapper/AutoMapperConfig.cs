@@ -1,10 +1,6 @@
 ﻿using AcquaJrApplication.Models;
 using AcquaJrApplication.ViewsModels;
 using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AcquaJrApplication.AutoMapper
 {
@@ -13,6 +9,7 @@ namespace AcquaJrApplication.AutoMapper
         public AutoMapperConfig()
         {
             CreateMap<Membro, MembroViewModel>().ReverseMap();
+            CreateMap<Cliente, ClienteViewModel>().ReverseMap();
         }
     }
 }
