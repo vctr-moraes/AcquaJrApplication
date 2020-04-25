@@ -10,6 +10,7 @@ namespace AcquaJrApplication.AutoMapper
         {
             CreateMap<Membro, MembroViewModel>().ReverseMap();
             CreateMap<Cliente, ClienteViewModel>().ReverseMap();
+            CreateMap<Servico, ServicoViewModel>().ReverseMap();
         }
     }
 }
