@@ -5,9 +5,9 @@ using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Interfaces
 {
-    interface IClienteRepository : IRepository<Cliente>
+    interface IServicoRepository : IRepository<Servico>
     {
-        Task<Cliente> ObterCliente(Guid id);
-        Task<IEnumerable<Cliente>> ObterTodosClientes();
+        Task<Servico> ObterServico(Guid id);
+        Task<IEnumerable<Servico>> ObterTodosServicos();
     }
 }

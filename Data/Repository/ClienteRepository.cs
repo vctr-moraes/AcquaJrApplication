@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace AcquaJrApplication.Data.Repository
 {
