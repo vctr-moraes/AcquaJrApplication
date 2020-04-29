@@ -18,6 +18,10 @@ namespace AcquaJrApplication.Data.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(700)");
 
+            // 1 : 1 => Serviço : Projeto
+            builder.HasOne(s => s.Projeto)
+                .WithOne(p => p.Servico);
+
             builder.ToTable("Servicos");
         }
     }

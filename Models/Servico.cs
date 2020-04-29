@@ -10,6 +10,9 @@ namespace AcquaJrApplication.Models
         private string _nome;
         private string _descricao;
 
+        /* EF Relation */
+        private Projeto _projeto;
+
         public string Nome
         {
             get => _nome;
@@ -32,6 +35,13 @@ namespace AcquaJrApplication.Models
                 DomainException.When(value.Trim().Length > 700, "O campo Descrição não pode conter mais que 1000 caracteres.");
                 _descricao = value.Trim();
             }
+        }
+
+        public Projeto Projeto
+        {
+            get => _projeto;
+
+            set => _projeto = value;
         }
     }
 }

@@ -26,6 +26,9 @@ namespace AcquaJrApplication.Models
         private string _observacoes;
         private DateTime _dataCadastro;
 
+        /* EF Relation */
+        private Projeto _projeto;
+
         public TipoPessoa TipoPessoa
         {
             get => _tipoPessoa;
@@ -229,6 +232,13 @@ namespace AcquaJrApplication.Models
             {
                 _dataCadastro = value;
             }
+        }
+
+        public Projeto Projeto
+        {
+            get => _projeto;
+
+            set => _projeto = value;
         }
     }
 }

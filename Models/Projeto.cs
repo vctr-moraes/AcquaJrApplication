@@ -7,15 +7,19 @@ namespace AcquaJrApplication.Models
 {
     public class Projeto : Entity
     {
+        private Guid _clienteId;
+        private Guid _servicoId;
         private string _nome;
         private string _descricao;
-        private Cliente _cliente;
-        private Servico _servico;
         private decimal _orcamento;
-        private readonly List<MembroProjeto> _membros = new List<MembroProjeto>();
         private DateTime _dataContrato;
         private DateTime? _dataInicio;
         private DateTime? _dataConclusao;
+
+        /* EF Relations */
+        private Cliente _cliente;
+        private Servico _servico;
+        private readonly List<MembroProjeto> _membros = new List<MembroProjeto>();
 
         public string Nome
         {
@@ -52,6 +56,13 @@ namespace AcquaJrApplication.Models
             }
         }
 
+        public Guid ClienteId
+        {
+            get => _clienteId;
+
+            set => _clienteId = value;
+        }
+
         public Servico Servico
         {
             get => _servico;
@@ -61,6 +72,13 @@ namespace AcquaJrApplication.Models
                 DomainException.When(value == null, "O campo Serviço é obrigatório.");
                 _servico = value;
             }
+        }
+
+        public Guid ServicoId
+        {
+            get => _servicoId;
+
+            set => _servicoId = value;
         }
 
         public decimal Orcamento

@@ -73,6 +73,10 @@ namespace AcquaJrApplication.Data.Mappings
             builder.Property(c => c.DataCadastro)
                 .IsRequired();
 
+            // 1 : 1 => Cliente : Projeto
+            builder.HasOne(c => c.Projeto)
+                .WithOne(p => p.Cliente);
+
             builder.ToTable("Clientes");
         }
     }
