@@ -51,7 +51,7 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(value == null, "O campo Cliente é obrigatório.");
+                DomainException.When(value == null, "É necessário selecionar um Cliente.");
                 _cliente = value;
             }
         }
@@ -69,7 +69,7 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(value == null, "O campo Serviço é obrigatório.");
+                DomainException.When(value == null, "É necessário selecionar um Serviço.");
                 _servico = value;
             }
         }

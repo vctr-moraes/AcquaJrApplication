@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using AcquaJrApplication.Models;
 
@@ -89,6 +86,7 @@ namespace AcquaJrApplication.ViewsModels
         public string Telefone2 { get; set; }
 
         [Display(Name = "Observações")]
+        [DataType(DataType.MultilineText)]
         [MaxLength(500, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Observacoes { get; set; }
 
