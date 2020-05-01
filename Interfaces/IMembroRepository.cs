@@ -5,7 +5,7 @@ using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Interfaces
 {
-    interface IMembroRepository : IRepository<Membro>
+    public interface IMembroRepository : IRepository<Membro>
     {
         Task<Membro> ObterMembro(Guid id);
         Task<IEnumerable<Membro>> ObterTodosMembros();

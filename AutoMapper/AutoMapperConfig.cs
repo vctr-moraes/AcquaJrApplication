@@ -1,6 +1,6 @@
-﻿using AcquaJrApplication.Models;
+﻿using AutoMapper;
+using AcquaJrApplication.Models;
 using AcquaJrApplication.ViewsModels;
-using AutoMapper;
 
 namespace AcquaJrApplication.AutoMapper
 {

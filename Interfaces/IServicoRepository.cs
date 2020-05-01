@@ -5,7 +5,7 @@ using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Interfaces
 {
-    interface IServicoRepository : IRepository<Servico>
+    public interface IServicoRepository : IRepository<Servico>
     {
         Task<Servico> ObterServico(Guid id);
         Task<IEnumerable<Servico>> ObterTodosServicos();
