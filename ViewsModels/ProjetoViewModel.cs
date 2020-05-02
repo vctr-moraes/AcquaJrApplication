@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AcquaJrApplication.ViewsModels
@@ -15,6 +16,10 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Serviço")]
         [Required(ErrorMessage = "É necessário selecionar um {0}.")]
         public Guid ServicoId { get; set; }
+
+        [Display(Name = "Membros envolvidos no projeto")]
+        [Required(ErrorMessage = "É necessário selecionar os membros envolvidos.")]
+        public IEnumerable<MembroViewModel> Membros { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]

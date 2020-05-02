@@ -4,7 +4,7 @@ using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.AutoMapper
 {
-    public class AutoMapperConfig: Profile
+    public class AutoMapperConfig : Profile
     {
         public AutoMapperConfig()
         {
