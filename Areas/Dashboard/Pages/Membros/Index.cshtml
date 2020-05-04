@@ -6,14 +6,16 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewData["Title"]</h2>
+<partial name="_DashboardNavPartialView" />
+
+<h3>@ViewData["Title"]</h3>
 
 <p>
     <a asp-page="Create">Novo membro</a>
 </p>
 
-<table class="table">
-    <thead>
+<table class="table table-bordered table-condensed">
+    <thead class="thead-light">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.MembroViewModel[0].Nome)
@@ -28,7 +30,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.MembroViewModel) {
+        @foreach (var item in Model.MembroViewModel)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nome)
@@ -40,9 +43,9 @@
                     @Html.DisplayFor(modelItem => item.Cargo)
                 </td>
                 <td class="text-right">
-                    <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-primary">Editar</a>
-                    <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-primary">Detalhes</a>
-                    <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-primary">Deletar</a>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Editar</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Detalhes</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Deletar</a>
                 </td>
             </tr>
         }

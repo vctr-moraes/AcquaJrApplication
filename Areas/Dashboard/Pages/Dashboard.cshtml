@@ -8,28 +8,8 @@
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="pull-right">
-    <nav class="nav">
-        <a class="nav-link" asp-area="Dashboard" asp-page="/Dashboard">Dashboard</a>
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Conta</a>
-    </nav>
-</div>
+<partial name="_DashboardNavPartialView" />
 
 <h2>@ViewData["Title"]</h2>
 
 <hr />
-
-<div class="row">
-    <div class="col-md-3">
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item"><a class="nav-link active" href="/Dashboard/Membros" data-toggle="tab">Membros</a></li>
-            <li class="nav-item"><a class="nav-link" href="" data-toggle="tab">Clientes</a></li>
-            <li class="nav-item"><a class="nav-link" href="" data-toggle="tab">Projetos</a></li>
-            <li class="nav-item"><a class="nav-link" href="" data-toggle="tab">Serviços</a></li>
-        </ul>
-    </div>
-    <div class="col-md-9">
-
-    </div>
-</div>
-

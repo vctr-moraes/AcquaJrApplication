@@ -2,12 +2,7 @@
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="pull-right">
-    <nav class="nav">
-        <a class="nav-link" asp-area="Dashboard" asp-page="/Dashboard">Dashboard</a>
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Conta</a>
-    </nav>
-</div>
+<partial name="/Areas/Dashboard/Pages/_DashboardNavPartialView.cshtml" />
 
 <h2>Sua conta</h2>
 
