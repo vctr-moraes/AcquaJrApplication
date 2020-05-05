@@ -2,19 +2,20 @@
 @model AcquaJrApplication.Areas.Dashboard.Pages.Clientes.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clientes";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 <partial name="_DashboardNavPartialView" />
 
-<h1>Index</h1>
+<h3>ViewData["Title"]</h3>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Novo cliente</a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-bordered table-condensed">
+    <thead class="thead-light">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ClienteViewModel[0].TipoPessoa)
@@ -74,68 +75,68 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ClienteViewModel) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoPessoa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeFantasia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RazaoSocial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cpf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cnpj)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InscricaoEstadual)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RgCtps)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Logradouro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PontoReferencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bairro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cep)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacoes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCadastro)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.ClienteViewModel) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoPessoa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeFantasia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RazaoSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cpf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cnpj)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InscricaoEstadual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RgCtps)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Logradouro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PontoReferencia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observacoes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCadastro)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Editar</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Detalhes</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Deletar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
