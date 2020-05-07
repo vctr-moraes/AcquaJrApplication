@@ -17,6 +17,7 @@ namespace AcquaJrApplication.Data
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<Projeto> Projetos { get; set; }
+        public DbSet<MembroProjeto> MembroProjetos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
