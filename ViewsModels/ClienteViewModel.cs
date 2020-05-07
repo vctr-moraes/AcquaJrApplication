@@ -9,7 +9,7 @@ namespace AcquaJrApplication.ViewsModels
         [Key]
         public Guid Id { get; set; }
 
-        [Display(Name = "Tipo Pessoa")]
+        [Display(Name = "Tipo de Empresa")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public TipoPessoa TipoPessoa { get; set; }
 
