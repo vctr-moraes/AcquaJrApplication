@@ -8,6 +8,6 @@ namespace AcquaJrApplication.Interfaces
     public interface IServicoRepository : IRepository<Servico>
     {
         Task<Servico> ObterServico(Guid id);
-        Task<IEnumerable<Servico>> ObterTodosServicos();
+        Task<List<Servico>> ObterTodosServicos();
     }
 }

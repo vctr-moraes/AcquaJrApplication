@@ -7,16 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 {
     public class CreateModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IServicoRepository _servicoRepository;
 
-        public CreateModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public CreateModel(IServicoRepository servicoRepository)
         {
-            _context = context;
+            _servicoRepository = servicoRepository;
         }
 
         public IActionResult OnGet()
@@ -27,8 +28,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
         [BindProperty]
         public Servico Servico { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -36,8 +35,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                 return Page();
             }
 
-            _context.Servicos.Add(Servico);
-            await _context.SaveChangesAsync();
+            await _servicoRepository.Adicionar(Servico);
 
             return RedirectToPage("./Index");
         }
