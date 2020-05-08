@@ -6,6 +6,31 @@ namespace AcquaJrApplication.ViewsModels
 {
     public class ClienteViewModel
     {
+        public ClienteViewModel() { }
+
+        public ClienteViewModel(Cliente cliente)
+        {
+            Id = cliente.Id;
+            TipoPessoa = cliente.TipoPessoa;
+            NomeFantasia = cliente.NomeFantasia;
+            RazaoSocial = cliente.RazaoSocial;
+            Cpf = cliente.Cpf;
+            Cnpj = cliente.Cnpj;
+            InscricaoEstadual = cliente.InscricaoEstadual;
+            RgCtps = cliente.RgCtps;
+            Logradouro = cliente.Logradouro;
+            PontoReferencia = cliente.PontoReferencia;
+            Bairro = cliente.Bairro;
+            Cidade = cliente.Cidade;
+            Cep = cliente.Cep;
+            Estado = cliente.Estado;
+            Email = cliente.Email;
+            Telefone1 = cliente.Telefone1;
+            Telefone2 = cliente.Telefone2;
+            Observacoes = cliente.Observacoes;
+            DataCadastro = cliente.DataCadastro.ToShortDateString();
+        }
+
         [Key]
         public Guid Id { get; set; }
 
@@ -91,9 +116,8 @@ namespace AcquaJrApplication.ViewsModels
         public string Observacoes { get; set; }
 
         [Display(Name = "Data de Cadastro")]
-        [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [MaxLength(100, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
-        public DateTime DataCadastro { get; set; }
+        [RegularExpression(@"^(3[01]|[12][0-9]|0[1-9])[-/](1[0-2]|0[1-9])[-/][0-9]{4}$", ErrorMessage = "A data informada é inválida.")]
+        public string DataCadastro { get; set; }
     }
 }

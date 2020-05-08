@@ -6,34 +6,40 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
+using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
     public class DetailsModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IClienteRepository _clienteRepository;
 
-        public DetailsModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public DetailsModel(IClienteRepository clienteRepository)
         {
-            _context = context;
+            _clienteRepository = clienteRepository;
         }
 
-        public ClienteViewModel ClienteViewModel { get; set; }
+        [BindProperty]
+        public ClienteViewModel ClienteVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ClienteViewModel = await _context.ClienteViewModel.FirstOrDefaultAsync(m => m.Id == id);
+            var cliente = await _clienteRepository.ObterPorId(id);
 
-            if (ClienteViewModel == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
+
+            ClienteVM = new ClienteViewModel(cliente);
+
             return Page();
         }
     }

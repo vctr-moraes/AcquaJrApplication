@@ -6,9 +6,15 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+<style>
+    .info {
+        vertical-align: middle;
+    }
+</style>
+
 <partial name="_DashboardNavPartialView" />
 
-<h3>ViewData["Title"]</h3>
+<h3>@ViewData["Title"]</h3>
 
 <p>
     <a asp-page="Create" type="button" class="btn btn-sm btn-outline-success">
@@ -17,129 +23,48 @@
     </a>
 </p>
 
-<table class="table table-bordered table-condensed">
-    <thead class="thead-light">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].TipoPessoa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].NomeFantasia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].RazaoSocial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Cpf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Cnpj)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].InscricaoEstadual)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].RgCtps)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Logradouro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].PontoReferencia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Bairro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Cidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Cep)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Telefone1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Telefone2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].Observacoes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClienteViewModel[0].DataCadastro)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.ClienteViewModel) {
+@if (Model.Cliente.Count == 0)
+{
+    <h4 class="text-center info">Não há clientes cadastrados no sistema</h4>
+}
+else
+{
+    <table class="table table-bordered table-condensed">
+        <thead class="thead-light">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TipoPessoa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NomeFantasia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RazaoSocial)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cpf)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cnpj)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InscricaoEstadual)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RgCtps)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Logradouro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PontoReferencia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Bairro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cidade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cep)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefone1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefone2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Observacoes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataCadastro)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Editar</a>
-                    <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Detalhes</a>
-                    <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Deletar</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente[0].NomeFantasia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente[0].Cidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente[0].Telefone1)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Cliente)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeFantasia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone1)
+                    </td>
+                    <td class="text-right">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Editar</a>
+                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Detalhes</a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

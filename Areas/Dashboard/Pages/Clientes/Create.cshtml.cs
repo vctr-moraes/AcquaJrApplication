@@ -6,29 +6,32 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AcquaJrApplication.Data;
+using AcquaJrApplication.Models;
 using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Interfaces;
+using System.Globalization;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
     public class CreateModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IClienteRepository _clienteRepository;
 
-        public CreateModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public CreateModel(IClienteRepository clienteRepository)
         {
-            _context = context;
-        }
-
-        public IActionResult OnGet()
-        {
-            return Page();
+            _clienteRepository = clienteRepository;
+            ClienteVM = new ClienteViewModel();
         }
 
         [BindProperty]
-        public ClienteViewModel ClienteViewModel { get; set; }
+        public ClienteViewModel ClienteVM { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
+        public IActionResult OnGet()
+        {
+            ClienteVM = new ClienteViewModel();
+            return Page();
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -36,10 +39,39 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 return Page();
             }
 
-            _context.ClienteViewModel.Add(ClienteViewModel);
-            await _context.SaveChangesAsync();
+            try
+            {
+                Cliente cliente = new Cliente()
+                {
+                    TipoPessoa = ClienteVM.TipoPessoa,
+                    NomeFantasia = ClienteVM.NomeFantasia,
+                    RazaoSocial = ClienteVM.RazaoSocial,
+                    Cpf = ClienteVM.Cpf,
+                    Cnpj = ClienteVM.Cnpj,
+                    InscricaoEstadual = ClienteVM.InscricaoEstadual,
+                    RgCtps = ClienteVM.RgCtps,
+                    Logradouro = ClienteVM.Logradouro,
+                    PontoReferencia = ClienteVM.PontoReferencia,
+                    Bairro = ClienteVM.Bairro,
+                    Cidade = ClienteVM.Cidade,
+                    Cep = ClienteVM.Cep,
+                    Estado = ClienteVM.Estado,
+                    Email = ClienteVM.Email,
+                    Telefone1 = ClienteVM.Telefone1,
+                    Telefone2 = ClienteVM.Telefone2,
+                    Observacoes = ClienteVM.Observacoes,
+                    DataCadastro = DateTime.ParseExact(ClienteVM.DataCadastro, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+                };
 
-            return RedirectToPage("./Index");
+                await _clienteRepository.Adicionar(cliente);
+
+                return RedirectToPage("./Index");
+            }
+            catch (DomainException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
+            }
         }
     }
 }

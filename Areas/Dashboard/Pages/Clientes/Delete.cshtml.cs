@@ -6,51 +6,57 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
+using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
     public class DeleteModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IClienteRepository _clienteRepository;
 
-        public DeleteModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public DeleteModel(IClienteRepository clienteRepository)
         {
-            _context = context;
+            _clienteRepository = clienteRepository;
         }
 
         [BindProperty]
-        public ClienteViewModel ClienteViewModel { get; set; }
+        public ClienteViewModel ClienteVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ClienteViewModel = await _context.ClienteViewModel.FirstOrDefaultAsync(m => m.Id == id);
+            var cliente = await _clienteRepository.ObterPorId(id);
 
-            if (ClienteViewModel == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
+
+            ClienteVM = new ClienteViewModel(cliente);
+
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(Guid? id)
+        public async Task<IActionResult> OnPostAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ClienteViewModel = await _context.ClienteViewModel.FindAsync(id);
+            var cliente = await _clienteRepository.ObterPorId(id);
 
-            if (ClienteViewModel != null)
+            if (cliente != null)
             {
-                _context.ClienteViewModel.Remove(ClienteViewModel);
-                await _context.SaveChangesAsync();
+                await _clienteRepository.Remover(cliente.Id);
+
+                return RedirectToPage("./Index");
             }
 
             return RedirectToPage("./Index");

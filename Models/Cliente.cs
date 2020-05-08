@@ -230,6 +230,8 @@ namespace AcquaJrApplication.Models
 
             set
             {
+                DateTime result;
+                DomainException.When(!DateTime.TryParse(value.ToString(), out result), "A data informada é inválida.");
                 _dataCadastro = value;
             }
         }

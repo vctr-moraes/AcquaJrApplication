@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
-using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
@@ -19,11 +19,11 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
             _context = context;
         }
 
-        public IList<ClienteViewModel> ClienteViewModel { get;set; }
+        public IList<Cliente> Cliente { get;set; }
 
         public async Task OnGetAsync()
         {
-            ClienteViewModel = await _context.ClienteViewModel.ToListAsync();
+            Cliente = await _context.Clientes.ToListAsync();
         }
     }
 }

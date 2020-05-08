@@ -7,71 +7,88 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
+using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
+using System.Globalization;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
     public class EditModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IClienteRepository _clienteRepository;
 
-        public EditModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public EditModel(IClienteRepository clienteRepository)
         {
-            _context = context;
+            _clienteRepository = clienteRepository;
         }
 
         [BindProperty]
-        public ClienteViewModel ClienteViewModel { get; set; }
+        public ClienteViewModel ClienteVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ClienteViewModel = await _context.ClienteViewModel.FirstOrDefaultAsync(m => m.Id == id);
+            var cliente = await _clienteRepository.ObterPorId(id);
 
-            if (ClienteViewModel == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
+
+            ClienteVM = new ClienteViewModel(cliente);
+
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string nome)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(ClienteViewModel).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                Cliente cliente = await _clienteRepository.ObterPorId(ClienteVM.Id);
+
+                cliente.TipoPessoa = ClienteVM.TipoPessoa;
+                cliente.NomeFantasia = ClienteVM.NomeFantasia;
+                cliente.RazaoSocial = ClienteVM.RazaoSocial;
+                cliente.Cpf = ClienteVM.Cpf;
+                cliente.Cnpj = ClienteVM.Cnpj;
+                cliente.InscricaoEstadual = ClienteVM.InscricaoEstadual;
+                cliente.RgCtps = ClienteVM.RgCtps;
+                cliente.Logradouro = ClienteVM.Logradouro;
+                cliente.PontoReferencia = ClienteVM.PontoReferencia;
+                cliente.Bairro = ClienteVM.Bairro;
+                cliente.Cidade = ClienteVM.Cidade;
+                cliente.Cep = ClienteVM.Cep;
+                cliente.Estado = ClienteVM.Estado;
+                cliente.Email = ClienteVM.Email;
+                cliente.Telefone1 = ClienteVM.Telefone1;
+                cliente.Telefone2 = ClienteVM.Telefone2;
+                cliente.Observacoes = ClienteVM.Observacoes;
+                cliente.DataCadastro = DateTime.ParseExact(ClienteVM.DataCadastro, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                await _clienteRepository.Adicionar(cliente);
+
+                return await Task.FromResult(RedirectToPage("./Index"));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DomainException ex)
             {
-                if (!ClienteViewModelExists(ClienteViewModel.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
             }
-
-            return RedirectToPage("./Index");
         }
 
-        private bool ClienteViewModelExists(Guid id)
-        {
-            return _context.ClienteViewModel.Any(e => e.Id == id);
-        }
+        //private bool ClienteExists(Guid id)
+        //{
+        //    return _context.Clientes.Any(e => e.Id == id);
+        //}
     }
 }

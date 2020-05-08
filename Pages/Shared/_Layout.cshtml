@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>@ViewData["Title"] - Ácqua Jr.</title>
+
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=SegoeUI:300,400,500,700|SegoeUI+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/material.min.css" />
@@ -13,7 +15,9 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Ácqua Jr.</a>
+                <a class="" asp-area="" asp-page="/Index">
+                    <img src="~/imagens/ACJR - NOME FUNDO BRANCO.jpg" height="35" />
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,7 +29,7 @@
                             <a class="nav-link text-gray" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-gray" asp-area="" asp-page="/Privacy">A Ácqua Jr.</a>
+                            <a class="nav-link text-gray" asp-area="" asp-page="/Privacy">A Acqua Jr.</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-gray" asp-area="" asp-page="/Diretoria">Diretoria</a>
@@ -52,7 +56,7 @@
             &copy; @DateTime.Now.Year - Ácqua Jr. Application é um projeto desenvolvido e mantido por <a href="https://about.me/vctr.moraes" target="_blank" class="text-gray">Victor Moraes</a>
         </div>
     </footer>
-
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/material.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
