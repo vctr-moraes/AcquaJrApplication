@@ -101,11 +101,11 @@
 </form>
 
 <script>
-    $('#cep').mask('00000-000');
+    $(document).ready(function () {
+        $('#cep').mask('00000-000');
+    });
 
     $('.data').datepicker({
         locale: 'pt-br'
     });
-
-    $('.data').mask("00/00/0000", { placeholder: "__/__/____" });
 </script>

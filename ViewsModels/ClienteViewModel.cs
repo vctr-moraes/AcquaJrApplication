@@ -28,7 +28,7 @@ namespace AcquaJrApplication.ViewsModels
             Telefone1 = cliente.Telefone1;
             Telefone2 = cliente.Telefone2;
             Observacoes = cliente.Observacoes;
-            DataCadastro = cliente.DataCadastro.ToShortDateString();
+            DataCadastro = cliente.DataCadastro;
         }
 
         [Key]
@@ -48,11 +48,11 @@ namespace AcquaJrApplication.ViewsModels
         public string RazaoSocial { get; set; }
 
         [Display(Name = "CPF")]
-        [MaxLength(11, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        [StringLength(11, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 11)]
         public string Cpf { get; set; }
 
         [Display(Name = "CNPJ")]
-        [MaxLength(14, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        [StringLength(14, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 14)]
         public string Cnpj { get; set; }
 
         [Display(Name = "Inscrição Estadual")]
@@ -117,7 +117,7 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Data de Cadastro")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [RegularExpression(@"^(3[01]|[12][0-9]|0[1-9])[-/](1[0-2]|0[1-9])[-/][0-9]{4}$", ErrorMessage = "A data informada é inválida.")]
-        public string DataCadastro { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DataCadastro { get; set; }
     }
 }

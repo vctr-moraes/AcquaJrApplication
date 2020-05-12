@@ -16,7 +16,7 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "CPF")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [MaxLength(11, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        [StringLength(11, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 11)]
         public string Cpf { get; set; }
 
         [Display(Name = "Data de Nascimento")]

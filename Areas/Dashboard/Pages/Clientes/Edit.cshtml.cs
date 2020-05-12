@@ -73,7 +73,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 cliente.Telefone1 = ClienteVM.Telefone1;
                 cliente.Telefone2 = ClienteVM.Telefone2;
                 cliente.Observacoes = ClienteVM.Observacoes;
-                cliente.DataCadastro = DateTime.ParseExact(ClienteVM.DataCadastro, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                cliente.DataCadastro = ClienteVM.DataCadastro;
 
                 await _clienteRepository.Adicionar(cliente);
 

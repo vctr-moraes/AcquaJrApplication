@@ -7,23 +7,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
     public class IndexModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly IClienteRepository _clienteRepository;
 
-        public IndexModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context, IClienteRepository clienteRepository)
         {
             _context = context;
+            _clienteRepository = clienteRepository;
         }
 
-        public IList<Cliente> Cliente { get;set; }
+        [BindProperty]
+        public IList<ClienteViewModel> ClienteVM { get;set; }
 
         public async Task OnGetAsync()
         {
-            Cliente = await _context.Clientes.ToListAsync();
+            ClienteVM = await _context.Clientes.Select(cliente => new ClienteViewModel(cliente)).ToListAsync();
         }
     }
 }
