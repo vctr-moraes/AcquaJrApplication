@@ -75,7 +75,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 cliente.Observacoes = ClienteVM.Observacoes;
                 cliente.DataCadastro = ClienteVM.DataCadastro;
 
-                await _clienteRepository.Adicionar(cliente);
+                await _clienteRepository.Atualizar(cliente);
 
                 return await Task.FromResult(RedirectToPage("./Index"));
             }
