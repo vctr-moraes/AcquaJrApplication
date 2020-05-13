@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 {
@@ -18,15 +19,17 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
         public CreateModel(IServicoRepository servicoRepository)
         {
             _servicoRepository = servicoRepository;
-        }
-
-        public IActionResult OnGet()
-        {
-            return Page();
+            ServicoVM = new ServicoViewModel();
         }
 
         [BindProperty]
-        public Servico Servico { get; set; }
+        public ServicoViewModel ServicoVM { get; set; }
+
+        public IActionResult OnGet()
+        {
+            ServicoVM = new ServicoViewModel();
+            return Page();
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -35,9 +38,22 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                 return Page();
             }
 
-            await _servicoRepository.Adicionar(Servico);
+            try
+            {
+                Servico servico = new Servico()
+                {
+                    Nome = ServicoVM.Nome,
+                    Descricao = ServicoVM.Descricao
+                };
 
-            return RedirectToPage("./Index");
+                await _servicoRepository.Adicionar(servico);
+                return RedirectToPage("./Index");
+            }
+            catch (DomainException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
+            }
         }
     }
 }

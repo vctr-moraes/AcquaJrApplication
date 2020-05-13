@@ -1,10 +1,20 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.ViewsModels
 {
     public class ServicoViewModel
     {
+        public ServicoViewModel() { }
+
+        public ServicoViewModel(Servico servico)
+        {
+            Id = servico.Id;
+            Nome = servico.Nome;
+            Descricao = servico.Descricao;
+        }
+
         [Key]
         public Guid Id { get; set; }
 

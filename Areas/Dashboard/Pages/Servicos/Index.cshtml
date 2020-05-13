@@ -26,34 +26,44 @@
     </a>
 </p>
 
-<table class="table table-bordered table-condensed">
-    <thead class="thead-light">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Servico[0].Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Servico[0].Descricao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Servico)
-        {
+@if (Model.ServicoVM.Count == 0)
+{
+    <div class="info">
+        <h4 class="text-center">Não há serviços cadastrados no sistema</h4>
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-condensed">
+        <thead class="thead-light">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td class="descricao" title="@Html.DisplayFor(modelItem => item.Descricao)">
-                    @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
-                <td class="text-right">
-                    <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Editar</a>
-                    <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Detalhes</a>
-                    <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Deletar</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.ServicoVM[0].Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ServicoVM[0].Descricao)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ServicoVM)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td class="descricao" title="@Html.DisplayFor(modelItem => item.Descricao)">
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td class="text-right">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Editar</a>
+                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Detalhes</a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

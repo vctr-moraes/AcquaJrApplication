@@ -8,70 +8,72 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 {
     public class EditModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IServicoRepository _servicoRepository;
 
-        public EditModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public EditModel(IServicoRepository servicoRepository)
         {
-            _context = context;
+            _servicoRepository = servicoRepository;
         }
 
         [BindProperty]
-        public Servico Servico { get; set; }
+        public ServicoViewModel ServicoVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Servico = await _context.Servicos.FirstOrDefaultAsync(m => m.Id == id);
+            var servico = await _servicoRepository.ObterPorId(id);
 
-            if (Servico == null)
+            if (servico == null)
             {
                 return NotFound();
             }
+
+            ServicoVM = new ServicoViewModel(servico);
+
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string nome)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Servico).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                Servico servico = await _servicoRepository.ObterPorId(ServicoVM.Id);
+
+                servico.Nome = ServicoVM.Nome;
+                servico.Descricao = ServicoVM.Descricao;
+
+                await _servicoRepository.Atualizar(servico);
+
+                return await Task.FromResult(RedirectToPage("./Index"));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DomainException ex)
             {
-                if (!ServicoExists(Servico.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
             }
-
-            return RedirectToPage("./Index");
         }
 
-        private bool ServicoExists(Guid id)
-        {
-            return _context.Servicos.Any(e => e.Id == id);
-        }
+        //private bool ServicoExists(Guid id)
+        //{
+        //    return _context.Servicos.Any(e => e.Id == id);
+        //}
     }
 }

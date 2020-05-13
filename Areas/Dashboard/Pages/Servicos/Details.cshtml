@@ -12,22 +12,9 @@
 
 <div>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Servico.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Servico.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Servico.Descricao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Servico.Descricao)
-        </dd>
-    </dl>
+    @{ await Html.RenderPartialAsync("_ServicoDetalhesPartial", Model.ServicoVM); }
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Servico.Id">Editar</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.ServicoVM.Id">Editar</a> |
     <a asp-page="./Index">Voltar</a>
 </div>

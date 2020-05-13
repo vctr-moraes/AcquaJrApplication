@@ -7,33 +7,39 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 {
     public class DetailsModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IServicoRepository _servicoRepository;
 
-        public DetailsModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public DetailsModel(IServicoRepository servicoRepository)
         {
-            _context = context;
+            _servicoRepository = servicoRepository;
         }
 
-        public Servico Servico { get; set; }
+        [BindProperty]
+        public ServicoViewModel ServicoVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Servico = await _context.Servicos.FirstOrDefaultAsync(m => m.Id == id);
+            var servico = await _servicoRepository.ObterPorId(id);
 
-            if (Servico == null)
+            if (servico == null)
             {
                 return NotFound();
             }
+
+            ServicoVM = new ServicoViewModel(servico);
+
             return Page();
         }
     }

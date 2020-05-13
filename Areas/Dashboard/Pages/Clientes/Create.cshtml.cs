@@ -64,7 +64,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 };
 
                 await _clienteRepository.Adicionar(cliente);
-
                 return RedirectToPage("./Index");
             }
             catch (DomainException ex)

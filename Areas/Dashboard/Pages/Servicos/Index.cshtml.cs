@@ -20,11 +20,11 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
             _servicoRepository = servicoRepository;
         }
 
-        public IList<Servico> Servico { get;set; }
+        public IList<Servico> ServicoVM { get;set; }
 
         public async Task OnGetAsync()
         {
-            Servico = await _servicoRepository.ObterTodosServicos();
+            ServicoVM = await _servicoRepository.ObterTodosServicos();
         }
     }
 }
