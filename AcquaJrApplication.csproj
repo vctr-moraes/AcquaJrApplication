@@ -28,6 +28,7 @@
 
 
   <ItemGroup>
+    <Folder Include="Areas\Dashboard\Pages\Membros\" />
     <Folder Include="wwwroot\imagens\" />
   </ItemGroup>
 
