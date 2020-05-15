@@ -1,4 +1,4 @@
-﻿function ValidarInputCpf(e) {
+﻿function ValidarInputNumerico(e) {
     var tecla = (window.event) ? event.keyCode : e.which;
 
     if ((tecla > 47 && tecla < 58)) return true;

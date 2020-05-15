@@ -4,36 +4,43 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 {
+    [Authorize]
     public class DetailsModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IMembroRepository _membroRepository;
 
-        public DetailsModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public DetailsModel(IMembroRepository membroRepository)
         {
-            _context = context;
+            _membroRepository = membroRepository;
         }
 
-        public Membro Membro { get; set; }
+        [BindProperty]
+        public MembroViewModel MembroVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Membro = await _context.Membros.FirstOrDefaultAsync(m => m.Id == id);
+            var membro = await _membroRepository.ObterPorId(id);
 
-            if (Membro == null)
+            if (membro == null)
             {
                 return NotFound();
             }
+
+            MembroVM = new MembroViewModel(membro);
             return Page();
         }
     }

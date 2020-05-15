@@ -4,43 +4,47 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 {
+    [Authorize]
     public class EditModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IMembroRepository _membroRepository;
 
-        public EditModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public EditModel(IMembroRepository membroRepository)
         {
-            _context = context;
+            _membroRepository = membroRepository;
         }
 
         [BindProperty]
-        public Membro Membro { get; set; }
+        public MembroViewModel MembroVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Membro = await _context.Membros.FirstOrDefaultAsync(m => m.Id == id);
+            var membro = await _membroRepository.ObterPorId(id);
 
-            if (Membro == null)
+            if (membro == null)
             {
                 return NotFound();
             }
+
+            MembroVM = new MembroViewModel(membro);
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -48,30 +52,35 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 return Page();
             }
 
-            _context.Attach(Membro).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                Membro membro = await _membroRepository.ObterPorId(MembroVM.Id);
+
+                membro.Nome = MembroVM.Nome;
+                membro.Cpf = MembroVM.Cpf;
+                membro.DataNascimento = MembroVM.DataNascimento;
+                membro.Logradouro = MembroVM.Logradouro;
+                membro.Bairro = MembroVM.Bairro;
+                membro.Cidade = MembroVM.Cidade;
+                membro.Estado = MembroVM.Estado;
+                membro.Email = MembroVM.Email;
+                membro.Telefone = MembroVM.Telefone;
+                membro.TemSeguro = MembroVM.TemSeguro;
+                membro.TemCnh = MembroVM.TemCnh;
+                membro.Curso = MembroVM.Curso;
+                membro.MatriculaAcademica = MembroVM.MatriculaAcademica;
+                membro.Cargo = MembroVM.Cargo;
+                membro.DataEntrada = MembroVM.DataEntrada;
+                membro.DataSaida = MembroVM.DataSaida;
+
+                await _membroRepository.Atualizar(membro);
+                return await Task.FromResult(RedirectToPage("./Index"));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DomainException ex)
             {
-                if (!MembroExists(Membro.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
             }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool MembroExists(Guid id)
-        {
-            return _context.Membros.Any(e => e.Id == id);
         }
     }
 }

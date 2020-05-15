@@ -2,110 +2,37 @@
 @model AcquaJrApplication.Areas.Dashboard.Pages.Membros.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar membro";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<partial name="_DashboardNavPartialView" />
 
-<h4>Membro</h4>
+<h3>@ViewData["Title"]</h3>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Membro.Nome" class="control-label"></label>
-                <input asp-for="Membro.Nome" class="form-control" />
-                <span asp-validation-for="Membro.Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Cpf" class="control-label"></label>
-                <input asp-for="Membro.Cpf" class="form-control" />
-                <span asp-validation-for="Membro.Cpf" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.DataNascimento" class="control-label"></label>
-                <input asp-for="Membro.DataNascimento" class="form-control" />
-                <span asp-validation-for="Membro.DataNascimento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Logradouro" class="control-label"></label>
-                <input asp-for="Membro.Logradouro" class="form-control" />
-                <span asp-validation-for="Membro.Logradouro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Bairro" class="control-label"></label>
-                <input asp-for="Membro.Bairro" class="form-control" />
-                <span asp-validation-for="Membro.Bairro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Cidade" class="control-label"></label>
-                <input asp-for="Membro.Cidade" class="form-control" />
-                <span asp-validation-for="Membro.Cidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Estado" class="control-label"></label>
-                <input asp-for="Membro.Estado" class="form-control" />
-                <span asp-validation-for="Membro.Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Email" class="control-label"></label>
-                <input asp-for="Membro.Email" class="form-control" />
-                <span asp-validation-for="Membro.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Telefone" class="control-label"></label>
-                <input asp-for="Membro.Telefone" class="form-control" />
-                <span asp-validation-for="Membro.Telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Membro.TemSeguro" /> @Html.DisplayNameFor(model => model.Membro.TemSeguro)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Membro.TemCnh" /> @Html.DisplayNameFor(model => model.Membro.TemCnh)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Curso" class="control-label"></label>
-                <select asp-for="Membro.Curso" class="form-control"></select>
-                <span asp-validation-for="Membro.Curso" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.MatriculaAcademica" class="control-label"></label>
-                <input asp-for="Membro.MatriculaAcademica" class="form-control" />
-                <span asp-validation-for="Membro.MatriculaAcademica" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.Cargo" class="control-label"></label>
-                <select asp-for="Membro.Cargo" class="form-control"></select>
-                <span asp-validation-for="Membro.Cargo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.DataEntrada" class="control-label"></label>
-                <input asp-for="Membro.DataEntrada" class="form-control" />
-                <span asp-validation-for="Membro.DataEntrada" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Membro.DataSaida" class="control-label"></label>
-                <input asp-for="Membro.DataSaida" class="form-control" />
-                <span asp-validation-for="Membro.DataSaida" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Membro.Id" />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        @{ await Html.RenderPartialAsync("_MembroFormPartial", Model.MembroVM); }
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Voltar</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    function ValidarInputNumerico(e) {
+        var tecla = (window.event) ? event.keyCode : e.which;
+
+        if ((tecla > 47 && tecla < 58)) return true;
+        else {
+            if (tecla == 8 || tecla == 0 || tecla == 44) return true;
+            else return false;
+        }
+    }
+</script>

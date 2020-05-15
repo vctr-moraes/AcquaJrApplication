@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
@@ -14,6 +15,7 @@ using System.Globalization;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly IClienteRepository _clienteRepository;
@@ -41,7 +43,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
             }
 
             ClienteVM = new ClienteViewModel(cliente);
-
             return Page();
         }
 
@@ -76,7 +77,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 cliente.DataCadastro = ClienteVM.DataCadastro;
 
                 await _clienteRepository.Atualizar(cliente);
-
                 return await Task.FromResult(RedirectToPage("./Index"));
             }
             catch (DomainException ex)
@@ -85,10 +85,5 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 return Page();
             }
         }
-
-        //private bool ClienteExists(Guid id)
-        //{
-        //    return _context.Clientes.Any(e => e.Id == id);
-        //}
     }
 }

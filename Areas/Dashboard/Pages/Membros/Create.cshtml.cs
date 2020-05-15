@@ -4,31 +4,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Interfaces;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IMembroRepository _membroRepository;
 
-        public CreateModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public CreateModel(IMembroRepository membroRepository)
         {
-            _context = context;
-        }
-
-        public IActionResult OnGet()
-        {
-            return Page();
+            _membroRepository = membroRepository;
+            MembroVM = new MembroViewModel();
         }
 
         [BindProperty]
-        public Membro Membro { get; set; }
+        public MembroViewModel MembroVM { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
+        public IActionResult OnGet()
+        {
+            MembroVM = new MembroViewModel();
+            return Page();
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -36,10 +40,36 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 return Page();
             }
 
-            _context.Membros.Add(Membro);
-            await _context.SaveChangesAsync();
+            try
+            {
+                Membro membro = new Membro()
+                {
+                    Nome = MembroVM.Nome,
+                    Cpf = MembroVM.Cpf,
+                    DataNascimento = MembroVM.DataNascimento,
+                    Logradouro = MembroVM.Logradouro,
+                    Bairro = MembroVM.Bairro,
+                    Cidade = MembroVM.Cidade,
+                    Estado = MembroVM.Estado,
+                    Email = MembroVM.Email,
+                    Telefone = MembroVM.Telefone,
+                    TemSeguro = MembroVM.TemSeguro,
+                    TemCnh = MembroVM.TemCnh,
+                    Curso = MembroVM.Curso,
+                    MatriculaAcademica = MembroVM.MatriculaAcademica,
+                    Cargo = MembroVM.Cargo,
+                    DataEntrada = MembroVM.DataEntrada,
+                    DataSaida = MembroVM.DataSaida
+                };
 
-            return RedirectToPage("./Index");
+                await _membroRepository.Adicionar(membro);
+                return RedirectToPage("./Index");
+            }
+            catch (DomainException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
+            }
         }
     }
 }

@@ -2,118 +2,21 @@
 @model AcquaJrApplication.Areas.Dashboard.Pages.Membros.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Deletar membro";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<partial name="_DashboardNavPartialView" />
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@ViewData["Title"]</h3>
+
+<h4 class="text-danger">Tem certeza que deseja deletar este membro?</h4>
 <div>
-    <h4>Membro</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Cpf)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Cpf)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.DataNascimento)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.DataNascimento)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Logradouro)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Logradouro)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Bairro)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Bairro)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Cidade)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Cidade)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Estado)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Estado)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Telefone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Telefone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.TemSeguro)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.TemSeguro)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.TemCnh)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.TemCnh)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Curso)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Curso)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.MatriculaAcademica)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.MatriculaAcademica)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.Cargo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.Cargo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.DataEntrada)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.DataEntrada)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Membro.DataSaida)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Membro.DataSaida)
-        </dd>
-    </dl>
-    
+    @{ await Html.RenderPartialAsync("_MembroDetalhesPartial", Model.MembroVM); }
     <form method="post">
-        <input type="hidden" asp-for="Membro.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <input type="hidden" asp-for="MembroVM.Id" />
+        <input type="submit" value="Deletar" class="btn btn-danger" /> |
+        <a asp-page="./Index">Voltar</a>
     </form>
 </div>

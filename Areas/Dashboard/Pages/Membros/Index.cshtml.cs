@@ -5,25 +5,32 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly IClienteRepository _clienteRepository;
 
-        public IndexModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context, IClienteRepository clienteRepository)
         {
             _context = context;
+            _clienteRepository = clienteRepository;
         }
 
-        public IList<Membro> Membro { get;set; }
+        [BindProperty]
+        public IList<MembroViewModel> MembroVM { get;set; }
 
         public async Task OnGetAsync()
         {
-            Membro = await _context.Membros.ToListAsync();
+            MembroVM = await _context.Membros.Select(membro => new MembroViewModel(membro)).ToListAsync();
         }
     }
 }

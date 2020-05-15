@@ -7,8 +7,11 @@
 }
 
 <style>
-    .info {
-        vertical-align: middle;
+    .vertical-center {
+        min-height: 50%;
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
     }
 </style>
 
@@ -25,8 +28,8 @@
 
 @if (Model.ClienteVM.Count == 0)
 {
-    <div class="info">
-        <h4 class="text-center">Não há clientes cadastrados no sistema</h4>
+    <div class="vertical-center justify-content-center">
+        <h4 class="text-black-hint" align="center">Não há clientes cadastrados no sistema</h4>
     </div>
 }
 else

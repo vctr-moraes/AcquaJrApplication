@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
@@ -12,6 +13,7 @@ using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly IServicoRepository _servicoRepository;

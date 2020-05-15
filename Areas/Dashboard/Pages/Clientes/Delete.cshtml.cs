@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
@@ -12,6 +13,7 @@ using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
+    [Authorize]
     public class DeleteModel : PageModel
     {
         private readonly IClienteRepository _clienteRepository;
@@ -39,7 +41,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
             }
 
             ClienteVM = new ClienteViewModel(cliente);
-
             return Page();
         }
 

@@ -6,6 +6,29 @@ namespace AcquaJrApplication.ViewsModels
 {
     public class MembroViewModel
     {
+        public MembroViewModel() { }
+
+        public MembroViewModel(Membro membro)
+        {
+            Id = membro.Id;
+            Nome = membro.Nome;
+            Cpf = membro.Cpf;
+            DataNascimento = membro.DataNascimento;
+            Logradouro = membro.Logradouro;
+            Bairro = membro.Bairro;
+            Cidade = membro.Cidade;
+            Estado = membro.Estado;
+            Email = membro.Email;
+            Telefone = membro.Telefone;
+            TemSeguro = membro.TemSeguro;
+            TemCnh = membro.TemCnh;
+            Curso = membro.Curso;
+            MatriculaAcademica = membro.MatriculaAcademica;
+            Cargo = membro.Cargo;
+            DataEntrada = membro.DataEntrada;
+            DataSaida = membro.DataSaida;
+        }
+
         [Key]
         public Guid Id { get; set; }
 
