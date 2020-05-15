@@ -1,32 +1,32 @@
 ﻿<div class="pull-right">
     <ul class="nav nav-pills">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Membros</a>
-            <div class="dropdown-menu">
+            <a class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Membros</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Membros/Create">Cadastrar</a>
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Membros/Index">Ativos</a>
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Dashboard">Inativos</a>
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Clientes</a>
+            <a class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Clientes</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Clientes/Create">Cadastrar</a>
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Clientes/Index">Ativos</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Projetos</a>
+            <a class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projetos</a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
+            <a class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Servicos/Create">Cadastrar</a>
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Servicos/Index">Ativos</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Conta</a>
+            <a class="btn btn-outline-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Conta</a>
         </li>
     </ul>
 </div>

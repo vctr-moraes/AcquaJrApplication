@@ -6,21 +6,12 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<style>
-    .vertical-center {
-        min-height: 50%;
-        min-height: 50vh;
-        display: flex;
-        align-items: center;
-    }
-</style>
-
 <partial name="_DashboardNavPartialView" />
 
 <h3>@ViewData["Title"]</h3>
 
 <p>
-    <a asp-page="Create" type="button" class="btn btn-sm btn-outline-success">
+    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
         <i class="material-icons">add</i>
         Novo membro
     </a>
