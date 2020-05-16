@@ -16,7 +16,7 @@ namespace AcquaJrApplication.Data.Mappings
 
             builder.Property(m => m.Cpf)
                 .IsRequired()
-                .HasColumnType("varchar(11)");
+                .HasColumnType("varchar(20)");
 
             builder.Property(m => m.DataNascimento)
                 .IsRequired()
@@ -44,7 +44,7 @@ namespace AcquaJrApplication.Data.Mappings
 
             builder.Property(m => m.Telefone)
                 .IsRequired()
-                .HasColumnType("varchar(11)");
+                .HasColumnType("varchar(20)");
 
             builder.Property(m => m.Curso)
                 .IsRequired();

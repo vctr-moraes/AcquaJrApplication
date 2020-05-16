@@ -27,6 +27,7 @@ namespace AcquaJrApplication.ViewsModels
             Cargo = membro.Cargo;
             DataEntrada = membro.DataEntrada;
             DataSaida = membro.DataSaida;
+            Status = membro.Status;
         }
 
         [Key]
@@ -39,12 +40,11 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "CPF")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [StringLength(11, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 11)]
+        //[StringLength(11, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 11)]
         public string Cpf { get; set; }
 
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public DateTime DataNascimento { get; set; }
 
@@ -77,15 +77,15 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Telefone")]
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [MaxLength(11, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        //[MaxLength(11, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Telefone { get; set; }
 
         [Display(Name = "Possui seguro de vida?")]
-        [Required(ErrorMessage = "O campo {0} é obrigatório.")]
+        //[Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public bool TemSeguro { get; set; }
 
         [Display(Name = "Possui CNH?")]
-        [Required(ErrorMessage = "O campo {0} é obrigatório.")]
+        //[Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public bool TemCnh { get; set; }
 
         [Display(Name = "Curso")]
@@ -103,13 +103,14 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Data de Entrada")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public DateTime DataEntrada { get; set; }
 
         [Display(Name = "Data de Saída")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DataSaida { get; set; }
+
+        [Display(Name = "Membro Ativo?")]
+        public bool Status { get; set; }
     }
 }

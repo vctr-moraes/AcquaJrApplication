@@ -48,11 +48,11 @@ namespace AcquaJrApplication.ViewsModels
         public string RazaoSocial { get; set; }
 
         [Display(Name = "CPF")]
-        [StringLength(11, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 11)]
+        //[StringLength(11, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 11)]
         public string Cpf { get; set; }
 
         [Display(Name = "CNPJ")]
-        [StringLength(14, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 14)]
+        //[StringLength(14, ErrorMessage = "O campo {0} não pode conter menos que {1} caracteres.", MinimumLength = 14)]
         public string Cnpj { get; set; }
 
         [Display(Name = "Inscrição Estadual")]
@@ -85,7 +85,7 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "CEP")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [MaxLength(8, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        //[MaxLength(8, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Cep { get; set; }
 
         [Display(Name = "Estado")]
@@ -102,12 +102,12 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Telefone Principal")]
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [MaxLength(11, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        //[MaxLength(11, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Telefone1 { get; set; }
 
         [Display(Name = "Telefone Alternativo")]
         [DataType(DataType.PhoneNumber)]
-        [MaxLength(11, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        //[MaxLength(11, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Telefone2 { get; set; }
 
         [Display(Name = "Observações")]
@@ -118,7 +118,6 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Data de Cadastro")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataCadastro { get; set; }
     }
 }

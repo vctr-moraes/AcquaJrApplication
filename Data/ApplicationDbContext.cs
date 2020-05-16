@@ -27,7 +27,7 @@ namespace AcquaJrApplication.Data
 
             base.OnModelCreating(builder);
         }
-        public DbSet<MembroViewModel> MembroViewModel { get; set; }
-        public DbSet<ClienteViewModel> ClienteViewModel { get; set; }
+        //public DbSet<MembroViewModel> MembroViewModel { get; set; }
+        //public DbSet<ClienteViewModel> ClienteViewModel { get; set; }
     }
 }

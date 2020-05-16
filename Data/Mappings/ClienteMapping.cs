@@ -21,10 +21,10 @@ namespace AcquaJrApplication.Data.Mappings
                 .HasColumnType("varchar(150)");
 
             builder.Property(c => c.Cpf)
-                .HasColumnType("varchyar(11)");
+                .HasColumnType("varchar(20)");
 
             builder.Property(c => c.Cnpj)
-                .HasColumnType("varchar(14)");
+                .HasColumnType("varchar(20)");
 
             builder.Property(c => c.InscricaoEstadual)
                 .HasColumnType("varchar(20)");
@@ -50,7 +50,7 @@ namespace AcquaJrApplication.Data.Mappings
 
             builder.Property(c => c.Cep)
                 .IsRequired()
-                .HasColumnType("varchar(8)");
+                .HasColumnType("varchar(20)");
 
             builder.Property(c => c.Estado)
                 .IsRequired()
@@ -62,10 +62,10 @@ namespace AcquaJrApplication.Data.Mappings
 
             builder.Property(c => c.Telefone1)
                 .IsRequired()
-                .HasColumnType("varchar(11)");
+                .HasColumnType("varchar(20)");
 
             builder.Property(c => c.Telefone2)
-                .HasColumnType("varchar(11)");
+                .HasColumnType("varchar(20)");
 
             builder.Property(c => c.Observacoes)
                 .HasColumnType("varchar(500)");

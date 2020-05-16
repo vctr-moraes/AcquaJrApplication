@@ -12,7 +12,7 @@
     <div class="form-group">
         <label asp-for="@Model.Cpf" class="control-label"></label>
         <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Cpf" class="form-control" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Cpf" class="form-control cpf" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Cpf" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -83,7 +83,7 @@
     <div class="form-group">
         <label asp-for="@Model.Telefone" class="control-label"></label>
         <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Telefone" class="form-control" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Telefone" class="form-control phone_with_ddd" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Telefone" class="text-danger"></span>
     </div>
     <div class="form-group custom-control custom-checkbox">
@@ -127,7 +127,20 @@
         <input asp-for="@Model.DataSaida" class="form-control" />
         <span asp-validation-for="@Model.DataSaida" class="text-danger"></span>
     </div>
+    <div class="form-group custom-control custom-switch">
+        <input class="custom-control-input" type="checkbox" id="input-status" asp-for="@Model.Status" />
+        <span class="custom-control-track"></span>
+        <label class="custom-control-label" for="input-status">@Html.DisplayNameFor(model => model.Status)</label>
+    </div>
     <div class="form-group">
         <input type="submit" value="Salvar" class="btn btn-primary" />
     </div>
 </form>
+
+<script>
+    $(document).ready(function () {
+        //$('.date').mask('00/00/0000');
+        $('.cpf').mask('000.000.000-00', { reverse: true });
+        $('.phone_with_ddd').mask('(00) 00000-0000');
+    });
+</script>

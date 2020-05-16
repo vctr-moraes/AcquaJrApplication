@@ -72,6 +72,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 membro.Cargo = MembroVM.Cargo;
                 membro.DataEntrada = MembroVM.DataEntrada;
                 membro.DataSaida = MembroVM.DataSaida;
+                membro.Status = MembroVM.Status;
 
                 await _membroRepository.Atualizar(membro);
                 return await Task.FromResult(RedirectToPage("./Index"));

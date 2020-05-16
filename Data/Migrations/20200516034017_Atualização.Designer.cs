@@ -4,14 +4,16 @@ using AcquaJrApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AcquaJrApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200516034017_Atualização")]
+    partial class Atualização
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +43,7 @@ namespace AcquaJrApplication.Data.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchyar(20)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("date");
@@ -145,9 +147,6 @@ namespace AcquaJrApplication.Data.Migrations
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Telefone")
                         .IsRequired()

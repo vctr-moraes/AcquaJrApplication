@@ -23,6 +23,7 @@ namespace AcquaJrApplication.Models
         private Cargo _cargo;
         private DateTime _dataEntrada;
         private DateTime? _dataSaida;
+        private bool _status;
 
         public string Nome
         {
@@ -43,7 +44,7 @@ namespace AcquaJrApplication.Models
             set
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo CPF é obrigatório.");
-                DomainException.When(value.Trim().Length > 11, "O campo CPF não pode conter mais que 11 caracteres.");
+                DomainException.When(value.Trim().Length > 20, "O campo CPF não pode conter mais que 11 caracteres.");
                 _cpf = value.Trim();
             }
         }
@@ -126,7 +127,7 @@ namespace AcquaJrApplication.Models
             set
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Telefone é obrigatório.");
-                DomainException.When(value.Trim().Length > 11, "O campo Telefone não pode conter mais que 11 caracteres.");
+                DomainException.When(value.Trim().Length > 20, "O campo Telefone não pode conter mais que 11 caracteres.");
                 _telefone = value.Trim();
             }
         }
@@ -204,6 +205,16 @@ namespace AcquaJrApplication.Models
             set
             {
                 _dataSaida = value;
+            }
+        }
+
+        public bool Status
+        {
+            get => _status;
+
+            set
+            {
+                _status = value;
             }
         }
     }

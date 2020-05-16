@@ -69,7 +69,7 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(value?.Trim().Length > 11, "O campo CPF não pode conter mais que 11 caracteres.");
+                DomainException.When(value?.Trim().Length > 20, "O campo CPF não pode conter mais que 11 caracteres.");
                 _cpf = value?.Trim();
             }
         }
@@ -80,7 +80,7 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(value?.Trim().Length > 14, "O campo CNPJ não pode conter mais que 14 caracteres.");
+                DomainException.When(value?.Trim().Length > 20, "O campo CNPJ não pode conter mais que 14 caracteres.");
                 _cnpj = value?.Trim();
             }
         }
@@ -162,7 +162,7 @@ namespace AcquaJrApplication.Models
             set
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo CEP é obrigatório.");
-                DomainException.When(value.Trim().Length > 8, "O campo CEP não pode conter mais que 8 caracteres.");
+                DomainException.When(value.Trim().Length > 20, "O campo CEP não pode conter mais que 8 caracteres.");
                 _cep = value.Trim();
             }
         }
@@ -197,7 +197,7 @@ namespace AcquaJrApplication.Models
             set
             {
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Telefone é obrigatório.");
-                DomainException.When(value.Trim().Length > 11, "O campo Telefone não pode conter mais que 11 caracteres.");
+                DomainException.When(value.Trim().Length > 20, "O campo Telefone não pode conter mais que 11 caracteres.");
                 _telefone1 = value.Trim();
             }
         }
@@ -208,7 +208,7 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(value?.Trim().Length > 11, "O campo Telefone Adicional não pode conter mais que 11 caracteres.");
+                DomainException.When(value?.Trim().Length > 20, "O campo Telefone Adicional não pode conter mais que 11 caracteres.");
                 _telefone2 = value?.Trim();
             }
         }

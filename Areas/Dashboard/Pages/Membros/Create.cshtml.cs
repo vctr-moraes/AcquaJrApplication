@@ -59,8 +59,9 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                     MatriculaAcademica = MembroVM.MatriculaAcademica,
                     Cargo = MembroVM.Cargo,
                     DataEntrada = MembroVM.DataEntrada,
-                    DataSaida = MembroVM.DataSaida
-                };
+                    DataSaida = MembroVM.DataSaida,
+                    Status = MembroVM.Status
+            };
 
                 await _membroRepository.Adicionar(membro);
                 return RedirectToPage("./Index");

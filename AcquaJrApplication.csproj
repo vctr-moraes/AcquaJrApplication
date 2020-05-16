@@ -12,6 +12,8 @@
     <Compile Remove="Data\Migrations\20200507023113_TabelasSistema.Designer.cs" />
     <Compile Remove="Data\Migrations\20200507024049_TabelasSistema.cs" />
     <Compile Remove="Data\Migrations\20200507024049_TabelasSistema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200516033339_AlteraçõesCampos.cs" />
+    <Compile Remove="Data\Migrations\20200516033339_AlteraçõesCampos.Designer.cs" />
   </ItemGroup>
 
 
