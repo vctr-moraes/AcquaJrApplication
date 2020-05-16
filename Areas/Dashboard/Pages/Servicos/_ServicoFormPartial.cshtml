@@ -5,11 +5,13 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="@Model.Nome" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Nome" class="form-control" />
         <span asp-validation-for="@Model.Nome" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Descricao" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <textarea asp-for="@Model.Descricao" class="form-control"></textarea>
         <span asp-validation-for="@Model.Descricao" class="text-danger"></span>
     </div>

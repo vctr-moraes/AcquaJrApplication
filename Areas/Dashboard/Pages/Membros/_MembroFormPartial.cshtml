@@ -5,36 +5,43 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="@Model.Nome" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Nome" class="form-control" />
         <span asp-validation-for="@Model.Nome" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cpf" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Cpf" class="form-control" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Cpf" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.DataNascimento" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.DataNascimento" class="form-control" />
         <span asp-validation-for="@Model.DataNascimento" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Logradouro" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Logradouro" class="form-control" />
         <span asp-validation-for="@Model.Logradouro" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Bairro" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Bairro" class="form-control" />
         <span asp-validation-for="@Model.Bairro" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cidade" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Cidade" class="form-control" />
         <span asp-validation-for="@Model.Cidade" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Estado" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <select asp-for="@Model.Estado" class="form-control">
             <option value="" disabled selected>Selecionar</option>
             <option value="Acre">Acre</option>
@@ -69,11 +76,13 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Email" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Email" class="form-control" />
         <span asp-validation-for="@Model.Email" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Telefone" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Telefone" class="form-control" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Telefone" class="text-danger"></span>
     </div>
@@ -87,6 +96,7 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Curso" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <select asp-for="@Model.Curso" asp-items="Html.GetEnumSelectList<Curso>()" class="form-control">
             <option value="" selected disabled>Selecionar</option>
         </select>
@@ -94,11 +104,13 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.MatriculaAcademica" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.MatriculaAcademica" class="form-control" />
         <span asp-validation-for="@Model.MatriculaAcademica" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cargo" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <select asp-for="@Model.Cargo" asp-items="Html.GetEnumSelectList<Cargo>()" class="form-control">
             <option value="" selected disabled>Selecionar</option>
         </select>
@@ -106,6 +118,7 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.DataEntrada" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.DataEntrada" class="form-control" />
         <span asp-validation-for="@Model.DataEntrada" class="text-danger"></span>
     </div>

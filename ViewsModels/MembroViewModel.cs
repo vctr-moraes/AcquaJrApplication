@@ -44,6 +44,7 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public DateTime DataNascimento { get; set; }
 
@@ -102,11 +103,13 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Data de Entrada")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public DateTime DataEntrada { get; set; }
 
         [Display(Name = "Data de Saída")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DataSaida { get; set; }
     }
 }

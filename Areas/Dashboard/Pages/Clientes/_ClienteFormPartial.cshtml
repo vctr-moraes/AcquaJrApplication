@@ -5,6 +5,7 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="@Model.TipoPessoa" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <select asp-for="@Model.TipoPessoa" asp-items="Html.GetEnumSelectList<TipoPessoa>()" class="form-control">
             <option value="" disabled selected>Selecionar</option>
         </select>
@@ -12,6 +13,7 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.NomeFantasia" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.NomeFantasia" class="form-control" />
         <span asp-validation-for="@Model.NomeFantasia" class="text-danger"></span>
     </div>
@@ -22,12 +24,12 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cpf" class="control-label"></label>
-        <input asp-for="@Model.Cpf" class="form-control" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Cpf" class="form-control cpf" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Cpf" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cnpj" class="control-label"></label>
-        <input asp-for="@Model.Cnpj" class="form-control" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Cnpj" class="form-control cnpj" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Cnpj" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -42,31 +44,37 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Logradouro" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Logradouro" class="form-control" />
         <span asp-validation-for="@Model.Logradouro" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.PontoReferencia" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.PontoReferencia" class="form-control" />
         <span asp-validation-for="@Model.PontoReferencia" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Bairro" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Bairro" class="form-control" />
         <span asp-validation-for="@Model.Bairro" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cidade" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Cidade" class="form-control" />
         <span asp-validation-for="@Model.Cidade" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cep" class="control-label"></label>
-        <input asp-for="@Model.Cep" class="form-control" id="cep" onkeypress="return ValidarInputNumerico(event)" />
+        <small id="passwordHelpInline" class="text-muted">*</small>
+        <input asp-for="@Model.Cep" class="form-control cep" id="cep" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Cep" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Estado" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <select asp-for="@Model.Estado" class="form-control">
             <option value="" disabled selected>Selecionar</option>
             <option value="Acre">Acre</option>
@@ -101,17 +109,19 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Email" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
         <input asp-for="@Model.Email" class="form-control" />
         <span asp-validation-for="@Model.Email" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Telefone1" class="control-label"></label>
-        <input asp-for="@Model.Telefone1" class="form-control" onkeypress="return ValidarInputNumerico(event)" />
+        <small id="passwordHelpInline" class="text-muted">*</small>
+        <input asp-for="@Model.Telefone1" class="form-control phone_with_ddd" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Telefone1" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Telefone2" class="control-label"></label>
-        <input asp-for="@Model.Telefone2" class="form-control" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Telefone2" class="form-control phone_with_ddd" onkeypress="return ValidarInputNumerico(event)" />
         <span asp-validation-for="@Model.Telefone2" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -121,7 +131,8 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.DataCadastro" class="control-label"></label>
-        <input asp-for="@Model.DataCadastro" class="form-control data" />
+        <small id="passwordHelpInline" class="text-muted">*</small>
+        <input asp-for="@Model.DataCadastro" class="form-control date" />
         <span asp-validation-for="@Model.DataCadastro" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -131,6 +142,10 @@
 
 <script>
     $(document).ready(function () {
-        $('#cep').mask('00000-000');
+        //$('.cep').mask('00000-000');
+        //$('.date').mask('00/00/0000');
+        //$('.cpf').mask('000.000.000-00', { reverse: true });
+        //$('.cnpj').mask('00.000.000/0000-00', { reverse: true });
+        //$('.phone_with_ddd').mask('(00) 00000-0000');
     });
 </script>

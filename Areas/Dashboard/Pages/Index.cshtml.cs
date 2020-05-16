@@ -10,11 +10,11 @@ using Microsoft.Extensions.Logging;
 namespace AcquaJrApplication.Areas.Dashboard.Pages
 {
     [Authorize]
-    public class DashboardModel : PageModel
+    public class IndexModel : PageModel
     {
-        private readonly ILogger<DashboardModel> _logger;
+        private readonly ILogger<IndexModel> _logger;
 
-        public DashboardModel(ILogger<DashboardModel> logger)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }

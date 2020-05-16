@@ -19,7 +19,8 @@ namespace AcquaJrApplication.Data.Mappings
                 .HasColumnType("varchar(11)");
 
             builder.Property(m => m.DataNascimento)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("date");
 
             builder.Property(m => m.Logradouro)
                 .IsRequired()
@@ -56,7 +57,11 @@ namespace AcquaJrApplication.Data.Mappings
                 .IsRequired();
 
             builder.Property(m => m.DataEntrada)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("date");
+
+            builder.Property(m => m.DataSaida)
+                .HasColumnType("date");
 
             builder.ToTable("Membros");
         }

@@ -71,7 +71,8 @@ namespace AcquaJrApplication.Data.Mappings
                 .HasColumnType("varchar(500)");
 
             builder.Property(c => c.DataCadastro)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("date");
 
             // 1 : 1 => Cliente : Projeto
             builder.HasOne(c => c.Projeto)

@@ -118,6 +118,7 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Data de Cadastro")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataCadastro { get; set; }
     }
 }
