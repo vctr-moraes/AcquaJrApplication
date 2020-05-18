@@ -46,7 +46,7 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        public DateTime DataNascimento { get; set; }
+        public DateTime? DataNascimento { get; set; }
 
         [Display(Name = "Logradouro")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
@@ -104,7 +104,7 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Data de Entrada")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        public DateTime DataEntrada { get; set; }
+        public DateTime? DataEntrada { get; set; }
 
         [Display(Name = "Data de Saída")]
         [DataType(DataType.Date)]

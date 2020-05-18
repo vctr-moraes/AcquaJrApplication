@@ -24,7 +24,7 @@ namespace AcquaJrApplication.Models
         private string _telefone1;
         private string _telefone2;
         private string _observacoes;
-        private DateTime _dataCadastro;
+        private DateTime? _dataCadastro;
 
         /* EF Relation */
         private Projeto _projeto;
@@ -224,14 +224,12 @@ namespace AcquaJrApplication.Models
             }
         }
 
-        public DateTime DataCadastro
+        public DateTime? DataCadastro
         {
             get => _dataCadastro;
 
             set
             {
-                DateTime result;
-                DomainException.When(!DateTime.TryParse(value.ToString(), out result), "A data informada é inválida.");
                 _dataCadastro = value;
             }
         }

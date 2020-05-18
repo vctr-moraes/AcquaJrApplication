@@ -9,7 +9,7 @@ namespace AcquaJrApplication.Models
     {
         private string _nome;
         private string _cpf;
-        private DateTime _dataNascimento;
+        private DateTime? _dataNascimento;
         private string _logradouro;
         private string _bairro;
         private string _cidade;
@@ -21,7 +21,7 @@ namespace AcquaJrApplication.Models
         private Curso _curso;
         private string _matriculaAcademica;
         private Cargo _cargo;
-        private DateTime _dataEntrada;
+        private DateTime? _dataEntrada;
         private DateTime? _dataSaida;
         private bool _status;
 
@@ -49,14 +49,12 @@ namespace AcquaJrApplication.Models
             }
         }
 
-        public DateTime DataNascimento
+        public DateTime? DataNascimento
         {
             get => _dataNascimento;
 
             set
             {
-                DateTime result;
-                DomainException.When(!DateTime.TryParse(value.ToString(), out result), "A Data de Nascimento informada é inválida.");
                 _dataNascimento = value;
             }
         }
@@ -186,14 +184,12 @@ namespace AcquaJrApplication.Models
             }
         }
 
-        public DateTime DataEntrada
+        public DateTime? DataEntrada
         {
             get => _dataEntrada;
 
             set
             {
-                DateTime result;
-                DomainException.When(!DateTime.TryParse(value.ToString(), out result), "A Data de Entrada informada é inválida.");
                 _dataEntrada = value;
             }
         }
