@@ -12,7 +12,7 @@
     <ul class="nav nav-pills">
         <li class="nav-item dropdown">
             <a class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Membros</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-menu">
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Membros/Create">Cadastrar</a>
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Membros/Index">Ativos</a>
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Dashboard">Inativos</a>
@@ -25,8 +25,13 @@
                 <a class="dropdown-item" asp-area="Dashboard" asp-page="/Clientes/Index">Ativos</a>
             </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item dropdown">
             <a class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projetos</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-area="Dashboard" asp-page="/Projetos/Create">Cadastrar</a>
+                <a class="dropdown-item" asp-area="Dashboard" asp-page="/Projetos/Index">Ativos</a>
+                <a class="dropdown-item" asp-area="Dashboard" asp-page="/Projetos/Index">Concluídos</a>
+            </div>
         </li>
         <li class="nav-item dropdown">
             <a class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>

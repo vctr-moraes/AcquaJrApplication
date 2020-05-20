@@ -12,25 +12,54 @@ namespace AcquaJrApplication.Data.Mappings
 
             builder.Property(p => p.Nome)
                 .IsRequired()
-                .HasColumnType("varchar(100)");
+                .HasColumnType("varchar(150)");
 
             builder.Property(p => p.Descricao)
                 .IsRequired()
                 .HasColumnType("varchar(1000)");
 
-            builder.Property(p => p.Orcamento)
-                .IsRequired()
+            builder.Property(p => p.CustoMaoDeObra)
                 .HasColumnType("decimal(18,2)");
+
+            builder.Property(p => p.CustoProjeto)
+                .HasColumnType("decimal(18,2)");
+
+            builder.Property(p => p.CustoInsumos)
+                .HasColumnType("decimal(18,2)");
+
+            builder.Property(p => p.Orcamento)
+                .HasColumnType("decimal(18,2)");
+
+            builder.Property(c => c.Logradouro)
+                .HasColumnType("varchar(150)");
+
+            builder.Property(c => c.PontoReferencia)
+                .HasColumnType("varchar(200)");
+
+            builder.Property(c => c.Bairro)
+                .HasColumnType("varchar(100)");
+
+            builder.Property(c => c.Cidade)
+                .HasColumnType("varchar(50)");
+
+            builder.Property(c => c.Cep)
+                .HasColumnType("varchar(20)");
+
+            builder.Property(c => c.Estado)
+                .HasColumnType("varchar(50)");
 
             builder.Property(p => p.DataContrato)
                 .IsRequired()
-                .HasColumnType("DateTime");
+                .HasColumnType("date");
+
+            builder.Property(p => p.DataPrevista)
+                .HasColumnType("date");
 
             builder.Property(p => p.DataInicio)
-                .HasColumnType("DateTime");
+                .HasColumnType("date");
 
             builder.Property(p => p.DataConclusao)
-                .HasColumnType("DateTime");
+                .HasColumnType("date");
 
             builder.ToTable("Projetos");
         }

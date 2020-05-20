@@ -23,7 +23,7 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [MaxLength(100, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        [MaxLength(150, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Nome { get; set; }
 
         [Display(Name = "Descrição")]
@@ -32,15 +32,54 @@ namespace AcquaJrApplication.ViewsModels
         [MaxLength(1000, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Descricao { get; set; }
 
+        [Display(Name = "Custo da Mão de Obra")]
+        [DataType(DataType.Currency)]
+        public decimal CustoMaoDeObra { get; set; }
+
+        [Display(Name = "Custo do Projeto")]
+        [DataType(DataType.Currency)]
+        public decimal CustoProjeto { get; set; }
+
+        [Display(Name = "Custo dos Insumos")]
+        [DataType(DataType.Currency)]
+        public decimal CustoInsumos { get; set; }
+
         [Display(Name = "Orçamento")]
         [DataType(DataType.Currency)]
-        [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public decimal Orcamento { get; set; }
+
+        [Display(Name = "Logradouro")]
+        [MaxLength(150, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        public string Logradouro { get; set; }
+
+        [Display(Name = "Ponto de Referência")]
+        [MaxLength(200, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        public string PontoReferencia { get; set; }
+
+        [Display(Name = "Bairro")]
+        [MaxLength(100, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        public string Bairro { get; set; }
+
+        [Display(Name = "Cidade")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório.")]
+        [MaxLength(50, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        public string Cidade { get; set; }
+
+        [Display(Name = "CEP")]
+        public string Cep { get; set; }
+
+        [Display(Name = "Estado")]
+        [MaxLength(50, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
+        public string Estado { get; set; }
 
         [Display(Name = "Data do Contrato")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public DateTime DataContrato { get; set; }
+
+        [Display(Name = "Data Prevista")]
+        [DataType(DataType.Date)]
+        public DateTime? DataPrevista { get; set; }
 
         [Display(Name = "Data de Início")]
         [DataType(DataType.Date)]
