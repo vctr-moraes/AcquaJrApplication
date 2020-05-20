@@ -4,11 +4,11 @@ namespace AcquaJrApplication.Models
 {
     public enum Cargo
     {
-        [Display(Name = "Presidente")]
-        Presidente = 1,
+        [Display(Name = "Presidente Executivo")]
+        PresidenteExecutivo = 1,
 
-        [Display(Name = "Vice Presidente")]
-        VicePresidente = 2,
+        [Display(Name = "Vice Presidente Executivo")]
+        VicePresidenteExecutivo = 2,
 
         [Display(Name = "Diretor Financeiro")]
         DiretorFinanceiro = 3,
@@ -25,10 +25,16 @@ namespace AcquaJrApplication.Models
         [Display(Name = "Diretor de Extensão")]
         DiretorExtensao = 7,
 
+        [Display(Name = "Presidente Administrativo")]
+        PresidenteAdministrativo = 8,
+
+        [Display(Name ="Conselheiro Administrativo")]
+        ConselheiroAdministrativo = 9,
+
         [Display(Name = "Honorário")]
-        Honorario = 8,
+        Honorario = 10,
 
         [Display(Name = "Trainee")]
-        Trainne = 9
+        Trainne = 11
     }
 }
