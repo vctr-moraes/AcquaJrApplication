@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Models;
-using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Data
 {

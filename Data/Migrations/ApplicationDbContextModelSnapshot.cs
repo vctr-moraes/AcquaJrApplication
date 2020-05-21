@@ -43,8 +43,7 @@ namespace AcquaJrApplication.Data.Migrations
                     b.Property<string>("Cpf")
                         .HasColumnType("varchar(20)");
 
-                    b.Property<DateTime?>("DataCadastro")
-                        .IsRequired()
+                    b.Property<DateTime>("DataCadastro")
                         .HasColumnType("date");
 
                     b.Property<string>("Email")
@@ -118,12 +117,10 @@ namespace AcquaJrApplication.Data.Migrations
                     b.Property<int>("Curso")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DataEntrada")
-                        .IsRequired()
+                    b.Property<DateTime>("DataEntrada")
                         .HasColumnType("date");
 
-                    b.Property<DateTime?>("DataNascimento")
-                        .IsRequired()
+                    b.Property<DateTime>("DataNascimento")
                         .HasColumnType("date");
 
                     b.Property<DateTime?>("DataSaida")
@@ -200,58 +197,28 @@ namespace AcquaJrApplication.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Bairro")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Cep")
-                        .HasColumnType("varchar(20)");
-
-                    b.Property<string>("Cidade")
-                        .HasColumnType("varchar(50)");
-
                     b.Property<Guid>("ClienteId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("CustoInsumos")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("CustoMaoDeObra")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("CustoProjeto")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<DateTime?>("DataConclusao")
-                        .HasColumnType("date");
+                        .HasColumnType("DateTime");
 
                     b.Property<DateTime>("DataContrato")
-                        .HasColumnType("date");
+                        .HasColumnType("DateTime");
 
                     b.Property<DateTime?>("DataInicio")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime?>("DataPrevista")
-                        .HasColumnType("date");
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("varchar(1000)");
 
-                    b.Property<string>("Estado")
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("Logradouro")
-                        .HasColumnType("varchar(150)");
-
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<decimal>("Orcamento")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("PontoReferencia")
-                        .HasColumnType("varchar(200)");
 
                     b.Property<Guid>("ServicoId")
                         .HasColumnType("uniqueidentifier");

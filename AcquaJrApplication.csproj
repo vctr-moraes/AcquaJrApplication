@@ -14,6 +14,14 @@
     <Compile Remove="Data\Migrations\20200507024049_TabelasSistema.Designer.cs" />
     <Compile Remove="Data\Migrations\20200516033339_AlteraçõesCampos.cs" />
     <Compile Remove="Data\Migrations\20200516033339_AlteraçõesCampos.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200521025003_TabelasProjetosEMembroProjeto.cs" />
+    <Compile Remove="Data\Migrations\20200521025003_TabelasProjetosEMembroProjeto.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200521025822_TabelaProjetos.cs" />
+    <Compile Remove="Data\Migrations\20200521025822_TabelaProjetos.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200521030021_TabelaProjetos.cs" />
+    <Compile Remove="Data\Migrations\20200521030021_TabelaProjetos.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200521031550_TabelaProjetos.cs" />
+    <Compile Remove="Data\Migrations\20200521031550_TabelaProjetos.Designer.cs" />
   </ItemGroup>
 
 
