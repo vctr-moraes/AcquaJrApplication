@@ -52,11 +52,7 @@ namespace AcquaJrApplication.Models
         public DateTime? DataNascimento
         {
             get => _dataNascimento;
-
-            set
-            {
-                _dataNascimento = value;
-            }
+            set => _dataNascimento = value;
         }
 
         public string Logradouro
@@ -133,21 +129,13 @@ namespace AcquaJrApplication.Models
         public bool TemSeguro
         {
             get => _temSeguro;
-
-            set
-            {
-                _temSeguro = value;
-            }
+            set => _temSeguro = value;
         }
 
         public bool TemCnh
         {
             get => _temCnh;
-
-            set
-            {
-                _temCnh = value;
-            }
+            set => _temCnh = value;
         }
 
         public Curso Curso
@@ -187,31 +175,19 @@ namespace AcquaJrApplication.Models
         public DateTime? DataEntrada
         {
             get => _dataEntrada;
-
-            set
-            {
-                _dataEntrada = value;
-            }
+            set => _dataEntrada = value;
         }
 
         public DateTime? DataSaida
         {
             get => _dataSaida;
-
-            set
-            {
-                _dataSaida = value;
-            }
+            set => _dataSaida = value;
         }
 
         public bool Status
         {
             get => _status;
-
-            set
-            {
-                _status = value;
-            }
+            set => _status = value;
         }
     }
 }

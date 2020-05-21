@@ -61,6 +61,11 @@ namespace AcquaJrApplication.Data.Mappings
             builder.Property(p => p.DataConclusao)
                 .HasColumnType("date");
 
+            // 1 : N => Projeto : Membros
+            builder.HasMany(p => p.Membros)
+                .WithOne(m => m.Projeto)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.ToTable("Projetos");
         }
     }

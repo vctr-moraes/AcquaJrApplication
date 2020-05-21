@@ -227,17 +227,12 @@ namespace AcquaJrApplication.Models
         public DateTime? DataCadastro
         {
             get => _dataCadastro;
-
-            set
-            {
-                _dataCadastro = value;
-            }
+            set => _dataCadastro = value;
         }
 
         public Projeto Projeto
         {
             get => _projeto;
-
             set => _projeto = value;
         }
     }
