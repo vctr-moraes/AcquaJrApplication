@@ -1,0 +1,118 @@
+﻿@page
+@model AcquaJrApplication.Areas.Dashboard.Pages.Projetos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Projeto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Projeto.Nome" class="control-label"></label>
+                <input asp-for="Projeto.Nome" class="form-control" />
+                <span asp-validation-for="Projeto.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Descricao" class="control-label"></label>
+                <input asp-for="Projeto.Descricao" class="form-control" />
+                <span asp-validation-for="Projeto.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.CustoMaoDeObra" class="control-label"></label>
+                <input asp-for="Projeto.CustoMaoDeObra" class="form-control" />
+                <span asp-validation-for="Projeto.CustoMaoDeObra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.CustoProjeto" class="control-label"></label>
+                <input asp-for="Projeto.CustoProjeto" class="form-control" />
+                <span asp-validation-for="Projeto.CustoProjeto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.CustoInsumos" class="control-label"></label>
+                <input asp-for="Projeto.CustoInsumos" class="form-control" />
+                <span asp-validation-for="Projeto.CustoInsumos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Orcamento" class="control-label"></label>
+                <input asp-for="Projeto.Orcamento" class="form-control" />
+                <span asp-validation-for="Projeto.Orcamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Logradouro" class="control-label"></label>
+                <input asp-for="Projeto.Logradouro" class="form-control" />
+                <span asp-validation-for="Projeto.Logradouro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.PontoReferencia" class="control-label"></label>
+                <input asp-for="Projeto.PontoReferencia" class="form-control" />
+                <span asp-validation-for="Projeto.PontoReferencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Bairro" class="control-label"></label>
+                <input asp-for="Projeto.Bairro" class="form-control" />
+                <span asp-validation-for="Projeto.Bairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Cidade" class="control-label"></label>
+                <input asp-for="Projeto.Cidade" class="form-control" />
+                <span asp-validation-for="Projeto.Cidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Cep" class="control-label"></label>
+                <input asp-for="Projeto.Cep" class="form-control" />
+                <span asp-validation-for="Projeto.Cep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.Estado" class="control-label"></label>
+                <input asp-for="Projeto.Estado" class="form-control" />
+                <span asp-validation-for="Projeto.Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.ClienteId" class="control-label"></label>
+                <select asp-for="Projeto.ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.ServicoId" class="control-label"></label>
+                <select asp-for="Projeto.ServicoId" class ="form-control" asp-items="ViewBag.ServicoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.DataContrato" class="control-label"></label>
+                <input asp-for="Projeto.DataContrato" class="form-control" />
+                <span asp-validation-for="Projeto.DataContrato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.DataPrevista" class="control-label"></label>
+                <input asp-for="Projeto.DataPrevista" class="form-control" />
+                <span asp-validation-for="Projeto.DataPrevista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.DataInicio" class="control-label"></label>
+                <input asp-for="Projeto.DataInicio" class="form-control" />
+                <span asp-validation-for="Projeto.DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Projeto.DataConclusao" class="control-label"></label>
+                <input asp-for="Projeto.DataConclusao" class="form-control" />
+                <span asp-validation-for="Projeto.DataConclusao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

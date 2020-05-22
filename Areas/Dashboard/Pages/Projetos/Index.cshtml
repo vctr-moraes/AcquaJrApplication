@@ -1,0 +1,139 @@
+﻿@page
+@model AcquaJrApplication.Areas.Dashboard.Pages.Projetos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].CustoMaoDeObra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].CustoProjeto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].CustoInsumos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Orcamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Logradouro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].PontoReferencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Cep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].Servico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].DataContrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].DataPrevista)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].DataConclusao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Projeto) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustoMaoDeObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustoProjeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustoInsumos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orcamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logradouro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PontoReferencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servico.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataContrato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataPrevista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusao)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
