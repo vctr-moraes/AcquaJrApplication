@@ -2,13 +2,14 @@
 @model AcquaJrApplication.Areas.Dashboard.Pages.Projetos.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Novo projeto";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<partial name="_DashboardNavPartialView" />
 
-<h4>Projeto</h4>
+<h3>@ViewData["Title"]</h3>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,74 +17,29 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Projeto.Nome" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
                 <input asp-for="Projeto.Nome" class="form-control" />
                 <span asp-validation-for="Projeto.Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Projeto.Descricao" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
                 <input asp-for="Projeto.Descricao" class="form-control" />
                 <span asp-validation-for="Projeto.Descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Projeto.CustoMaoDeObra" class="control-label"></label>
-                <input asp-for="Projeto.CustoMaoDeObra" class="form-control" />
-                <span asp-validation-for="Projeto.CustoMaoDeObra" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.CustoProjeto" class="control-label"></label>
-                <input asp-for="Projeto.CustoProjeto" class="form-control" />
-                <span asp-validation-for="Projeto.CustoProjeto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.CustoInsumos" class="control-label"></label>
-                <input asp-for="Projeto.CustoInsumos" class="form-control" />
-                <span asp-validation-for="Projeto.CustoInsumos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.Orcamento" class="control-label"></label>
-                <input asp-for="Projeto.Orcamento" class="form-control" />
-                <span asp-validation-for="Projeto.Orcamento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.Logradouro" class="control-label"></label>
-                <input asp-for="Projeto.Logradouro" class="form-control" />
-                <span asp-validation-for="Projeto.Logradouro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.PontoReferencia" class="control-label"></label>
-                <input asp-for="Projeto.PontoReferencia" class="form-control" />
-                <span asp-validation-for="Projeto.PontoReferencia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.Bairro" class="control-label"></label>
-                <input asp-for="Projeto.Bairro" class="form-control" />
-                <span asp-validation-for="Projeto.Bairro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.Cidade" class="control-label"></label>
-                <input asp-for="Projeto.Cidade" class="form-control" />
-                <span asp-validation-for="Projeto.Cidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.Cep" class="control-label"></label>
-                <input asp-for="Projeto.Cep" class="form-control" />
-                <span asp-validation-for="Projeto.Cep" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Projeto.Estado" class="control-label"></label>
-                <input asp-for="Projeto.Estado" class="form-control" />
-                <span asp-validation-for="Projeto.Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Projeto.ClienteId" class="control-label"></label>
-                <select asp-for="Projeto.ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <select asp-for="Projeto.ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Projeto.ServicoId" class="control-label"></label>
-                <select asp-for="Projeto.ServicoId" class ="form-control" asp-items="ViewBag.ServicoId"></select>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <select asp-for="Projeto.ServicoId" class="form-control" asp-items="ViewBag.ServicoId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Projeto.DataContrato" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
                 <input asp-for="Projeto.DataContrato" class="form-control" />
                 <span asp-validation-for="Projeto.DataContrato" class="text-danger"></span>
             </div>
@@ -102,17 +58,177 @@
                 <input asp-for="Projeto.DataConclusao" class="form-control" />
                 <span asp-validation-for="Projeto.DataConclusao" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="button" class="btn btn-light btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter1">
+                    <i class="material-icons">add</i>
+                    Definir orçamento
+                </button>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-light btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter2">
+                    <i class="material-icons">add</i>
+                    Definir endereço
+                </button>
+            </div>
+
+            <!-- Modal - Orçamento -->
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Orçamento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label asp-for="Projeto.CustoMaoDeObra" class="control-label"></label>
+                                <input asp-for="Projeto.CustoMaoDeObra" onblur="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" id="CustoMaoDeObra" class="form-control" />
+                                <span asp-validation-for="Projeto.CustoMaoDeObra" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Projeto.CustoProjeto" class="control-label"></label>
+                                <input asp-for="Projeto.CustoProjeto" onblur="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" id="CustoProjeto" class="form-control" />
+                                <span asp-validation-for="Projeto.CustoProjeto" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Projeto.CustoInsumos" class="control-label"></label>
+                                <input asp-for="Projeto.CustoInsumos" onblur="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" id="CustoInsumos" class="form-control" />
+                                <span asp-validation-for="Projeto.CustoInsumos" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Projeto.Orcamento" class="control-label"></label>
+                                <input asp-for="Projeto.Orcamento" id="Orcamento" class="form-control" readonly />
+                                <span asp-validation-for="Projeto.Orcamento" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-flat-dark">Limpar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal - Endereço -->
+            <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Endereço</h5>
+                            <button type="button" class="close" onclick="limparModalEndereco()" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label asp-for="Projeto.Logradouro" class="control-label"></label>
+                                <input asp-for="Projeto.Logradouro" id="input-logradouro" class="form-control" />
+                                <span asp-validation-for="Projeto.Logradouro" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Projeto.PontoReferencia" class="control-label"></label>
+                                <input asp-for="Projeto.PontoReferencia" id="input-ponto-referencia" class="form-control" />
+                                <span asp-validation-for="Projeto.PontoReferencia" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Projeto.Bairro" class="control-label"></label>
+                                <input asp-for="Projeto.Bairro" id="input-bairro" class="form-control" />
+                                <span asp-validation-for="Projeto.Bairro" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Projeto.Cidade" class="control-label"></label>
+                                <input asp-for="Projeto.Cidade" id="input-cidade" class="form-control" />
+                                <span asp-validation-for="Projeto.Cidade" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Projeto.Cep" class="control-label"></label>
+                                <input asp-for="Projeto.Cep" id="input-cep" class="form-control cep" onkeypress="return ValidarInputNumerico(event)" />
+                                <span asp-validation-for="Projeto.Cep" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Projeto.Estado" class="control-label"></label>
+                                <select asp-for="Projeto.Estado" id="input-estado" class="form-control custom-select">
+                                    <option value="" disabled selected>Selecionar</option>
+                                    <option value="Acre">Acre</option>
+                                    <option value="Alagoas">Alagoas</option>
+                                    <option value="Amapá">Amapá</option>
+                                    <option value="Amazonas">Amazonas</option>
+                                    <option value="Bahia">Bahia</option>
+                                    <option value="Ceará">Ceará</option>
+                                    <option value="Distrito Federal">Distrito Federal</option>
+                                    <option value="Espírito Santo">Espírito Santo</option>
+                                    <option value="Goiás">Goiás</option>
+                                    <option value="Maranhão">Maranhão</option>
+                                    <option value="Mato Grosso">Mato Grosso</option>
+                                    <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                                    <option value="Minas Gerais">Minas Gerais</option>
+                                    <option value="Pará">Pará</option>
+                                    <option value="Paraíba">Paraíba</option>
+                                    <option value="Paraná">Paraná</option>
+                                    <option value="Pernambuco">Pernambuco</option>
+                                    <option value="Piauí">Piauí</option>
+                                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                    <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                                    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                                    <option value="Rondônia">Rondônia</option>
+                                    <option value="Roraima">Roraima</option>
+                                    <option value="Santa Catarina">Santa Catarina</option>
+                                    <option value="São Paulo">São Paulo</option>
+                                    <option value="Sergipe">Sergipe</option>
+                                    <option value="Tocantins">Tocantins</option>
+                                </select>
+                                <span asp-validation-for="Projeto.Estado" class="text-danger"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" onclick="limparModalEndereco()">Limpar</button>
+                                <button type="button" class="btn btn-secondary" onclick="limparModalEndereco()" data-dismiss="modal">Fechar</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Voltar</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script src="~/js/Projeto.js"></script>
+
+<script>
+    function calcularOrcamento() {
+        var CustoMaoDeObra = parseInt(document.getElementById("CustoMaoDeObra").value);
+        var CustoProjeto = parseInt(document.getElementById("CustoProjeto").value);
+        var CustoInsumos = parseInt(document.getElementById("CustoInsumos").value);
+
+        document.getElementById("Orcamento").innerHTML = CustoMaoDeObra + CustoProjeto + CustoInsumos;
+    }
+
+    $(document).ready(function () {
+        $('.cep').mask('00000-000');
+    });
+
+    function limparModalEndereco() {
+        $("#input-logradouro").val("");
+        $("#input-ponto-referencia").val("");
+        $("#input-bairro").val("");
+        $("#input-cidade").val("");
+        $("#input-cep").val("");
+        $("#input-estado").val("");
+    }
+</script>

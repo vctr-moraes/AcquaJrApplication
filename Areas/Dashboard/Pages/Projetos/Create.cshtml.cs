@@ -21,8 +21,8 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
         public IActionResult OnGet()
         {
-        ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Bairro");
-        ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Descricao");
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
+            ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
             return Page();
         }
 
