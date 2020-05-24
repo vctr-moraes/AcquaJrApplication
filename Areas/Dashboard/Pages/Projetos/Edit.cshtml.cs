@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly AcquaJrApplication.Data.ApplicationDbContext _context;

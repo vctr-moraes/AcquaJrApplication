@@ -30,12 +30,16 @@
             <div class="form-group">
                 <label asp-for="Projeto.ClienteId" class="control-label"></label>
                 <small id="passwordHelpInline" class="text-muted">*</small>
-                <select asp-for="Projeto.ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
+                <select asp-for="Projeto.ClienteId" class="form-control" asp-items="ViewBag.ClienteId">
+                    <option value="" disabled selected>Selecionar</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Projeto.ServicoId" class="control-label"></label>
                 <small id="passwordHelpInline" class="text-muted">*</small>
-                <select asp-for="Projeto.ServicoId" class="form-control" asp-items="ViewBag.ServicoId"></select>
+                <select asp-for="Projeto.ServicoId" class="form-control" asp-items="ViewBag.ServicoId">
+                    <option value="" disabled selected>Selecionar</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Projeto.DataContrato" class="control-label"></label>
@@ -86,28 +90,27 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label asp-for="Projeto.CustoMaoDeObra" class="control-label"></label>
-                                <input asp-for="Projeto.CustoMaoDeObra" onblur="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" id="CustoMaoDeObra" class="form-control" />
+                                <input asp-for="Projeto.CustoMaoDeObra" type="text" oninput="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" name="CustoMaoDeObra" id="custo-mao-obra" class="form-control orcamento" />
                                 <span asp-validation-for="Projeto.CustoMaoDeObra" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Projeto.CustoProjeto" class="control-label"></label>
-                                <input asp-for="Projeto.CustoProjeto" onblur="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" id="CustoProjeto" class="form-control" />
+                                <input asp-for="Projeto.CustoProjeto" type="text" oninput="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" name="CustoProjeto" id="custo-projeto" class="form-control orcamento" />
                                 <span asp-validation-for="Projeto.CustoProjeto" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Projeto.CustoInsumos" class="control-label"></label>
-                                <input asp-for="Projeto.CustoInsumos" onblur="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" id="CustoInsumos" class="form-control" />
+                                <input asp-for="Projeto.CustoInsumos" type="text" oninput="calcularOrcamento()" onkeypress="return ValidarInputNumerico(event)" name="CustoInsumos" id="custo-insumos" class="form-control orcamento" />
                                 <span asp-validation-for="Projeto.CustoInsumos" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Projeto.Orcamento" class="control-label"></label>
-                                <input asp-for="Projeto.Orcamento" id="Orcamento" class="form-control" readonly />
+                                <input asp-for="Projeto.Orcamento" type="text" name="Orcamento" id="orcamento" class="form-control form-control-lg" readonly />
                                 <span asp-validation-for="Projeto.Orcamento" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-flat-dark">Limpar</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-dark" onclick="limparModalOrcamento()" data-dismiss="modal">Cancelar e fechar</button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
                         </div>
                     </div>
@@ -120,7 +123,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalCenterTitle">Endereço</h5>
-                            <button type="button" class="close" onclick="limparModalEndereco()" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -184,11 +187,10 @@
                                 </select>
                                 <span asp-validation-for="Projeto.Estado" class="text-danger"></span>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-dark" onclick="limparModalEndereco()">Limpar</button>
-                                <button type="button" class="btn btn-secondary" onclick="limparModalEndereco()" data-dismiss="modal">Fechar</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" onclick="limparModalEndereco()" data-dismiss="modal">Cancelar e fechar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
                         </div>
                     </div>
                 </div>
@@ -208,16 +210,19 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
-<script src="~/js/Projeto.js"></script>
-
 <script>
-    function calcularOrcamento() {
-        var CustoMaoDeObra = parseInt(document.getElementById("CustoMaoDeObra").value);
-        var CustoProjeto = parseInt(document.getElementById("CustoProjeto").value);
-        var CustoInsumos = parseInt(document.getElementById("CustoInsumos").value);
+    $(document).ready(function () {
+        $(".orcamento").on("keyup", function () {
+            if ($(this).attr("name") === "Orcamento") {
+                return false;
+            }
 
-        document.getElementById("Orcamento").innerHTML = CustoMaoDeObra + CustoProjeto + CustoInsumos;
-    }
+            var CustoMaoDeObra = $("#custo-mao-obra").val() == "" ? 0 : parseFloat($("#custo-mao-obra").val());
+            var CustoProjeto = $("#custo-projeto").val() == "" ? 0 : parseFloat($("#custo-projeto").val());
+            var CustoInsumos = $("#custo-insumos").val() == "" ? 0 : parseFloat($("#custo-insumos").val());
+            $("#orcamento").val(parseFloat(CustoMaoDeObra) + parseFloat(CustoProjeto) + parseFloat(CustoInsumos));
+        });
+    });
 
     $(document).ready(function () {
         $('.cep').mask('00000-000');
@@ -230,5 +235,12 @@
         $("#input-cidade").val("");
         $("#input-cep").val("");
         $("#input-estado").val("");
+    }
+
+    function limparModalOrcamento() {
+        $("#custo-mao-obra").val("");
+        $("#custo-projeto").val("");
+        $("#custo-insumos").val("");
+        $("#orcamento").val("");
     }
 </script>

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
