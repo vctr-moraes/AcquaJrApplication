@@ -26,6 +26,14 @@
     <Compile Remove="Data\Migrations\20200521032704_TabelaProjetos.Designer.cs" />
     <Compile Remove="Data\Migrations\20200521032938_NovaTabelaProjetos.cs" />
     <Compile Remove="Data\Migrations\20200521032938_NovaTabelaProjetos.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200524132425_TabelaProjetos.cs" />
+    <Compile Remove="Data\Migrations\20200524132425_TabelaProjetos.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200524132913_TabelaProjetos.cs" />
+    <Compile Remove="Data\Migrations\20200524132913_TabelaProjetos.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200524133221_TabelaProjetos.cs" />
+    <Compile Remove="Data\Migrations\20200524133221_TabelaProjetos.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200524133418_TabelaProjetos.cs" />
+    <Compile Remove="Data\Migrations\20200524133418_TabelaProjetos.Designer.cs" />
   </ItemGroup>
 
 
