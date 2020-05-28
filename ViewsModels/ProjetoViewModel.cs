@@ -1,11 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.ViewsModels
 {
     public class ProjetoViewModel
     {
+        public ProjetoViewModel() { }
+
+        public ProjetoViewModel(Projeto projeto)
+        {
+            ClienteId = projeto.ClienteId;
+            ServicoId = projeto.ServicoId;
+            Nome = projeto.Nome;
+            Descricao = projeto.Descricao;
+            CustoMaoDeObra = projeto.CustoMaoDeObra;
+            CustoProjeto = projeto.CustoProjeto;
+            CustoInsumos = projeto.CustoInsumos;
+            Orcamento = projeto.Orcamento;
+            Logradouro = projeto.Logradouro;
+            PontoReferencia = projeto.PontoReferencia;
+            Bairro = projeto.Bairro;
+            Cidade = projeto.Cidade;
+            Cep = projeto.Cep;
+            Estado = projeto.Estado;
+            DataContrato = projeto.DataContrato;
+            DataPrevista = projeto.DataPrevista;
+            DataInicio = projeto.DataInicio;
+            DataConclusao = projeto.DataConclusao;
+        }
+
         [Key]
         public Guid Id { get; set; }
 
@@ -34,19 +59,23 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Custo da Mão de Obra")]
         [DataType(DataType.Currency)]
-        public decimal CustoMaoDeObra { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public decimal? CustoMaoDeObra { get; set; }
 
         [Display(Name = "Custo do Projeto")]
         [DataType(DataType.Currency)]
-        public decimal CustoProjeto { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public decimal? CustoProjeto { get; set; }
 
         [Display(Name = "Custo dos Insumos")]
         [DataType(DataType.Currency)]
-        public decimal CustoInsumos { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public decimal? CustoInsumos { get; set; }
 
         [Display(Name = "Orçamento")]
         [DataType(DataType.Currency)]
-        public decimal Orcamento { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public decimal? Orcamento { get; set; }
 
         [Display(Name = "Logradouro")]
         [MaxLength(150, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
@@ -75,7 +104,7 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Data do Contrato")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        public DateTime DataContrato { get; set; }
+        public DateTime? DataContrato { get; set; }
 
         [Display(Name = "Data Prevista")]
         [DataType(DataType.Date)]

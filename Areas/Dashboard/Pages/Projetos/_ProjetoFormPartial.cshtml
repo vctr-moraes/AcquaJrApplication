@@ -1,0 +1,189 @@
+﻿@model AcquaJrApplication.ViewsModels.ProjetoViewModel
+@using AcquaJrApplication.Models
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="@Model.Nome" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
+        <input asp-for="@Model.Nome" class="form-control" />
+        <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Descricao" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
+        <textarea asp-for="@Model.Descricao" class="form-control"></textarea>
+        <span asp-validation-for="@Model.Descricao" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.ClienteId" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
+        <select asp-for="@Model.ClienteId" class="form-control" asp-items="ViewBag.ClienteId">
+            <option value="" disabled selected>Selecionar</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.ServicoId" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
+        <select asp-for="@Model.ServicoId" class="form-control" asp-items="ViewBag.ServicoId">
+            <option value="" disabled selected>Selecionar</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.DataContrato" class="control-label"></label>
+        <small id="passwordHelpInline" class="text-muted">*</small>
+        <input asp-for="@Model.DataContrato" class="form-control" />
+        <span asp-validation-for="@Model.DataContrato" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.DataPrevista" class="control-label"></label>
+        <input asp-for="@Model.DataPrevista" class="form-control" />
+        <span asp-validation-for="@Model.DataPrevista" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.DataInicio" class="control-label"></label>
+        <input asp-for="@Model.DataInicio" class="form-control" />
+        <span asp-validation-for="@Model.DataInicio" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.DataConclusao" class="control-label"></label>
+        <input asp-for="@Model.DataConclusao" class="form-control" />
+        <span asp-validation-for="@Model.DataConclusao" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="button" class="btn btn-light btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter1">
+            <i class="material-icons">add</i>
+            Definir orçamento
+        </button>
+    </div>
+
+    <div class="form-group">
+        <button type="button" class="btn btn-light btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter2">
+            <i class="material-icons">add</i>
+            Definir endereço
+        </button>
+    </div>
+
+    <!-- Modal - Orçamento -->
+    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Orçamento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="@Model.CustoMaoDeObra" class="control-label"></label>
+                        <input asp-for="@Model.CustoMaoDeObra" type="text" oninput="calcularOrcamento()" name="CustoMaoDeObra" id="custo-mao-obra" class="form-control orcamento" />
+                        <span asp-validation-for="@Model.CustoMaoDeObra" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.CustoProjeto" class="control-label"></label>
+                        <input asp-for="@Model.CustoProjeto" type="text" oninput="calcularOrcamento()" name="CustoProjeto" id="custo-projeto" class="form-control orcamento" />
+                        <span asp-validation-for="@Model.CustoProjeto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.CustoInsumos" class="control-label"></label>
+                        <input asp-for="@Model.CustoInsumos" type="text" oninput="calcularOrcamento()" name="CustoInsumos" id="custo-insumos" class="form-control orcamento" />
+                        <span asp-validation-for="@Model.CustoInsumos" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Orcamento" class="control-label"></label>
+                        <input asp-for="@Model.Orcamento" type="text" name="Orcamento" id="orcamento" class="form-control form-control-lg" readonly />
+                        <span asp-validation-for="@Model.Orcamento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark limpar-modal-orcamento" data-dismiss="modal">Cancelar e fechar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal - Endereço -->
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Endereço</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="@Model.Logradouro" class="control-label"></label>
+                        <input asp-for="@Model.Logradouro" id="input-logradouro" class="form-control" />
+                        <span asp-validation-for="@Model.Logradouro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.PontoReferencia" class="control-label"></label>
+                        <input asp-for="@Model.PontoReferencia" id="input-ponto-referencia" class="form-control" />
+                        <span asp-validation-for="@Model.PontoReferencia" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Bairro" class="control-label"></label>
+                        <input asp-for="@Model.Bairro" id="input-bairro" class="form-control" />
+                        <span asp-validation-for="@Model.Bairro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Cidade" class="control-label"></label>
+                        <input asp-for="@Model.Cidade" id="input-cidade" class="form-control" />
+                        <span asp-validation-for="@Model.Cidade" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Cep" class="control-label"></label>
+                        <input asp-for="@Model.Cep" id="input-cep" class="form-control input-numerico cep" />
+                        <span asp-validation-for="@Model.Cep" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Estado" class="control-label"></label>
+                        <select asp-for="@Model.Estado" id="input-estado" class="form-control custom-select">
+                            <option value="" disabled selected>Selecionar</option>
+                            <option value="Acre">Acre</option>
+                            <option value="Alagoas">Alagoas</option>
+                            <option value="Amapá">Amapá</option>
+                            <option value="Amazonas">Amazonas</option>
+                            <option value="Bahia">Bahia</option>
+                            <option value="Ceará">Ceará</option>
+                            <option value="Distrito Federal">Distrito Federal</option>
+                            <option value="Espírito Santo">Espírito Santo</option>
+                            <option value="Goiás">Goiás</option>
+                            <option value="Maranhão">Maranhão</option>
+                            <option value="Mato Grosso">Mato Grosso</option>
+                            <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                            <option value="Minas Gerais">Minas Gerais</option>
+                            <option value="Pará">Pará</option>
+                            <option value="Paraíba">Paraíba</option>
+                            <option value="Paraná">Paraná</option>
+                            <option value="Pernambuco">Pernambuco</option>
+                            <option value="Piauí">Piauí</option>
+                            <option value="Rio de Janeiro">Rio de Janeiro</option>
+                            <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                            <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                            <option value="Rondônia">Rondônia</option>
+                            <option value="Roraima">Roraima</option>
+                            <option value="Santa Catarina">Santa Catarina</option>
+                            <option value="São Paulo">São Paulo</option>
+                            <option value="Sergipe">Sergipe</option>
+                            <option value="Tocantins">Tocantins</option>
+                        </select>
+                        <span asp-validation-for="@Model.Estado" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark limpar-modal-endereco" data-dismiss="modal">Cancelar e fechar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Salvar" class="btn btn-primary" />
+    </div>
+</form>

@@ -9,44 +9,55 @@ using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using Microsoft.AspNetCore.Authorization;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {
     [Authorize]
     public class EditModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IProjetoRepository _projetoRepository;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly IServicoRepository _servicoRepository;
 
-        public EditModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public EditModel(IProjetoRepository projetoRepository, IClienteRepository clienteRepository, IServicoRepository servicoRepository)
         {
-            _context = context;
+            _projetoRepository = projetoRepository;
+            _clienteRepository = clienteRepository;
+            _servicoRepository = servicoRepository;
+
+            ProjetoVM = new ProjetoViewModel();
         }
 
         [BindProperty]
-        public Projeto Projeto { get; set; }
+        public ProjetoViewModel ProjetoVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Projeto = await _context.Projetos
-                .Include(p => p.Cliente)
-                .Include(p => p.Servico).FirstOrDefaultAsync(m => m.Id == id);
+            //Projeto = await _context.Projetos
+            //    .Include(p => p.Cliente)
+            //    .Include(p => p.Servico).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Projeto == null)
+            var projeto = await _projetoRepository.ObterPorId(id);
+
+            if (projeto == null)
             {
                 return NotFound();
             }
-           ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Bairro");
-           ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Descricao");
+
+            ProjetoVM = new ProjetoViewModel(projeto);
+
+            //ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Bairro");
+            //ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Descricao");
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -54,30 +65,37 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 return Page();
             }
 
-            _context.Attach(Projeto).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                Projeto projeto = await _projetoRepository.ObterPorId(ProjetoVM.Id);
+
+                projeto.ClienteId = ProjetoVM.ClienteId;
+                projeto.ServicoId = ProjetoVM.ServicoId;
+                projeto.Nome = ProjetoVM.Nome;
+                projeto.Descricao = ProjetoVM.Descricao;
+                projeto.CustoMaoDeObra = ProjetoVM.CustoMaoDeObra;
+                projeto.CustoProjeto = ProjetoVM.CustoProjeto;
+                projeto.CustoInsumos = ProjetoVM.CustoInsumos;
+                projeto.Orcamento = ProjetoVM.Orcamento;
+                projeto.Logradouro = ProjetoVM.Logradouro;
+                projeto.PontoReferencia = ProjetoVM.PontoReferencia;
+                projeto.Bairro = ProjetoVM.Bairro;
+                projeto.Cidade = ProjetoVM.Cidade;
+                projeto.Cep = ProjetoVM.Cep;
+                projeto.Estado = ProjetoVM.Estado;
+                projeto.DataContrato = ProjetoVM.DataContrato;
+                projeto.DataPrevista = ProjetoVM.DataPrevista;
+                projeto.DataInicio = ProjetoVM.DataInicio;
+                projeto.DataConclusao = ProjetoVM.DataConclusao;
+
+                await _projetoRepository.Atualizar(projeto);
+                return await Task.FromResult(RedirectToPage("./Index"));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DomainException ex)
             {
-                if (!ProjetoExists(Projeto.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
             }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool ProjetoExists(Guid id)
-        {
-            return _context.Projetos.Any(e => e.Id == id);
         }
     }
 }

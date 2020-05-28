@@ -11,17 +11,17 @@ namespace AcquaJrApplication.Models
         private Guid _servicoId;
         private string _nome;
         private string _descricao;
-        private decimal _custoMaoDeObra;
-        private decimal _custoProjeto;
-        private decimal _custoInsumos;
-        private decimal _orcamento;
+        private decimal? _custoMaoDeObra;
+        private decimal? _custoProjeto;
+        private decimal? _custoInsumos;
+        private decimal? _orcamento;
         private string _logradouro;
         private string _pontoReferencia;
         private string _bairro;
         private string _cidade;
         private string _cep;
         private string _estado;
-        private DateTime _dataContrato;
+        private DateTime? _dataContrato;
         private DateTime? _dataPrevista;
         private DateTime? _dataInicio;
         private DateTime? _dataConclusao;
@@ -55,25 +55,25 @@ namespace AcquaJrApplication.Models
             }
         }
 
-        public decimal CustoMaoDeObra
+        public decimal? CustoMaoDeObra
         {
             get => _custoMaoDeObra;
             set => _custoMaoDeObra = value;
         }
 
-        public decimal CustoProjeto
+        public decimal? CustoProjeto
         {
             get => _custoProjeto;
             set => _custoProjeto = value;
         }
 
-        public decimal CustoInsumos
+        public decimal? CustoInsumos
         {
             get => _custoInsumos;
             set => _custoInsumos = value;
         }
 
-        public decimal Orcamento
+        public decimal? Orcamento
         {
             get => _orcamento;
             set => _orcamento = value;
@@ -188,7 +188,7 @@ namespace AcquaJrApplication.Models
 
         public void AdicionarMembro(MembroProjeto membroProjeto) => _membros.Add(membroProjeto);
 
-        public DateTime DataContrato
+        public DateTime? DataContrato
         {
             get => _dataContrato;
             set => _dataContrato = value;

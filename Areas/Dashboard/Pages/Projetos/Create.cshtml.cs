@@ -8,31 +8,38 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using Microsoft.AspNetCore.Authorization;
+using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Interfaces;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {
     [Authorize]
     public class CreateModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IProjetoRepository _projetoRepository;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly IServicoRepository _servicoRepository;
 
-        public CreateModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public CreateModel(IProjetoRepository projetoRepository, IClienteRepository clienteRepository, IServicoRepository servicoRepository)
         {
-            _context = context;
-        }
+            _projetoRepository = projetoRepository;
+            _clienteRepository = clienteRepository;
+            _servicoRepository = servicoRepository;
 
-        public IActionResult OnGet()
-        {
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
-            ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
-            return Page();
+            ProjetoVM = new ProjetoViewModel();
         }
 
         [BindProperty]
-        public Projeto Projeto { get; set; }
+        public ProjetoViewModel ProjetoVM { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
+        public IActionResult OnGet()
+        {
+            ProjetoVM = new ProjetoViewModel();
+            //ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
+            //ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
+            return Page();
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -40,10 +47,38 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 return Page();
             }
 
-            _context.Projetos.Add(Projeto);
-            await _context.SaveChangesAsync();
+            try
+            {
+                Projeto projeto = new Projeto()
+                {
+                    ClienteId = ProjetoVM.ClienteId,
+                    ServicoId = ProjetoVM.ServicoId,
+                    Nome = ProjetoVM.Nome,
+                    Descricao = ProjetoVM.Descricao,
+                    CustoMaoDeObra = ProjetoVM.CustoMaoDeObra,
+                    CustoProjeto = ProjetoVM.CustoProjeto,
+                    CustoInsumos = ProjetoVM.CustoInsumos,
+                    Orcamento = ProjetoVM.Orcamento,
+                    Logradouro = ProjetoVM.Logradouro,
+                    PontoReferencia = ProjetoVM.PontoReferencia,
+                    Bairro = ProjetoVM.Bairro,
+                    Cidade = ProjetoVM.Cidade,
+                    Cep = ProjetoVM.Cep,
+                    Estado = ProjetoVM.Estado,
+                    DataContrato = ProjetoVM.DataContrato,
+                    DataPrevista = ProjetoVM.DataPrevista,
+                    DataInicio = ProjetoVM.DataInicio,
+                    DataConclusao = ProjetoVM.DataConclusao
+                };
 
-            return RedirectToPage("./Index");
+                await _projetoRepository.Adicionar(projeto);
+                return RedirectToPage("./Index");
+            }
+            catch (DomainException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
+            }
         }
     }
 }

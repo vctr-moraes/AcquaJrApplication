@@ -54,13 +54,13 @@ else
                         @Html.DisplayFor(modelItem => item.Cargo)
                     </td>
                     <td class="text-right">
-                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Editar">
                             <i class="material-icons">edit</i>
                         </a>
-                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">
+                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Detalhes">
                             <i class="material-icons">search</i>
                         </a>
-                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary">
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Excluir">
                             <i class="material-icons">delete_outline</i>
                         </a>
                     </td>
