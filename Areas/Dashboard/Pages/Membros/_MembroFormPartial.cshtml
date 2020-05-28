@@ -12,13 +12,13 @@
     <div class="form-group">
         <label asp-for="@Model.Cpf" class="control-label"></label>
         <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Cpf" class="form-control cpf" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Cpf" class="form-control input-numerico cpf" />
         <span asp-validation-for="@Model.Cpf" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.DataNascimento" for="date-picker1" class="control-label"></label>
+        <label asp-for="@Model.DataNascimento" class="control-label"></label>
         <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.DataNascimento" id="date-picker1" class="form-control" />
+        <input asp-for="@Model.DataNascimento" class="form-control" />
         <span asp-validation-for="@Model.DataNascimento" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -83,7 +83,7 @@
     <div class="form-group">
         <label asp-for="@Model.Telefone" class="control-label"></label>
         <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Telefone" class="form-control phone_with_ddd" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Telefone" class="form-control input-numerico phone_with_ddd" />
         <span asp-validation-for="@Model.Telefone" class="text-danger"></span>
     </div>
     <div class="form-group custom-control custom-checkbox">
@@ -117,14 +117,14 @@
         <span asp-validation-for="@Model.Cargo" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.DataEntrada" for="date-picker2" class="control-label"></label>
+        <label asp-for="@Model.DataEntrada" class="control-label"></label>
         <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.DataEntrada" id="date-picker2" class="form-control" />
+        <input asp-for="@Model.DataEntrada" class="form-control" />
         <span asp-validation-for="@Model.DataEntrada" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.DataSaida" for="date-picker3" class="control-label"></label>
-        <input asp-for="@Model.DataSaida" id="date-picker3" class="form-control" />
+        <label asp-for="@Model.DataSaida" class="control-label"></label>
+        <input asp-for="@Model.DataSaida" class="form-control" />
         <span asp-validation-for="@Model.DataSaida" class="text-danger"></span>
     </div>
     <div class="form-group custom-control custom-switch">

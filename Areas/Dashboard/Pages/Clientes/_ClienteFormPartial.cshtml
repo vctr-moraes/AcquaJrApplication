@@ -24,12 +24,12 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cpf" class="control-label"></label>
-        <input asp-for="@Model.Cpf" class="form-control cpf" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Cpf" class="form-control input-numerico cpf" />
         <span asp-validation-for="@Model.Cpf" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Cnpj" class="control-label"></label>
-        <input asp-for="@Model.Cnpj" class="form-control cnpj" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Cnpj" class="form-control input-numerico cnpj" />
         <span asp-validation-for="@Model.Cnpj" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -69,7 +69,7 @@
     <div class="form-group">
         <label asp-for="@Model.Cep" class="control-label"></label>
         <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Cep" class="form-control cep" id="cep" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Cep" class="form-control input-numerico cep" id="cep" />
         <span asp-validation-for="@Model.Cep" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -116,12 +116,12 @@
     <div class="form-group">
         <label asp-for="@Model.Telefone1" class="control-label"></label>
         <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Telefone1" class="form-control phone_with_ddd" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Telefone1" class="form-control input-numerico phone_with_ddd" />
         <span asp-validation-for="@Model.Telefone1" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Telefone2" class="control-label"></label>
-        <input asp-for="@Model.Telefone2" class="form-control phone_with_ddd" onkeypress="return ValidarInputNumerico(event)" />
+        <input asp-for="@Model.Telefone2" class="form-control input-numerico phone_with_ddd" />
         <span asp-validation-for="@Model.Telefone2" class="text-danger"></span>
     </div>
     <div class="form-group">
