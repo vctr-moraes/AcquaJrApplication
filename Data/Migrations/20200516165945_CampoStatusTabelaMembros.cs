@@ -18,7 +18,7 @@ namespace AcquaJrApplication.Data.Migrations
                 type: "varchar(20)",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "varchyar(20)",
+                oldType: "varchar(20)",
                 oldNullable: true);
         }
 
@@ -31,7 +31,7 @@ namespace AcquaJrApplication.Data.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Cpf",
                 table: "Clientes",
-                type: "varchyar(20)",
+                type: "varchar(20)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "varchar(20)",

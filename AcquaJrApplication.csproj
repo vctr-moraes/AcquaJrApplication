@@ -34,6 +34,10 @@
     <Compile Remove="Data\Migrations\20200524133221_TabelaProjetos.Designer.cs" />
     <Compile Remove="Data\Migrations\20200524133418_TabelaProjetos.cs" />
     <Compile Remove="Data\Migrations\20200524133418_TabelaProjetos.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200531013202_Atualization.cs" />
+    <Compile Remove="Data\Migrations\20200531013202_Atualization.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200531013943_Atualization.cs" />
+    <Compile Remove="Data\Migrations\20200531013943_Atualization.Designer.cs" />
   </ItemGroup>
 
 

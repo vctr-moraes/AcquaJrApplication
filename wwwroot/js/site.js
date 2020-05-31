@@ -3,7 +3,7 @@
 });
 
 $(".input-numerico").keypress(function (e) {
-    var tecla = (window.event) ? event.keyCode : e.which;
+    let tecla = (window.event) ? event.keyCode : e.which;
 
     if ((tecla > 47 && tecla < 58)) return true;
     else {

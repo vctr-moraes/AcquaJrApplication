@@ -43,7 +43,7 @@ namespace AcquaJrApplication.Data.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("varchyar(20)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("date");

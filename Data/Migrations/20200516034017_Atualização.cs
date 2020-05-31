@@ -108,7 +108,7 @@ namespace AcquaJrApplication.Data.Migrations
                 type: "varchyar(11)",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "varchyar(20)",
+                oldType: "varchar(20)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
