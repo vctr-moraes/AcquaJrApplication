@@ -32,55 +32,13 @@ else
                     @Html.DisplayNameFor(model => model.ProjetoVM[0].Nome)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Descricao)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].CustoMaoDeObra)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].CustoProjeto)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].CustoInsumos)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.ProjetoVM[0].Orcamento)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Logradouro)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].PontoReferencia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Bairro)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Cidade)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Cep)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Estado)
-                </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Cliente)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Servico)
-                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.ProjetoVM[0].DataContrato)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.ProjetoVM[0].DataPrevista)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].DataInicio)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].DataConclusao)
                 </th>
                 <th></th>
             </tr>
@@ -93,65 +51,23 @@ else
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustoMaoDeObra)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustoProjeto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustoInsumos)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Orcamento)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Logradouro)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PontoReferencia)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Bairro)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cidade)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cep)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Estado)
-                    </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.Cliente.Bairro)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Servico.Descricao)
-                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.DataContrato)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DataPrevista)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataInicio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataConclusao)
-                    </td>
                     <td class="text-right">
-                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Editar">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Editar">
                             <i class="material-icons">edit</i>
                         </a>
-                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Detalhes">
+                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Detalhes">
                             <i class="material-icons">search</i>
                         </a>
-                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Excluir">
-                            <i class="material-icons">delete_outline</i>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Excluir">
+                            <i class="material-icons">delete_forever</i>
                         </a>
                     </td>
                 </tr>

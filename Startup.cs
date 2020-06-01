@@ -43,6 +43,8 @@ namespace AcquaJrApplication
 
             services.AddRazorPages();
 
+            services.AddMessageConfiguration();
+
             services.AddScoped<ApplicationDbContext>();
             services.AddScoped<IMembroRepository, MembroRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();

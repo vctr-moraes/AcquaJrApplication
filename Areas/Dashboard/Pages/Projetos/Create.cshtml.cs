@@ -16,12 +16,14 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
     [Authorize]
     public class CreateModel : PageModel
     {
+        private readonly ApplicationDbContext _context;
         private readonly IProjetoRepository _projetoRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IServicoRepository _servicoRepository;
 
-        public CreateModel(IProjetoRepository projetoRepository, IClienteRepository clienteRepository, IServicoRepository servicoRepository)
+        public CreateModel(ApplicationDbContext context, IProjetoRepository projetoRepository, IClienteRepository clienteRepository, IServicoRepository servicoRepository)
         {
+            _context = context;
             _projetoRepository = projetoRepository;
             _clienteRepository = clienteRepository;
             _servicoRepository = servicoRepository;
@@ -35,8 +37,9 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
         public IActionResult OnGet()
         {
             ProjetoVM = new ProjetoViewModel();
-            //ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
-            //ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
+            //ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
+            ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
             return Page();
         }
 
