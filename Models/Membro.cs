@@ -13,6 +13,7 @@ namespace AcquaJrApplication.Models
         private string _logradouro;
         private string _bairro;
         private string _cidade;
+        private string _cep;
         private string _estado;
         private string _email;
         private string _telefone;
@@ -88,6 +89,18 @@ namespace AcquaJrApplication.Models
                 DomainException.When(string.IsNullOrEmpty(value), "O campo Cidade é obrigatório.");
                 DomainException.When(value.Trim().Length > 50, "O campo Cidade não pode conter mais que 50 caracteres.");
                 _cidade = value.Trim();
+            }
+        }
+
+        public string Cep
+        {
+            get => _cep;
+
+            set
+            {
+                DomainException.When(string.IsNullOrEmpty(value), "O campo CEP é obrigatório.");
+                DomainException.When(value.Trim().Length > 20, "O campo CEP não pode conter mais que 8 caracteres.");
+                _cep = value.Trim();
             }
         }
 

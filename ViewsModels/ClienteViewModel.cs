@@ -112,7 +112,7 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Data de Cadastro")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Date)]
         public DateTime? DataCadastro { get; set; }
     }
 }

@@ -62,6 +62,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 membro.Logradouro = MembroVM.Logradouro;
                 membro.Bairro = MembroVM.Bairro;
                 membro.Cidade = MembroVM.Cidade;
+                membro.Cep = MembroVM.Cep;
                 membro.Estado = MembroVM.Estado;
                 membro.Email = MembroVM.Email;
                 membro.Telefone = MembroVM.Telefone;

@@ -34,6 +34,10 @@ namespace AcquaJrApplication.Data.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(50)");
 
+            builder.Property(c => c.Cep)
+                .IsRequired()
+                .HasColumnType("varchar(20)");
+
             builder.Property(m => m.Estado)
                 .IsRequired()
                 .HasColumnType("varchar(50)");

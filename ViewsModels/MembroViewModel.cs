@@ -17,6 +17,7 @@ namespace AcquaJrApplication.ViewsModels
             Logradouro = membro.Logradouro;
             Bairro = membro.Bairro;
             Cidade = membro.Cidade;
+            Cep = membro.Cep;
             Estado = membro.Estado;
             Email = membro.Email;
             Telefone = membro.Telefone;
@@ -43,7 +44,7 @@ namespace AcquaJrApplication.ViewsModels
         public string Cpf { get; set; }
 
         [Display(Name = "Data de Nascimento")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public DateTime? DataNascimento { get; set; }
 
@@ -61,6 +62,10 @@ namespace AcquaJrApplication.ViewsModels
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [MaxLength(50, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Cidade { get; set; }
+
+        [Display(Name = "CEP")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório.")]
+        public string Cep { get; set; }
 
         [Display(Name = "Estado")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
@@ -98,15 +103,15 @@ namespace AcquaJrApplication.ViewsModels
         public Cargo Cargo { get; set; }
 
         [Display(Name = "Data de Entrada")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Date)]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         public DateTime? DataEntrada { get; set; }
 
         [Display(Name = "Data de Saída")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Date)]
         public DateTime? DataSaida { get; set; }
 
         [Display(Name = "Membro Ativo?")]
-        public bool Status { get; set; }
+        public bool Status { get; set; } = true;
     }
 }
