@@ -17,12 +17,14 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
     [Authorize]
     public class EditModel : PageModel
     {
+        private readonly ApplicationDbContext _context;
         private readonly IProjetoRepository _projetoRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IServicoRepository _servicoRepository;
 
-        public EditModel(IProjetoRepository projetoRepository, IClienteRepository clienteRepository, IServicoRepository servicoRepository)
+        public EditModel(ApplicationDbContext context, IProjetoRepository projetoRepository, IClienteRepository clienteRepository, IServicoRepository servicoRepository)
         {
+            _context = context;
             _projetoRepository = projetoRepository;
             _clienteRepository = clienteRepository;
             _servicoRepository = servicoRepository;
@@ -53,8 +55,8 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             ProjetoVM = new ProjetoViewModel(projeto);
 
-            //ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Bairro");
-            //ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Descricao");
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Bairro");
+            ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Descricao");
             return Page();
         }
 

@@ -29,7 +29,7 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPost(string returnUrl = "/Identity/Account/Login")
         {
             await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out.");
+            _logger.LogInformation("Usuário desconectado.");
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);

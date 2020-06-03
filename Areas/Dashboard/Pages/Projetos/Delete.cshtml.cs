@@ -8,52 +8,63 @@ using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using Microsoft.AspNetCore.Authorization;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {
     [Authorize]
     public class DeleteModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly IProjetoRepository _projetoRepository;
 
-        public DeleteModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public DeleteModel(AcquaJrApplication.Data.ApplicationDbContext context, IProjetoRepository projetoRepository)
         {
             _context = context;
+            _projetoRepository = projetoRepository;
         }
 
         [BindProperty]
-        public Projeto Projeto { get; set; }
+        public ProjetoViewModel ProjetoVM { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        public async Task<IActionResult> OnGetAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Projeto = await _context.Projetos
-                .Include(p => p.Cliente)
-                .Include(p => p.Servico).FirstOrDefaultAsync(m => m.Id == id);
+            var projeto = await _projetoRepository.ObterPorId(id);
 
-            if (Projeto == null)
+            //Projeto = await _context.Projetos
+            //    .Include(p => p.Cliente)
+            //    .Include(p => p.Servico).FirstOrDefaultAsync(m => m.Id == id);
+
+            if (projeto == null)
             {
                 return NotFound();
             }
+
+            ProjetoVM = new ProjetoViewModel(projeto);
+
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(Guid? id)
+        public async Task<IActionResult> OnPostAsync(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Projeto = await _context.Projetos.FindAsync(id);
+            var projeto = await _projetoRepository.ObterPorId(id);
 
-            if (Projeto != null)
+            //Projeto = await _context.Projetos.FindAsync(id);
+
+            if (projeto != null)
             {
-                _context.Projetos.Remove(Projeto);
+                _context.Projetos.Remove(projeto);
                 await _context.SaveChangesAsync();
             }
 

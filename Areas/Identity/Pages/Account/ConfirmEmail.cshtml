@@ -1,8 +1,15 @@
 ﻿@page
 @model ConfirmEmailModel
 @{
-    ViewData["Title"] = "Confirmar e-mail";
+    ViewData["Title"] = "Sua conta foi criada com sucesso!";
 }
 
 <h2>@ViewData["Title"]</h2>
+
 <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div class="vertical-center justify-content-center">
+    <h4 align="center">
+        <a asp-page="./Login">Clique aqui para acessar sua conta</a>
+    </h4>
+</div>
