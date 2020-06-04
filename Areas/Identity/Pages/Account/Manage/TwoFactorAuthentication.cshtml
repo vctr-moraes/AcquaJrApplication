@@ -6,7 +6,14 @@
 }
 
 <partial name="_StatusMessage" for="StatusMessage" />
+
 <h4>@ViewData["Title"]</h4>
+
+<div class="alert alert-info">
+    <i class="material-icons">build</i>
+    Desculpe, este serviço ainda não está disponível.
+</div>
+
 @if (Model.Is2faEnabled)
 {
     if (Model.RecoveryCodesLeft == 0)

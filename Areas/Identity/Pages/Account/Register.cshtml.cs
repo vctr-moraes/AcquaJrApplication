@@ -45,12 +45,12 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "É necessário informar o {0}.")]
+            [EmailAddress(ErrorMessage = "Insira um endereço de e-mail válido.")]
             [Display(Name = "E-mail")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "É necessário informar a {0}")]
             [StringLength(100, ErrorMessage = "A {0} deve ter pelo menos {2} e no máximo {1} caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Senha")]

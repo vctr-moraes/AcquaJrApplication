@@ -42,11 +42,13 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required(ErrorMessage = "É necessário informar o e-mail.")]
-            [EmailAddress]
+            [Required(ErrorMessage = "É necessário informar o {0}.")]
+            [Display(Name = "E-mail")]
+            [EmailAddress(ErrorMessage = "Insira um endereço de e-mail válido.")]
             public string Email { get; set; }
 
-            [Required(ErrorMessage = "É necessário informar a senha.")]
+            [Required(ErrorMessage = "É necessário informar a {0}.")]
+            [Display(Name = "Senha")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
