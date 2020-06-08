@@ -1,0 +1,21 @@
+﻿using AcquaJrApplication.Data;
+using AcquaJrApplication.Data.Repository;
+using AcquaJrApplication.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace AcquaJrApplication.Configurations
+{
+    public static class DependencyInjectionConfig
+    {
+        public static IServiceCollection ResolveDependencies(this IServiceCollection services)
+        {
+            services.AddScoped<ApplicationDbContext>();
+            services.AddScoped<IMembroRepository, MembroRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IServicoRepository, ServicoRepository>();
+            services.AddScoped<IProjetoRepository, ProjetoRepository>();
+
+            return services;
+        }
+    }
+}

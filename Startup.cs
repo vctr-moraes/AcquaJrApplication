@@ -39,17 +39,13 @@ namespace AcquaJrApplication
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddErrorDescriber<IdentityMensagensPortugues>();
 
-            services.AddAutoMapper(typeof(Startup));
+            //services.AddAutoMapper(typeof(Startup));
 
             services.AddRazorPages();
 
             services.AddMessageConfiguration();
 
-            services.AddScoped<ApplicationDbContext>();
-            services.AddScoped<IMembroRepository, MembroRepository>();
-            services.AddScoped<IClienteRepository, ClienteRepository>();
-            services.AddScoped<IServicoRepository, ServicoRepository>();
-            services.AddScoped<IProjetoRepository, ProjetoRepository>();
+            services.ResolveDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

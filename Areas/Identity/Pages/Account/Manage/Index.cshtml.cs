@@ -33,7 +33,7 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Phone]
+            [Phone(ErrorMessage = "Insira um número de telefone válido.")]
             [Required(ErrorMessage = "É necessário informar o {0}.")]
             [Display(Name = "Número de telefone")]
             public string PhoneNumber { get; set; }
