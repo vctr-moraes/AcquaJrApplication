@@ -94,7 +94,6 @@ namespace AcquaJrApplication.ViewsModels
         public string Bairro { get; set; }
 
         [Display(Name = "Cidade")]
-        [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [MaxLength(50, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Cidade { get; set; }
 

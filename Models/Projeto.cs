@@ -85,9 +85,8 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(string.IsNullOrEmpty(value), "O campo Logradouro é obrigatório.");
-                DomainException.When(value.Trim().Length > 150, "O campo Logradouro não pode conter mais que 150 caracteres.");
-                _logradouro = value.Trim();
+                DomainException.When(value?.Trim().Length > 150, "O campo Logradouro não pode conter mais que 150 caracteres.");
+                _logradouro = value?.Trim();
             }
         }
 
@@ -97,9 +96,8 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(string.IsNullOrEmpty(value), "O campo Ponto de Referencia é obrigatório.");
-                DomainException.When(value.Trim().Length > 200, "O campo Ponto de Referencia não pode conter mais que 200 caracteres.");
-                _pontoReferencia = value.Trim();
+                DomainException.When(value?.Trim().Length > 200, "O campo Ponto de Referencia não pode conter mais que 200 caracteres.");
+                _pontoReferencia = value?.Trim();
             }
         }
 
@@ -109,9 +107,8 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(string.IsNullOrEmpty(value), "O campo Bairro é obrigatório.");
-                DomainException.When(value.Trim().Length > 100, "O campo Bairro não pode conter mais que 100 caracteres.");
-                _bairro = value.Trim();
+                DomainException.When(value?.Trim().Length > 100, "O campo Bairro não pode conter mais que 100 caracteres.");
+                _bairro = value?.Trim();
             }
         }
 
@@ -121,9 +118,8 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(string.IsNullOrEmpty(value), "O campo Cidade é obrigatório.");
-                DomainException.When(value.Trim().Length > 50, "O campo Cidade não pode conter mais que 50 caracteres.");
-                _cidade = value.Trim();
+                DomainException.When(value?.Trim().Length > 50, "O campo Cidade não pode conter mais que 50 caracteres.");
+                _cidade = value?.Trim();
             }
         }
 
@@ -133,9 +129,8 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(string.IsNullOrEmpty(value), "O campo CEP é obrigatório.");
-                DomainException.When(value.Trim().Length > 20, "O campo CEP não pode conter mais que 8 caracteres.");
-                _cep = value.Trim();
+                DomainException.When(value?.Trim().Length > 20, "O campo CEP não pode conter mais que 8 caracteres.");
+                _cep = value?.Trim();
             }
         }
 
@@ -145,8 +140,8 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(string.IsNullOrEmpty(value), "O campo Estado é obrigatório.");
-                _estado = value.Trim();
+                DomainException.When(value?.Trim().Length > 50, "O campo Estado não pode conter mais que 50 caracteres.");
+                _estado = value?.Trim();
             }
         }
 
@@ -184,10 +179,6 @@ namespace AcquaJrApplication.Models
             set => _servicoId = value;
         }
 
-        public ICollection<MembroProjeto> Membros => _membros;
-
-        public void AdicionarMembro(MembroProjeto membroProjeto) => _membros.Add(membroProjeto);
-
         public DateTime? DataContrato
         {
             get => _dataContrato;
@@ -211,5 +202,9 @@ namespace AcquaJrApplication.Models
             get => _dataConclusao;
             set => _dataConclusao = value;
         }
+
+        public ICollection<MembroProjeto> Membros => _membros;
+
+        public void AdicionarMembro(MembroProjeto membroProjeto) => _membros.Add(membroProjeto);
     }
 }

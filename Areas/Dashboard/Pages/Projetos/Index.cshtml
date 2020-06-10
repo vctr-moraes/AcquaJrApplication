@@ -17,7 +17,7 @@
     </a>
 </p>
 
-@if (Model.ProjetoVM.Count == 0)
+@if (Model.Projetos.Count == 0)
 {
     <div class="vertical-center justify-content-center">
         <h4 class="text-black-hint" align="center">Não há projetos em curso cadastrados no sistema</h4>
@@ -29,22 +29,22 @@ else
         <thead class="thead-light">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Nome)
+                    @Html.DisplayNameFor(model => model.Projetos[0].Nome)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].Orcamento)
+                    @Html.DisplayNameFor(model => model.Projetos[0].Orcamento)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].DataContrato)
+                    @Html.DisplayNameFor(model => model.Projetos[0].DataContrato)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ProjetoVM[0].DataPrevista)
+                    @Html.DisplayNameFor(model => model.Projetos[0].DataPrevista)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.ProjetoVM)
+            @foreach (var item in Model.Projetos)
             {
                 <tr>
                     <td>

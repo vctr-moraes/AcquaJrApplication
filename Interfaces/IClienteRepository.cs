@@ -9,5 +9,7 @@ namespace AcquaJrApplication.Interfaces
     {
         Task<Cliente> ObterCliente(Guid id);
         Task<IEnumerable<Cliente>> ObterTodosClientes();
+
+        Task ExcluirAsync(Guid id);
     }
 }

@@ -10,7 +10,12 @@ namespace AcquaJrApplication.Data.Repository
 {
     public class ClienteRepository : Repository<Cliente>, IClienteRepository
     {
-        public ClienteRepository(ApplicationDbContext context) : base(context) { }
+        private readonly IProjetoRepository _projetoRepository;
+
+        public ClienteRepository(ApplicationDbContext context, IProjetoRepository projetoRepository) : base(context)
+        {
+            _projetoRepository = projetoRepository;
+        }
 
         public async Task<Cliente> ObterCliente(Guid id)
         {
@@ -23,6 +28,18 @@ namespace AcquaJrApplication.Data.Repository
             return await Db.Clientes.AsNoTracking()
                 .OrderBy(c => c.NomeFantasia)
                 .ToListAsync();
+        }
+
+        public async Task ExcluirAsync(Guid id)
+        {
+            var cliente = await ObterCliente(id);
+
+            //var projetos = _projetoRepository.ObterProjetos().Where(p => p.ClienteId == id);
+            //var projeto = _projetoRepository.ObterProjeto(); 
+            
+            //DomainException.When(true, "Este Cliente não pode ser excluído, pois está vinculado a algum Projeto.");
+
+            await Remover(cliente.Id);
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿@page
-@model AcquaJrApplication.Areas.Dashboard.Pages.Membros.IndexModel
+@model AcquaJrApplication.Areas.Dashboard.Pages.Membros.InativosModel
 
 @{
-    ViewData["Title"] = "Membros";
+    ViewData["Title"] = "Membros inativos";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
@@ -10,17 +10,10 @@
 
 <h3>@ViewData["Title"]</h3>
 
-<p>
-    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
-        <i class="material-icons">add</i>
-        Novo membro
-    </a>
-</p>
-
 @if (Model.Membros.Count == 0)
 {
     <div class="vertical-center justify-content-center">
-        <h4 class="text-black-hint" align="center">Não há membros ativos cadastrados no sistema</h4>
+        <h4 class="text-black-hint" align="center">Não há membros inativos</h4>
     </div>
 }
 else
@@ -38,7 +31,7 @@ else
                     @Html.DisplayNameFor(model => model.Membros[0].Cargo)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Membros[0].DataEntrada)
+                    @Html.DisplayNameFor(model => model.Membros[0].DataSaida)
                 </th>
                 <th></th>
             </tr>
@@ -57,7 +50,7 @@ else
                         @Html.DisplayFor(modelItem => item.Cargo)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DataEntrada)
+                        @Html.DisplayFor(modelItem => item.DataSaida)
                     </td>
                     <td class="text-right">
                         <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Editar">
@@ -65,6 +58,9 @@ else
                         </a>
                         <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Detalhes">
                             <i class="material-icons">search</i>
+                        </a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Excluir">
+                            <i class="material-icons">delete_forever</i>
                         </a>
                     </td>
                 </tr>

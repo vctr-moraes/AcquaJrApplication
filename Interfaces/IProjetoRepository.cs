@@ -9,5 +9,9 @@ namespace AcquaJrApplication.Interfaces
     {
         Task<Projeto> ObterProjeto(Guid id);
         Task<IEnumerable<Projeto>> ObterTodosProjetos();
+
+        List<Projeto> ObterProjetos();
+        List<Projeto> ObterProjetosAtivos();
+        List<Projeto> ObterProjetosConcluidos();
     }
 }

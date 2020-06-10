@@ -24,5 +24,21 @@ namespace AcquaJrApplication.Data.Repository
                 .OrderBy(m => m.Nome)
                 .ToListAsync();
         }
+
+        public List<Membro> ObterMembrosAtivos()
+        {
+            return Db.Membros.AsNoTracking()
+                .Where(m => m.Status == true)
+                .OrderBy(m => m.Nome)
+                .ToList();
+        }
+
+        public List<Membro> ObterMembrosInativos()
+        {
+            return Db.Membros.AsNoTracking()
+                .Where(m => m.Status == false)
+                .OrderBy(m => m.Nome)
+                .ToList();
+        }
     }
 }

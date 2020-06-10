@@ -55,7 +55,8 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 
             if (cliente != null)
             {
-                await _clienteRepository.Remover(cliente.Id);
+                //await _clienteRepository.Remover(cliente.Id);
+                await _clienteRepository.ExcluirAsync(id);
                 return RedirectToPage("./Index");
             }
 

@@ -1,8 +1,7 @@
 ﻿@page
-@model AcquaJrApplication.Areas.Dashboard.Pages.Membros.IndexModel
-
+@model AcquaJrApplication.Areas.Dashboard.Pages.Projetos.ConcluidosModel
 @{
-    ViewData["Title"] = "Membros";
+    ViewData["Title"] = "Projetos concluídos";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
@@ -10,17 +9,10 @@
 
 <h3>@ViewData["Title"]</h3>
 
-<p>
-    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
-        <i class="material-icons">add</i>
-        Novo membro
-    </a>
-</p>
-
-@if (Model.Membros.Count == 0)
+@if (Model.Projetos.Count == 0)
 {
     <div class="vertical-center justify-content-center">
-        <h4 class="text-black-hint" align="center">Não há membros ativos cadastrados no sistema</h4>
+        <h4 class="text-black-hint" align="center">Não há projetos concluídos</h4>
     </div>
 }
 else
@@ -29,35 +21,35 @@ else
         <thead class="thead-light">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Membros[0].Nome)
+                    @Html.DisplayNameFor(model => model.Projetos[0].Nome)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Membros[0].Curso)
+                    @Html.DisplayNameFor(model => model.Projetos[0].Orcamento)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Membros[0].Cargo)
+                    @Html.DisplayNameFor(model => model.Projetos[0].DataInicio)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Membros[0].DataEntrada)
+                    @Html.DisplayNameFor(model => model.Projetos[0].DataConclusao)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Membros)
+            @foreach (var item in Model.Projetos)
             {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Curso)
+                        @Html.DisplayFor(modelItem => item.Orcamento)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Cargo)
+                        @Html.DisplayFor(modelItem => item.DataInicio)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DataEntrada)
+                        @Html.DisplayFor(modelItem => item.DataConclusao)
                     </td>
                     <td class="text-right">
                         <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Editar">
@@ -65,6 +57,9 @@ else
                         </a>
                         <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Detalhes">
                             <i class="material-icons">search</i>
+                        </a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Excluir">
+                            <i class="material-icons">delete_forever</i>
                         </a>
                     </td>
                 </tr>

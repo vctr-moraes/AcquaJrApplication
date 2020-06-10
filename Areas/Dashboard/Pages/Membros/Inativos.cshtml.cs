@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AcquaJrApplication.Data;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using AcquaJrApplication.Data;
-using AcquaJrApplication.Models;
-using AcquaJrApplication.Interfaces;
-using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 {
     [Authorize]
-    public class IndexModel : PageModel
+    public class InativosModel : PageModel
     {
         private readonly ApplicationDbContext _context;
         private readonly IMembroRepository _membroRepository;
 
-        public IndexModel(ApplicationDbContext context, IMembroRepository membroRepository)
+        public InativosModel(ApplicationDbContext context, IMembroRepository membroRepository)
         {
             _context = context;
             _membroRepository = membroRepository;
@@ -30,8 +29,9 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 
         public async Task<ActionResult> OnGetAsync()
         {
-            Membros = _membroRepository.ObterMembrosAtivos()
-                .Select(membro => new MembroViewModel(membro)).ToList();
+            Membros = _membroRepository.ObterMembrosInativos()
+                .Select(membro => new MembroViewModel(membro))
+                .ToList();
 
             return Page();
         }

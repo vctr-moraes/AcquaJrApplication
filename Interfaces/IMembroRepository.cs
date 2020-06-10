@@ -9,5 +9,8 @@ namespace AcquaJrApplication.Interfaces
     {
         Task<Membro> ObterMembro(Guid id);
         Task<IEnumerable<Membro>> ObterTodosMembros();
+
+        List<Membro> ObterMembrosAtivos();
+        List<Membro> ObterMembrosInativos();
     }
 }
