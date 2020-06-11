@@ -26,7 +26,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
         }
 
         [BindProperty]
-        public IList<ClienteViewModel> ClienteVM { get;set; }
+        public IList<ClienteViewModel> ClienteVM { get; set; }
 
         public async Task OnGetAsync()
         {

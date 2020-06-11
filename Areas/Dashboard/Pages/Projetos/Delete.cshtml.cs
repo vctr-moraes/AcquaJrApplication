@@ -37,10 +37,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             var projeto = await _projetoRepository.ObterPorId(id);
 
-            //Projeto = await _context.Projetos
-            //    .Include(p => p.Cliente)
-            //    .Include(p => p.Servico).FirstOrDefaultAsync(m => m.Id == id);
-
             if (projeto == null)
             {
                 return NotFound();
@@ -59,8 +55,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
             }
 
             var projeto = await _projetoRepository.ObterPorId(id);
-
-            //Projeto = await _context.Projetos.FindAsync(id);
 
             if (projeto != null)
             {

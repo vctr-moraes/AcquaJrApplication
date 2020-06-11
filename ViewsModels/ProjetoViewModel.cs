@@ -11,6 +11,7 @@ namespace AcquaJrApplication.ViewsModels
 
         public ProjetoViewModel(Projeto projeto)
         {
+            Id = projeto.Id;
             ClienteId = projeto.ClienteId;
             ServicoId = projeto.ServicoId;
             Nome = projeto.Nome;

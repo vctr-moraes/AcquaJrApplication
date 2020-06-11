@@ -26,15 +26,17 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
         }
 
         [BindProperty]
-        public List<ProjetoViewModel> Projetos { get; set; }
+        public IList<ProjetoViewModel> ProjetoVM { get; set; }
 
-        public async Task<ActionResult> OnGetAsync()
+        public async Task OnGetAsync()
         {
-            Projetos = _projetoRepository.ObterProjetosAtivos()
-                .Select(projeto => new ProjetoViewModel(projeto))
-                .ToList();
+            //Projetos = _projetoRepository.ObterProjetosAtivos()
+            //    .Select(projeto => new ProjetoViewModel(projeto))
+            //    .ToList();
 
-            return Page();
+            //return Page();
+
+            ProjetoVM = await _context.Projetos.Select(projeto => new ProjetoViewModel(projeto)).ToListAsync();
         }
     }
 }

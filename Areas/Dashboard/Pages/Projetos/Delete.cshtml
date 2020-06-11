@@ -9,9 +9,12 @@
 <h3>@ViewData["Title"]</h3>
 
 <h4>Tem certeza que deseja deletar este projeto?</h4>
+
 <div>
     <hr />
+
     @{ await Html.RenderPartialAsync("_ProjetoDetalhesPartial.cshtml", Model.ProjetoVM); }
+
     <form method="post">
         <input type="hidden" asp-for="ProjetoVM.Id" />
         <input type="submit" value="Deletar" class="btn btn-danger" /> |
