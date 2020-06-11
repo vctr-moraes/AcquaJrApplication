@@ -16,12 +16,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
     [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
         private readonly IMembroRepository _membroRepository;
 
-        public IndexModel(ApplicationDbContext context, IMembroRepository membroRepository)
+        public IndexModel(IMembroRepository membroRepository)
         {
-            _context = context;
             _membroRepository = membroRepository;
         }
 
@@ -30,8 +28,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 
         public async Task<ActionResult> OnGetAsync()
         {
-            Membros = _membroRepository.ObterMembrosAtivos()
-                .Select(membro => new MembroViewModel(membro)).ToList();
+            Membros = _membroRepository.ObterMembrosAtivos().Select(membro => new MembroViewModel(membro)).ToList();
 
             return Page();
         }

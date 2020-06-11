@@ -30,6 +30,13 @@ namespace AcquaJrApplication.Data.Repository
                 .ToListAsync();
         }
 
+        public List<Cliente> ObterClientes()
+        {
+            return Db.Clientes.AsNoTracking()
+                .OrderBy(c => c.NomeFantasia)
+                .ToList();
+        }
+
         public async Task ExcluirAsync(Guid id)
         {
             var cliente = await ObterCliente(id);

@@ -16,27 +16,21 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
     [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
         private readonly IProjetoRepository _projetoRepository;
 
-        public IndexModel(ApplicationDbContext context, IProjetoRepository projetoRepository)
+        public IndexModel(IProjetoRepository projetoRepository)
         {
-            _context = context;
             _projetoRepository = projetoRepository;
         }
 
         [BindProperty]
-        public IList<ProjetoViewModel> ProjetoVM { get; set; }
+        public List<ProjetoViewModel> Projetos { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<ActionResult> OnGetAsync()
         {
-            //Projetos = _projetoRepository.ObterProjetosAtivos()
-            //    .Select(projeto => new ProjetoViewModel(projeto))
-            //    .ToList();
+            Projetos = _projetoRepository.ObterProjetos().Select(projeto => new ProjetoViewModel(projeto)).ToList();
 
-            //return Page();
-
-            ProjetoVM = await _context.Projetos.Select(projeto => new ProjetoViewModel(projeto)).ToListAsync();
+            return Page();
         }
     }
 }

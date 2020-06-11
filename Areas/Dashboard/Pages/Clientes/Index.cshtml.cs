@@ -16,21 +16,21 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
     [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
         private readonly IClienteRepository _clienteRepository;
 
-        public IndexModel(ApplicationDbContext context, IClienteRepository clienteRepository)
+        public IndexModel(IClienteRepository clienteRepository)
         {
-            _context = context;
             _clienteRepository = clienteRepository;
         }
 
         [BindProperty]
-        public IList<ClienteViewModel> ClienteVM { get; set; }
+        public List<ClienteViewModel> Clientes { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<ActionResult> OnGetAsync()
         {
-            ClienteVM = await _context.Clientes.Select(cliente => new ClienteViewModel(cliente)).ToListAsync();
+            Clientes = _clienteRepository.ObterClientes().Select(cliente => new ClienteViewModel(cliente)).ToList();
+
+            return Page();
         }
     }
 }

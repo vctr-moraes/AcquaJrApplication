@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 {
@@ -22,11 +23,13 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
             _servicoRepository = servicoRepository;
         }
 
-        public IList<Servico> ServicoVM { get;set; }
+        public List<ServicoViewModel> Servicos { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<ActionResult> OnGetAsync()
         {
-            ServicoVM = await _servicoRepository.ObterTodosServicos();
+            Servicos = _servicoRepository.ObterServicos().Select(servico => new ServicoViewModel(servico)).ToList();
+
+            return Page();
         }
     }
 }

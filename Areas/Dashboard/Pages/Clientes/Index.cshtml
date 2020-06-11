@@ -17,7 +17,7 @@
     </a>
 </p>
 
-@if (Model.ClienteVM.Count == 0)
+@if (Model.Clientes.Count == 0)
 {
     <div class="vertical-center justify-content-center">
         <h4 class="text-black-hint" align="center">Não há clientes cadastrados no sistema</h4>
@@ -29,19 +29,19 @@ else
         <thead class="thead-light">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ClienteVM[0].NomeFantasia)
+                    @Html.DisplayNameFor(model => model.Clientes[0].NomeFantasia)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ClienteVM[0].Cidade)
+                    @Html.DisplayNameFor(model => model.Clientes[0].Cidade)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ClienteVM[0].Telefone1)
+                    @Html.DisplayNameFor(model => model.Clientes[0].Telefone1)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.ClienteVM)
+            @foreach (var item in Model.Clientes)
             {
                 <tr>
                     <td>

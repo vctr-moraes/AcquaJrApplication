@@ -17,7 +17,7 @@
     </a>
 </p>
 
-@if (Model.ServicoVM.Count == 0)
+@if (Model.Servicos.Count == 0)
 {
     <div class="vertical-center justify-content-center">
         <h4 class="text-black-hint" align="center">Não há serviços cadastrados no sistema</h4>
@@ -29,16 +29,16 @@ else
         <thead class="thead-light">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ServicoVM[0].Nome)
+                    @Html.DisplayNameFor(model => model.Servicos[0].Nome)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ServicoVM[0].Descricao)
+                    @Html.DisplayNameFor(model => model.Servicos[0].Descricao)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.ServicoVM)
+            @foreach (var item in Model.Servicos)
             {
                 <tr>
                     <td>

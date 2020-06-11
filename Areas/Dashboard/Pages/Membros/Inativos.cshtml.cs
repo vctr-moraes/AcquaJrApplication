@@ -15,12 +15,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
     [Authorize]
     public class InativosModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
         private readonly IMembroRepository _membroRepository;
 
-        public InativosModel(ApplicationDbContext context, IMembroRepository membroRepository)
+        public InativosModel(IMembroRepository membroRepository)
         {
-            _context = context;
             _membroRepository = membroRepository;
         }
 
@@ -29,9 +27,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 
         public async Task<ActionResult> OnGetAsync()
         {
-            Membros = _membroRepository.ObterMembrosInativos()
-                .Select(membro => new MembroViewModel(membro))
-                .ToList();
+            Membros = _membroRepository.ObterMembrosInativos().Select(membro => new MembroViewModel(membro)).ToList();
 
             return Page();
         }
