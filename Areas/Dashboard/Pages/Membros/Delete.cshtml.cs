@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-using AcquaJrApplication.Data;
-using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 {
@@ -55,8 +51,17 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 
             if (membro != null)
             {
-                await _membroRepository.Remover(membro.Id);
-                return RedirectToPage("./Index");
+                try
+                {
+                    await _membroRepository.ExcluirAsync(id);
+                }
+                catch (DomainException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    MembroVM = new MembroViewModel(membro);
+
+                    return Page();
+                }
             }
 
             return RedirectToPage("./Index");

@@ -10,7 +10,12 @@ namespace AcquaJrApplication.Data.Repository
 {
     public class ServicoRepository : Repository<Servico>, IServicoRepository
     {
-        public ServicoRepository(ApplicationDbContext context) : base(context) { }
+        private readonly IProjetoRepository _projetoRepository;
+
+        public ServicoRepository(ApplicationDbContext context, IProjetoRepository projetoRepository) : base(context)
+        {
+            _projetoRepository = projetoRepository;
+        }
 
         public async Task<Servico> ObterServico(Guid id)
         {
@@ -23,6 +28,19 @@ namespace AcquaJrApplication.Data.Repository
             return await Db.Servicos.AsNoTracking()
                 .OrderBy(s => s.Nome)
                 .ToListAsync();
+        }
+
+        public async Task ExcluirAsync(Guid id)
+        {
+            var servico = await ObterServico(id);
+            var projetos = _projetoRepository.ObterProjetos().Where(projetos => projetos.ServicoId == id).ToList();
+
+            if (projetos.Count() > 0)
+            {
+                DomainException.When(true, "Este serviço não pode ser deletado, pois está vinculado a algum projeto.");
+            }
+            
+            await Remover(servico.Id);
         }
     }
 }

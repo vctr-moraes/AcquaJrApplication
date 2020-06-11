@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AcquaJrApplication.Models
 {
@@ -11,7 +8,10 @@ namespace AcquaJrApplication.Models
 
         public static void When(bool condicao, string mensagem)
         {
-            if (condicao) throw new DomainException(mensagem);
+            if (condicao)
+            {
+                throw new DomainException(mensagem);
+            }
         }
     }
 }

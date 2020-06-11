@@ -7,8 +7,8 @@ namespace AcquaJrApplication.Models
 {
     public class MembroProjeto : Entity
     {
-        public int MembroId { get; set; }
-        public int ProjetoId { get; set; }
+        public Guid MembroId { get; set; }
+        public Guid ProjetoId { get; set; }
 
         /* EF Relations */
         public Membro Membro { get; set; }

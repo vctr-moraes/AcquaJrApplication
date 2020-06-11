@@ -11,9 +11,13 @@
 <h3>@ViewData["Title"]</h3>
 
 <h4 class="text-danger">Tem certeza que deseja deletar este serviço?</h4>
+
 <div>
     <hr />
+    <div asp-validation-summary="ModelOnly" class="alert alert-warning"></div>
+    
     @{ await Html.RenderPartialAsync("_ServicoDetalhesPartial", Model.ServicoVM); }
+
     <form method="post">
         <input type="hidden" asp-for="ServicoVM.Id" />
         <input type="submit" value="Deletar" class="btn btn-danger" /> |

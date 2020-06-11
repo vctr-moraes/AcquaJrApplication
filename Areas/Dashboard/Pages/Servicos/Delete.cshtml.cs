@@ -56,8 +56,17 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 
             if (servico != null)
             {
-                await _servicoRepository.Remover(servico.Id);
-                return RedirectToPage("./Index");
+                try
+                {
+                    await _servicoRepository.ExcluirAsync(id);
+                }
+                catch(DomainException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    ServicoVM = new ServicoViewModel(servico);
+
+                    return Page();
+                }
             }
 
             return RedirectToPage("./Index");

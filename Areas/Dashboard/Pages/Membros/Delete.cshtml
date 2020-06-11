@@ -13,7 +13,10 @@
 <h4 class="text-danger">Tem certeza que deseja deletar este membro?</h4>
 <div>
     <hr />
+    <div asp-validation-summary="ModelOnly" class="alert alert-warning"></div>
+
     @{ await Html.RenderPartialAsync("_MembroDetalhesPartial", Model.MembroVM); }
+
     <form method="post">
         <input type="hidden" asp-for="MembroVM.Id" />
         <input type="submit" value="Deletar" class="btn btn-danger" /> |

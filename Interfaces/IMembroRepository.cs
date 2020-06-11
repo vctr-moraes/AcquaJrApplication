@@ -12,5 +12,7 @@ namespace AcquaJrApplication.Interfaces
 
         List<Membro> ObterMembrosAtivos();
         List<Membro> ObterMembrosInativos();
+
+        Task ExcluirAsync(Guid id);
     }
 }

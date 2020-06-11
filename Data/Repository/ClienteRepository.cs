@@ -33,12 +33,13 @@ namespace AcquaJrApplication.Data.Repository
         public async Task ExcluirAsync(Guid id)
         {
             var cliente = await ObterCliente(id);
+            var projetos = _projetoRepository.ObterProjetos().Where(p => p.ClienteId == id).ToList();
 
-            //var projetos = _projetoRepository.ObterProjetos().Where(p => p.ClienteId == id);
-            //var projeto = _projetoRepository.ObterProjeto(); 
+            if (projetos.Count() > 0)
+            {
+                DomainException.When(true, "Este cliente não pode ser deletado, pois está vinculado a algum projeto.");
+            }
             
-            //DomainException.When(true, "Este Cliente não pode ser excluído, pois está vinculado a algum Projeto.");
-
             await Remover(cliente.Id);
         }
     }

@@ -9,5 +9,7 @@ namespace AcquaJrApplication.Interfaces
     {
         Task<Servico> ObterServico(Guid id);
         Task<List<Servico>> ObterTodosServicos();
+
+        Task ExcluirAsync(Guid id);
     }
 }

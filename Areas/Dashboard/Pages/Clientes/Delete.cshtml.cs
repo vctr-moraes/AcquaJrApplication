@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-using AcquaJrApplication.Data;
-using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
@@ -41,6 +37,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
             }
 
             ClienteVM = new ClienteViewModel(cliente);
+
             return Page();
         }
 
@@ -55,9 +52,17 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 
             if (cliente != null)
             {
-                //await _clienteRepository.Remover(cliente.Id);
-                await _clienteRepository.ExcluirAsync(id);
-                return RedirectToPage("./Index");
+                try
+                {
+                    await _clienteRepository.ExcluirAsync(id);
+                }
+                catch (DomainException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    ClienteVM = new ClienteViewModel(cliente);
+
+                    return Page();
+                }
             }
 
             return RedirectToPage("./Index");

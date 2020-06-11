@@ -10,7 +10,12 @@ namespace AcquaJrApplication.Data.Repository
 {
     public class MembroRepository : Repository<Membro>, IMembroRepository
     {
-        public MembroRepository(ApplicationDbContext context) : base(context) { }
+        private readonly IProjetoRepository _projetoRepository;
+
+        public MembroRepository(ApplicationDbContext context, IProjetoRepository projetoRepository) : base(context)
+        {
+            _projetoRepository = projetoRepository;
+        }
 
         public async Task<Membro> ObterMembro(Guid id)
         {
@@ -39,6 +44,22 @@ namespace AcquaJrApplication.Data.Repository
                 .Where(m => m.Status == false)
                 .OrderBy(m => m.Nome)
                 .ToList();
+        }
+
+        public async Task ExcluirAsync(Guid id)
+        {
+            var membro = await ObterMembro(id);
+            var projetos = _projetoRepository.ObterProjetos().ToList();
+
+            foreach (var item in projetos)
+            {
+                if (item.Membros.Any(p => p.MembroId == id))
+                {
+                    DomainException.When(true, "Este membro não pode ser deletado, pois está vinculado a algum projeto.");
+                }
+            }
+
+            await Remover(membro.Id);
         }
     }
 }
