@@ -19,31 +19,22 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Membro> ObterMembro(Guid id)
         {
-            return await Db.Membros.AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
+            return await Db.Membros.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<IEnumerable<Membro>> ObterTodosMembros()
         {
-            return await Db.Membros.AsNoTracking()
-                .OrderBy(m => m.Nome)
-                .ToListAsync();
+            return await Db.Membros.AsNoTracking().OrderBy(m => m.Nome).ToListAsync();
         }
 
         public List<Membro> ObterMembrosAtivos()
         {
-            return Db.Membros.AsNoTracking()
-                .Where(m => m.Status == true)
-                .OrderBy(m => m.Nome)
-                .ToList();
+            return Db.Membros.AsNoTracking().Where(m => m.Status == true).OrderBy(m => m.Nome).ToList();
         }
 
         public List<Membro> ObterMembrosInativos()
         {
-            return Db.Membros.AsNoTracking()
-                .Where(m => m.Status == false)
-                .OrderBy(m => m.Nome)
-                .ToList();
+            return Db.Membros.AsNoTracking().Where(m => m.Status == false).OrderBy(m => m.Nome).ToList();
         }
 
         public async Task ExcluirAsync(Guid id)

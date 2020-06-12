@@ -14,38 +14,27 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Projeto> ObterProjeto(Guid id)
         {
-            return await Db.Projetos.AsNoTracking()
-                .FirstOrDefaultAsync(p => p.Id == id);
+            return await Db.Projetos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Projeto>> ObterTodosProjetos()
         {
-            return await Db.Projetos.AsNoTracking()
-                .OrderBy(p => p.Nome)
-                .ToListAsync();
+            return await Db.Projetos.AsNoTracking().OrderBy(p => p.Nome).ToListAsync();
         }
 
         public List<Projeto> ObterProjetos()
         {
-            return Db.Projetos.AsNoTracking()
-                .OrderBy(p => p.DataContrato)
-                .ToList();
+            return Db.Projetos.AsNoTracking().OrderBy(p => p.DataContrato).ToList();
         }
 
         public List<Projeto> ObterProjetosAtivos()
         {
-            return Db.Projetos.AsNoTracking()
-                .Where(p => p.DataConclusao == null)
-                .OrderBy(p => p.DataContrato)
-                .ToList();
+            return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao == null).OrderBy(p => p.DataContrato).ToList();
         }
 
         public List<Projeto> ObterProjetosConcluidos()
         {
-            return Db.Projetos.AsNoTracking()
-                .Where(p => p.DataConclusao != null)
-                .OrderBy(p => p.DataConclusao)
-                .ToList();
+            return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao != null).OrderBy(p => p.DataConclusao).ToList();
         }
     }
 }

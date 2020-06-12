@@ -19,22 +19,17 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Servico> ObterServico(Guid id)
         {
-            return await Db.Servicos.AsNoTracking()
-                .FirstOrDefaultAsync(s => s.Id == id);
+            return await Db.Servicos.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task<List<Servico>> ObterTodosServicos()
         {
-            return await Db.Servicos.AsNoTracking()
-                .OrderBy(s => s.Nome)
-                .ToListAsync();
+            return await Db.Servicos.AsNoTracking().OrderBy(s => s.Nome).ToListAsync();
         }
 
         public List<Servico> ObterServicos()
         {
-            return Db.Servicos.AsNoTracking()
-                .OrderBy(s => s.Nome)
-                .ToList();
+            return Db.Servicos.AsNoTracking().OrderBy(s => s.Nome).ToList();
         }
 
         public async Task ExcluirAsync(Guid id)
