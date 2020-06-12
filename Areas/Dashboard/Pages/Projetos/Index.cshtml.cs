@@ -28,7 +28,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
         public async Task<ActionResult> OnGetAsync()
         {
-            Projetos = _projetoRepository.ObterProjetos().Select(projeto => new ProjetoViewModel(projeto)).ToList();
+            Projetos = _projetoRepository.ObterProjetosAtivos().Select(projeto => new ProjetoViewModel(projeto)).ToList();
 
             return Page();
         }

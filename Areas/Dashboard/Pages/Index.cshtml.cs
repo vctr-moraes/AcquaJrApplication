@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages
 {
@@ -13,14 +15,22 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly IProjetoRepository _projetoRepository;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, IProjetoRepository projetoRepository)
         {
             _logger = logger;
+            _projetoRepository = projetoRepository;
         }
 
-        public void OnGet()
+        [BindProperty]
+        public List<ProjetoViewModel> Projetos { get; set; }
+
+        public async Task<ActionResult> OnGetAsync()
         {
+            Projetos = _projetoRepository.ObterProjetosAtivos().Select(projeto => new ProjetoViewModel(projeto)).ToList();
+
+            return Page();
         }
     }
 }
