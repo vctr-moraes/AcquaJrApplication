@@ -5,41 +5,6 @@
     <UserSecretsId>aspnet-AcquaJrApplication-0B102698-827E-4D3B-AE19-4520D9E7E81A</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Data\Migrations\20200502023302_TabelaClientes.cs" />
-    <Compile Remove="Data\Migrations\20200502023302_TabelaClientes.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200507023113_TabelasSistema.cs" />
-    <Compile Remove="Data\Migrations\20200507023113_TabelasSistema.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200507024049_TabelasSistema.cs" />
-    <Compile Remove="Data\Migrations\20200507024049_TabelasSistema.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200516033339_AlteraçõesCampos.cs" />
-    <Compile Remove="Data\Migrations\20200516033339_AlteraçõesCampos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200521025003_TabelasProjetosEMembroProjeto.cs" />
-    <Compile Remove="Data\Migrations\20200521025003_TabelasProjetosEMembroProjeto.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200521025822_TabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200521025822_TabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200521030021_TabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200521030021_TabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200521031550_TabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200521031550_TabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200521032704_TabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200521032704_TabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200521032938_NovaTabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200521032938_NovaTabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200524132425_TabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200524132425_TabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200524132913_TabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200524132913_TabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200524133221_TabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200524133221_TabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200524133418_TabelaProjetos.cs" />
-    <Compile Remove="Data\Migrations\20200524133418_TabelaProjetos.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200531013202_Atualization.cs" />
-    <Compile Remove="Data\Migrations\20200531013202_Atualization.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200531013943_Atualization.cs" />
-    <Compile Remove="Data\Migrations\20200531013943_Atualization.Designer.cs" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="automapper.extensions.microsoft.dependencyinjection" Version="7.0.0" />

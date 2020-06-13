@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AcquaJrApplication.Data.Migrations
+namespace AcquaJrApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200516013200_AlteraçõesCamposTipoData")]
-    partial class AlteraçõesCamposTipoData
+    [Migration("20200613225706_RecriaçãoTabelas")]
+    partial class RecriaçãoTabelas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,19 +33,20 @@ namespace AcquaJrApplication.Data.Migrations
 
                     b.Property<string>("Cep")
                         .IsRequired()
-                        .HasColumnType("varchar(8)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Cidade")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Cnpj")
-                        .HasColumnType("varchar(14)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("varchyar(11)");
+                        .HasColumnType("varchar(20)");
 
-                    b.Property<DateTime>("DataCadastro")
+                    b.Property<DateTime?>("DataCadastro")
+                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<string>("Email")
@@ -82,10 +83,10 @@ namespace AcquaJrApplication.Data.Migrations
 
                     b.Property<string>("Telefone1")
                         .IsRequired()
-                        .HasColumnType("varchar(11)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Telefone2")
-                        .HasColumnType("varchar(11)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<int>("TipoPessoa")
                         .HasColumnType("int");
@@ -108,21 +109,27 @@ namespace AcquaJrApplication.Data.Migrations
                     b.Property<int>("Cargo")
                         .HasColumnType("int");
 
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
+
                     b.Property<string>("Cidade")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
-                        .HasColumnType("varchar(11)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<int>("Curso")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DataEntrada")
+                    b.Property<DateTime?>("DataEntrada")
+                        .IsRequired()
                         .HasColumnType("date");
 
-                    b.Property<DateTime>("DataNascimento")
+                    b.Property<DateTime?>("DataNascimento")
+                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<DateTime?>("DataSaida")
@@ -148,9 +155,12 @@ namespace AcquaJrApplication.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("varchar(11)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<bool>("TemCnh")
                         .HasColumnType("bit");
@@ -169,25 +179,19 @@ namespace AcquaJrApplication.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("MembroId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("MembroId1")
+                    b.Property<Guid>("MembroId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ProjetoId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("ProjetoId1")
+                    b.Property<Guid>("ProjetoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MembroId1");
+                    b.HasIndex("MembroId");
 
-                    b.HasIndex("ProjetoId1");
+                    b.HasIndex("ProjetoId");
 
-                    b.ToTable("MembroProjetos");
+                    b.ToTable("MembrosProjetos");
                 });
 
             modelBuilder.Entity("AcquaJrApplication.Models.Projeto", b =>
@@ -196,39 +200,73 @@ namespace AcquaJrApplication.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Bairro")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Cep")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Cidade")
+                        .HasColumnType("varchar(50)");
+
                     b.Property<Guid>("ClienteId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("DataConclusao")
-                        .HasColumnType("DateTime");
+                    b.Property<decimal?>("CustoInsumos")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("DataContrato")
-                        .HasColumnType("DateTime");
+                    b.Property<decimal?>("CustoMaoDeObra")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("CustoProjeto")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("DataConclusao")
+                        .HasColumnType("date");
+
+                    b.Property<DateTime?>("DataContrato")
+                        .IsRequired()
+                        .HasColumnType("date");
 
                     b.Property<DateTime?>("DataInicio")
-                        .HasColumnType("DateTime");
+                        .HasColumnType("date");
+
+                    b.Property<DateTime?>("DataPrevista")
+                        .HasColumnType("date");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("varchar(1000)");
 
+                    b.Property<string>("Estado")
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Logradouro")
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<Guid>("MembroId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(150)");
 
-                    b.Property<decimal>("Orcamento")
+                    b.Property<decimal?>("Orcamento")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("PontoReferencia")
+                        .HasColumnType("varchar(200)");
 
                     b.Property<Guid>("ServicoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId")
-                        .IsUnique();
+                    b.HasIndex("ClienteId");
 
-                    b.HasIndex("ServicoId")
-                        .IsUnique();
+                    b.HasIndex("MembroId");
+
+                    b.HasIndex("ServicoId");
 
                     b.ToTable("Projetos");
                 });
@@ -250,173 +288,6 @@ namespace AcquaJrApplication.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Servicos");
-                });
-
-            modelBuilder.Entity("AcquaJrApplication.ViewsModels.ClienteViewModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Bairro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Cep")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(8)")
-                        .HasMaxLength(8);
-
-                    b.Property<string>("Cidade")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Cnpj")
-                        .HasColumnType("nvarchar(14)")
-                        .HasMaxLength(14);
-
-                    b.Property<string>("Cpf")
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("InscricaoEstadual")
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Logradouro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.Property<string>("NomeFantasia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Observacoes")
-                        .HasColumnType("nvarchar(500)")
-                        .HasMaxLength(500);
-
-                    b.Property<string>("PontoReferencia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("RazaoSocial")
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.Property<string>("RgCtps")
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Telefone1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
-
-                    b.Property<string>("Telefone2")
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
-
-                    b.Property<int>("TipoPessoa")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ClienteViewModel");
-                });
-
-            modelBuilder.Entity("AcquaJrApplication.ViewsModels.MembroViewModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Bairro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<int>("Cargo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Cidade")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Cpf")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
-
-                    b.Property<int>("Curso")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DataEntrada")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DataSaida")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Logradouro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.Property<string>("MatriculaAcademica")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
-
-                    b.Property<bool>("TemCnh")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("TemSeguro")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MembroViewModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -623,23 +494,30 @@ namespace AcquaJrApplication.Data.Migrations
                 {
                     b.HasOne("AcquaJrApplication.Models.Membro", "Membro")
                         .WithMany()
-                        .HasForeignKey("MembroId1");
+                        .HasForeignKey("MembroId")
+                        .IsRequired();
 
                     b.HasOne("AcquaJrApplication.Models.Projeto", "Projeto")
-                        .WithMany("Membros")
-                        .HasForeignKey("ProjetoId1");
+                        .WithMany()
+                        .HasForeignKey("ProjetoId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AcquaJrApplication.Models.Projeto", b =>
                 {
                     b.HasOne("AcquaJrApplication.Models.Cliente", "Cliente")
-                        .WithOne("Projeto")
-                        .HasForeignKey("AcquaJrApplication.Models.Projeto", "ClienteId")
+                        .WithMany("Projetos")
+                        .HasForeignKey("ClienteId")
+                        .IsRequired();
+
+                    b.HasOne("AcquaJrApplication.Models.Membro", "Membro")
+                        .WithMany("Projetos")
+                        .HasForeignKey("MembroId")
                         .IsRequired();
 
                     b.HasOne("AcquaJrApplication.Models.Servico", "Servico")
-                        .WithOne("Projeto")
-                        .HasForeignKey("AcquaJrApplication.Models.Projeto", "ServicoId")
+                        .WithMany("Projetos")
+                        .HasForeignKey("ServicoId")
                         .IsRequired();
                 });
 

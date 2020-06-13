@@ -11,7 +11,7 @@ namespace AcquaJrApplication.Models
         private string _descricao;
 
         /* EF Relation */
-        private Projeto _projeto;
+        private readonly List<Projeto> _projetos = new List<Projeto>();
 
         public string Nome
         {
@@ -37,11 +37,6 @@ namespace AcquaJrApplication.Models
             }
         }
 
-        public Projeto Projeto
-        {
-            get => _projeto;
-
-            set => _projeto = value;
-        }
+        public ICollection<Projeto> Projetos => _projetos;
     }
 }

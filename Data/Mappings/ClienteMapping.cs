@@ -74,10 +74,6 @@ namespace AcquaJrApplication.Data.Mappings
                 .IsRequired()
                 .HasColumnType("date");
 
-            // 1 : 1 => Cliente : Projeto
-            builder.HasOne(c => c.Projeto)
-                .WithOne(p => p.Cliente);
-
             builder.ToTable("Clientes");
         }
     }

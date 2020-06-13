@@ -37,7 +37,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
         public IActionResult OnGet()
         {
             ProjetoVM = new ProjetoViewModel();
-            //ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
+            ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
             ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
             return Page();
@@ -56,6 +56,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 {
                     ClienteId = ProjetoVM.ClienteId,
                     ServicoId = ProjetoVM.ServicoId,
+                    MembroId = ProjetoVM.MembroId,
                     Nome = ProjetoVM.Nome,
                     Descricao = ProjetoVM.Descricao,
                     CustoMaoDeObra = ProjetoVM.CustoMaoDeObra,

@@ -27,7 +27,7 @@ namespace AcquaJrApplication.Models
         private DateTime? _dataCadastro;
 
         /* EF Relation */
-        private Projeto _projeto;
+        private readonly List<Projeto> _projetos = new List<Projeto>();
 
         public TipoPessoa TipoPessoa
         {
@@ -230,10 +230,6 @@ namespace AcquaJrApplication.Models
             set => _dataCadastro = value;
         }
 
-        public Projeto Projeto
-        {
-            get => _projeto;
-            set => _projeto = value;
-        }
+        public ICollection<Projeto> Projetos => _projetos;
     }
 }

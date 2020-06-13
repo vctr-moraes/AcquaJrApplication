@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AcquaJrApplication.Data.Migrations
+namespace AcquaJrApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -177,25 +177,19 @@ namespace AcquaJrApplication.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("MembroId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("MembroId1")
+                    b.Property<Guid>("MembroId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ProjetoId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("ProjetoId1")
+                    b.Property<Guid>("ProjetoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MembroId1");
+                    b.HasIndex("MembroId");
 
-                    b.HasIndex("ProjetoId1");
+                    b.HasIndex("ProjetoId");
 
-                    b.ToTable("MembroProjetos");
+                    b.ToTable("MembrosProjetos");
                 });
 
             modelBuilder.Entity("AcquaJrApplication.Models.Projeto", b =>
@@ -248,6 +242,9 @@ namespace AcquaJrApplication.Data.Migrations
                     b.Property<string>("Logradouro")
                         .HasColumnType("varchar(150)");
 
+                    b.Property<Guid>("MembroId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(150)");
@@ -263,11 +260,11 @@ namespace AcquaJrApplication.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId")
-                        .IsUnique();
+                    b.HasIndex("ClienteId");
 
-                    b.HasIndex("ServicoId")
-                        .IsUnique();
+                    b.HasIndex("MembroId");
+
+                    b.HasIndex("ServicoId");
 
                     b.ToTable("Projetos");
                 });
@@ -495,23 +492,30 @@ namespace AcquaJrApplication.Data.Migrations
                 {
                     b.HasOne("AcquaJrApplication.Models.Membro", "Membro")
                         .WithMany()
-                        .HasForeignKey("MembroId1");
+                        .HasForeignKey("MembroId")
+                        .IsRequired();
 
                     b.HasOne("AcquaJrApplication.Models.Projeto", "Projeto")
-                        .WithMany("Membros")
-                        .HasForeignKey("ProjetoId1");
+                        .WithMany()
+                        .HasForeignKey("ProjetoId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AcquaJrApplication.Models.Projeto", b =>
                 {
                     b.HasOne("AcquaJrApplication.Models.Cliente", "Cliente")
-                        .WithOne("Projeto")
-                        .HasForeignKey("AcquaJrApplication.Models.Projeto", "ClienteId")
+                        .WithMany("Projetos")
+                        .HasForeignKey("ClienteId")
+                        .IsRequired();
+
+                    b.HasOne("AcquaJrApplication.Models.Membro", "Membro")
+                        .WithMany("Projetos")
+                        .HasForeignKey("MembroId")
                         .IsRequired();
 
                     b.HasOne("AcquaJrApplication.Models.Servico", "Servico")
-                        .WithOne("Projeto")
-                        .HasForeignKey("AcquaJrApplication.Models.Projeto", "ServicoId")
+                        .WithMany("Projetos")
+                        .HasForeignKey("ServicoId")
                         .IsRequired();
                 });
 

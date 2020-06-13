@@ -14,6 +14,7 @@ namespace AcquaJrApplication.ViewsModels
             Id = projeto.Id;
             ClienteId = projeto.ClienteId;
             ServicoId = projeto.ServicoId;
+            MembroId = projeto.MembroId;
             Nome = projeto.Nome;
             Descricao = projeto.Descricao;
             CustoMaoDeObra = projeto.CustoMaoDeObra;
@@ -35,17 +36,11 @@ namespace AcquaJrApplication.ViewsModels
         [Key]
         public Guid Id { get; set; }
 
-        //[Display(Name = "Membros")]
-        //[Required(ErrorMessage = "É necessário selecionar um {0}.")]
-        //public IEnumerable<Membro> Membross { get; set; }
+        [Display(Name = "Membros atuantes no projeto")]
+        [Required(ErrorMessage = "É necessário selecionar algum membro atuante no projeto.")]
+        public Guid MembroId { get; set; }
 
-        //[Display(Name = "Membros envolvidos no projeto")]
-        //[Required(ErrorMessage = "É necessário selecionar os membros envolvidos.")]
-        //public IEnumerable<MembroViewModel> Membros { get; set; }
-
-        //[Display(Name = "Membros")]
-        //[Required(ErrorMessage = "É necessário selecionar os membros envolvidos.")]
-        //public Guid MembroId { get; set; }
+        public MembroViewModel Membro { get; set; }
 
         [Display(Name = "Cliente")]
         [Required(ErrorMessage = "É necessário selecionar um {0}.")]
