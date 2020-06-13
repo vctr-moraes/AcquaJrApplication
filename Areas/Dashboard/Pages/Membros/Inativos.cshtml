@@ -10,6 +10,13 @@
 
 <h3>@ViewData["Title"]</h3>
 
+<p>
+    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
+        <i class="material-icons">add</i>
+        Novo membro
+    </a>
+</p>
+
 @if (Model.Membros.Count == 0)
 {
     <div class="vertical-center justify-content-center">

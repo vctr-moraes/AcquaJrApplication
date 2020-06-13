@@ -61,7 +61,7 @@
                     {
                         <div class="list-group list-group-flush" id="accordionTwo">
                             <div class="expansion-panel list-group-item">
-                                <a aria-controls="collapseFour" aria-expanded="false" class="expansion-panel-toggler collapsed" data-toggle="collapse" href="#@Html.DisplayFor(modelItem => item.Id)" id="headingFour+@Html.DisplayFor(modelItem => item.Id)">
+                                <a aria-controls="collapseFour" aria-expanded="false" class="expansion-panel-toggler collapsed" data-toggle="collapse" href="#@Html.DisplayFor(modelItem => item.Id)" id="@Html.DisplayFor(modelItem => item.Id)">
                                     @Html.DisplayFor(modelItem => item.Nome)
                                     <div class="expansion-panel-icon ml-3 text-black-secondary">
                                         @*@if(Html.DisplayFor(modelItem => item.DataPrevista) < DateTime.Now)
@@ -72,7 +72,7 @@
                                         <i class="collapsed-hide material-icons">keyboard_arrow_up</i>
                                     </div>
                                 </a>
-                                <div aria-labelledby="headingFour+@Html.DisplayFor(modelItem => item.Id)" class="collapse" data-parent="#accordionTwo" id="@Html.DisplayFor(modelItem => item.Id)">
+                                <div aria-labelledby="@Html.DisplayFor(modelItem => item.Id)" class="collapse" data-parent="#accordionTwo" id="@Html.DisplayFor(modelItem => item.Id)">
                                     <div class="expansion-panel-body">
                                         @Html.DisplayFor(modelItem => item.Descricao)
                                     </div>

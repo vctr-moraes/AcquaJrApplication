@@ -43,13 +43,21 @@ namespace AcquaJrApplication.ViewsModels
         //[Required(ErrorMessage = "É necessário selecionar os membros envolvidos.")]
         //public IEnumerable<MembroViewModel> Membros { get; set; }
 
+        //[Display(Name = "Membros")]
+        //[Required(ErrorMessage = "É necessário selecionar os membros envolvidos.")]
+        //public Guid MembroId { get; set; }
+
         [Display(Name = "Cliente")]
         [Required(ErrorMessage = "É necessário selecionar um {0}.")]
         public Guid ClienteId { get; set; }
 
+        public ClienteViewModel Cliente { get; set; }
+
         [Display(Name = "Serviço")]
         [Required(ErrorMessage = "É necessário selecionar um {0}.")]
         public Guid ServicoId { get; set; }
+
+        public Servico Servico { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]

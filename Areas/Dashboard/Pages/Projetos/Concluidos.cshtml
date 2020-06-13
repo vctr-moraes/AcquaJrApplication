@@ -1,5 +1,6 @@
 ﻿@page
 @model AcquaJrApplication.Areas.Dashboard.Pages.Projetos.ConcluidosModel
+
 @{
     ViewData["Title"] = "Projetos concluídos";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -8,6 +9,13 @@
 <partial name="_DashboardNavPartialView" />
 
 <h3>@ViewData["Title"]</h3>
+
+<p>
+    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
+        <i class="material-icons">add</i>
+        Novo projeto
+    </a>
+</p>
 
 @if (Model.Projetos.Count == 0)
 {
