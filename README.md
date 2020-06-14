@@ -3,6 +3,9 @@ Este é um projeto de desenvolvimento web para gestão dos recursos e negócios 
 
 ### Tecnologias
 * ASP.NET Core 3.1 LTS Razor Pages
+* ASP.NET Identity Core
+* Entity Framework Core
+* .NET Core injeção de depência nativa
 * C#
 * MSTest
 * Javascript
