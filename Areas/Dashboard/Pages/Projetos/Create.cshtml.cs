@@ -20,13 +20,19 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
         private readonly IProjetoRepository _projetoRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IServicoRepository _servicoRepository;
+        private readonly IMembroRepository _membroRepository;
 
-        public CreateModel(ApplicationDbContext context, IProjetoRepository projetoRepository, IClienteRepository clienteRepository, IServicoRepository servicoRepository)
+        public CreateModel(ApplicationDbContext context,
+            IProjetoRepository projetoRepository,
+            IClienteRepository clienteRepository,
+            IServicoRepository servicoRepository,
+            IMembroRepository membroRepository)
         {
             _context = context;
             _projetoRepository = projetoRepository;
             _clienteRepository = clienteRepository;
             _servicoRepository = servicoRepository;
+            _membroRepository = membroRepository;
 
             ProjetoVM = new ProjetoViewModel();
         }
@@ -56,7 +62,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 {
                     ClienteId = ProjetoVM.ClienteId,
                     ServicoId = ProjetoVM.ServicoId,
-                    MembroId = ProjetoVM.MembroId,
                     Nome = ProjetoVM.Nome,
                     Descricao = ProjetoVM.Descricao,
                     CustoMaoDeObra = ProjetoVM.CustoMaoDeObra,
@@ -74,6 +79,13 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     DataInicio = ProjetoVM.DataInicio,
                     DataConclusao = ProjetoVM.DataConclusao
                 };
+
+                var membros = _membroRepository.ObterMembrosAtivos();
+
+                foreach (var item in membros)
+                {
+                    projeto.AdicionarMembro(item);
+                }
 
                 await _projetoRepository.Adicionar(projeto);
                 return RedirectToPage("./Index");

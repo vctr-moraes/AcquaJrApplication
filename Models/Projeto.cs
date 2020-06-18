@@ -9,7 +9,6 @@ namespace AcquaJrApplication.Models
     {
         private Guid _clienteId;
         private Guid _servicoId;
-        private Guid _membroId;
         private string _nome;
         private string _descricao;
         private decimal? _custoMaoDeObra;
@@ -30,8 +29,7 @@ namespace AcquaJrApplication.Models
         /* EF Relations */
         private Cliente _cliente;
         private Servico _servico;
-        private Membro _membro;
-        //private readonly List<Membro> _membros = new List<Membro>();
+        private readonly List<MembroProjeto> _membros = new List<MembroProjeto>();
 
         public string Nome
         {
@@ -181,23 +179,6 @@ namespace AcquaJrApplication.Models
             set => _servicoId = value;
         }
 
-        public Membro Membro
-        {
-            get => _membro;
-
-            set
-            {
-                DomainException.When(value == null, "É necessário selecionar algum membro participante no projeto.");
-                _membro = value;
-            }
-        }
-
-        public Guid MembroId
-        {
-            get => _membroId;
-            set => _membroId = value;
-        }
-
         public DateTime? DataContrato
         {
             get => _dataContrato;
@@ -222,6 +203,8 @@ namespace AcquaJrApplication.Models
             set => _dataConclusao = value;
         }
 
-        //public ICollection<Membro> Membros => _membros;
+        public ICollection<MembroProjeto> Membros => _membros;
+
+        public void AdicionarMembro(Membro membro) => _membros.Add(new MembroProjeto(this, membro));
     }
 }

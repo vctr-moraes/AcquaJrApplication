@@ -242,7 +242,6 @@ namespace AcquaJrApplication.Migrations
                     Estado = table.Column<string>(type: "varchar(50)", nullable: true),
                     ClienteId = table.Column<Guid>(nullable: false),
                     ServicoId = table.Column<Guid>(nullable: false),
-                    MembroId = table.Column<Guid>(nullable: false),
                     DataContrato = table.Column<DateTime>(type: "date", nullable: false),
                     DataPrevista = table.Column<DateTime>(type: "date", nullable: true),
                     DataInicio = table.Column<DateTime>(type: "date", nullable: true),
@@ -258,12 +257,6 @@ namespace AcquaJrApplication.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Projetos_Membros_MembroId",
-                        column: x => x.MembroId,
-                        principalTable: "Membros",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Projetos_Servicos_ServicoId",
                         column: x => x.ServicoId,
                         principalTable: "Servicos",
@@ -272,7 +265,7 @@ namespace AcquaJrApplication.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MembrosProjetos",
+                name: "MembroProjetos",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -281,15 +274,15 @@ namespace AcquaJrApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MembrosProjetos", x => x.Id);
+                    table.PrimaryKey("PK_MembroProjetos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MembrosProjetos_Membros_MembroId",
+                        name: "FK_MembroProjetos_Membros_MembroId",
                         column: x => x.MembroId,
                         principalTable: "Membros",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_MembrosProjetos_Projetos_ProjetoId",
+                        name: "FK_MembroProjetos_Projetos_ProjetoId",
                         column: x => x.ProjetoId,
                         principalTable: "Projetos",
                         principalColumn: "Id",
@@ -336,24 +329,19 @@ namespace AcquaJrApplication.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MembrosProjetos_MembroId",
-                table: "MembrosProjetos",
+                name: "IX_MembroProjetos_MembroId",
+                table: "MembroProjetos",
                 column: "MembroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MembrosProjetos_ProjetoId",
-                table: "MembrosProjetos",
+                name: "IX_MembroProjetos_ProjetoId",
+                table: "MembroProjetos",
                 column: "ProjetoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projetos_ClienteId",
                 table: "Projetos",
                 column: "ClienteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projetos_MembroId",
-                table: "Projetos",
-                column: "MembroId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projetos_ServicoId",
@@ -379,7 +367,7 @@ namespace AcquaJrApplication.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "MembrosProjetos");
+                name: "MembroProjetos");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -388,13 +376,13 @@ namespace AcquaJrApplication.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Membros");
+
+            migrationBuilder.DropTable(
                 name: "Projetos");
 
             migrationBuilder.DropTable(
                 name: "Clientes");
-
-            migrationBuilder.DropTable(
-                name: "Membros");
 
             migrationBuilder.DropTable(
                 name: "Servicos");

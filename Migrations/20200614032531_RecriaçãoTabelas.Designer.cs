@@ -4,14 +4,16 @@ using AcquaJrApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AcquaJrApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200614032531_RecriaçãoTabelas")]
+    partial class RecriaçãoTabelas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,7 +191,7 @@ namespace AcquaJrApplication.Migrations
 
                     b.HasIndex("ProjetoId");
 
-                    b.ToTable("MembrosProjetos");
+                    b.ToTable("MembroProjetos");
                 });
 
             modelBuilder.Entity("AcquaJrApplication.Models.Projeto", b =>
@@ -242,9 +244,6 @@ namespace AcquaJrApplication.Migrations
                     b.Property<string>("Logradouro")
                         .HasColumnType("varchar(150)");
 
-                    b.Property<Guid>("MembroId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(150)");
@@ -261,8 +260,6 @@ namespace AcquaJrApplication.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("MembroId");
 
                     b.HasIndex("ServicoId");
 
@@ -506,11 +503,6 @@ namespace AcquaJrApplication.Migrations
                     b.HasOne("AcquaJrApplication.Models.Cliente", "Cliente")
                         .WithMany("Projetos")
                         .HasForeignKey("ClienteId")
-                        .IsRequired();
-
-                    b.HasOne("AcquaJrApplication.Models.Membro", "Membro")
-                        .WithMany("Projetos")
-                        .HasForeignKey("MembroId")
                         .IsRequired();
 
                     b.HasOne("AcquaJrApplication.Models.Servico", "Servico")

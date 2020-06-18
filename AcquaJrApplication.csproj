@@ -5,6 +5,11 @@
     <UserSecretsId>aspnet-AcquaJrApplication-0B102698-827E-4D3B-AE19-4520D9E7E81A</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20200618003030_AtualizaçãoTabelaProjetos.cs" />
+    <Compile Remove="Migrations\20200618003030_AtualizaçãoTabelaProjetos.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="automapper.extensions.microsoft.dependencyinjection" Version="7.0.0" />

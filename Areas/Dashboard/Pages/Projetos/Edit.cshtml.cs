@@ -75,7 +75,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
                 projeto.ClienteId = ProjetoVM.ClienteId;
                 projeto.ServicoId = ProjetoVM.ServicoId;
-                projeto.MembroId = ProjetoVM.MembroId;
                 projeto.Nome = ProjetoVM.Nome;
                 projeto.Descricao = ProjetoVM.Descricao;
                 projeto.CustoMaoDeObra = ProjetoVM.CustoMaoDeObra;

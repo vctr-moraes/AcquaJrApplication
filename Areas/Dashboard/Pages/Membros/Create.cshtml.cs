@@ -62,7 +62,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                     DataEntrada = MembroVM.DataEntrada,
                     DataSaida = MembroVM.DataSaida,
                     Status = MembroVM.Status
-            };
+                };
 
                 await _membroRepository.Adicionar(membro);
                 return RedirectToPage("./Index");

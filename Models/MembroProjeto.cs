@@ -7,6 +7,16 @@ namespace AcquaJrApplication.Models
 {
     public class MembroProjeto : Entity
     {
+        public MembroProjeto() { }
+
+        public MembroProjeto(Projeto projeto, Membro membro)
+        {
+            Membro = membro;
+            MembroId = membro.Id;
+            Projeto = projeto;
+            ProjetoId = projeto.Id;
+        }
+
         public Guid MembroId { get; set; }
         public Guid ProjetoId { get; set; }
 

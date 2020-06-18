@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.ViewsModels
@@ -12,9 +13,10 @@ namespace AcquaJrApplication.ViewsModels
         public ProjetoViewModel(Projeto projeto)
         {
             Id = projeto.Id;
+            MembrosId = projeto.Membros.Select(m => m.Id).ToArray();
             ClienteId = projeto.ClienteId;
             ServicoId = projeto.ServicoId;
-            MembroId = projeto.MembroId;
+            //MembroId = projeto.MembroId;
             Nome = projeto.Nome;
             Descricao = projeto.Descricao;
             CustoMaoDeObra = projeto.CustoMaoDeObra;
@@ -40,7 +42,9 @@ namespace AcquaJrApplication.ViewsModels
         [Required(ErrorMessage = "É necessário selecionar algum membro atuante no projeto.")]
         public Guid MembroId { get; set; }
 
-        public MembroViewModel Membro { get; set; }
+        public IEnumerable<MembroViewModel> Membros { get; set; }
+
+        public Guid[] MembrosId { get; set; }
 
         [Display(Name = "Cliente")]
         [Required(ErrorMessage = "É necessário selecionar um {0}.")]
@@ -67,22 +71,22 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Custo da Mão de Obra")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public decimal? CustoMaoDeObra { get; set; }
 
         [Display(Name = "Custo do Projeto")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public decimal? CustoProjeto { get; set; }
 
         [Display(Name = "Custo dos Insumos")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public decimal? CustoInsumos { get; set; }
 
         [Display(Name = "Orçamento")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public decimal? Orcamento { get; set; }
 
         [Display(Name = "Logradouro")]
