@@ -32,7 +32,17 @@ namespace AcquaJrApplication.Data.Repository
             return Db.Clientes.AsNoTracking().OrderBy(c => c.NomeFantasia).ToList();
         }
 
-        public async Task ExcluirAsync(Guid id)
+        public async Task SalvarCliente(Cliente cliente)
+        {
+            await Adicionar(cliente);
+        }
+
+        public async Task AtualizarCliente(Cliente cliente)
+        {
+            await Atualizar(cliente);
+        }
+
+        public async Task ExcluirCliente(Guid id)
         {
             var cliente = await ObterCliente(id);
             var projetos = _projetoRepository.ObterProjetos().Where(p => p.ClienteId == id).ToList();

@@ -11,6 +11,8 @@ namespace AcquaJrApplication.Interfaces
         Task<IEnumerable<Cliente>> ObterTodosClientes();
 
         List<Cliente> ObterClientes();
-        Task ExcluirAsync(Guid id);
+        Task SalvarCliente(Cliente cliente);
+        Task AtualizarCliente(Cliente cliente);
+        Task ExcluirCliente(Guid id);
     }
 }

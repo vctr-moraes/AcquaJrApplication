@@ -54,7 +54,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
             {
                 try
                 {
-                    await _clienteRepository.ExcluirAsync(id);
+                    await _clienteRepository.ExcluirCliente(id);
                 }
                 catch (DomainException ex)
                 {

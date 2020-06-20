@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using AcquaJrApplication.ViewsModels;
 using AcquaJrApplication.Interfaces;
-using System.Globalization;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
 {
@@ -65,7 +59,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                     DataCadastro = ClienteVM.DataCadastro
                 };
 
-                await _clienteRepository.Adicionar(cliente);
+                await _clienteRepository.SalvarCliente(cliente);
                 return RedirectToPage("./Index");
             }
             catch (DomainException ex)
