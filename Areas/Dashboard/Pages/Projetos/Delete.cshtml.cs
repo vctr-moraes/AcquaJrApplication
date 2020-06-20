@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.Interfaces;
@@ -16,12 +12,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
     [Authorize]
     public class DeleteModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
         private readonly IProjetoRepository _projetoRepository;
 
-        public DeleteModel(AcquaJrApplication.Data.ApplicationDbContext context, IProjetoRepository projetoRepository)
+        public DeleteModel(IProjetoRepository projetoRepository)
         {
-            _context = context;
             _projetoRepository = projetoRepository;
         }
 
@@ -58,8 +52,17 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             if (projeto != null)
             {
-                _context.Projetos.Remove(projeto);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    await _projetoRepository.ExcluirAsync(id);
+                }
+                catch (DomainException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    ProjetoVM = new ProjetoViewModel(projeto);
+
+                    return Page();
+                }
             }
 
             return RedirectToPage("./Index");

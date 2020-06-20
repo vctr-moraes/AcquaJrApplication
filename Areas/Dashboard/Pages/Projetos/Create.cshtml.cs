@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -42,10 +40,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
         public IActionResult OnGet()
         {
-            //ProjetoVM = new ProjetoViewModel();
-            //ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
-            //ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
-            //ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
             return Page();
         }
 
@@ -87,7 +81,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     projeto.AdicionarMembro(item);
                 }
 
-                await _projetoRepository.Adicionar(projeto);
+                await _projetoRepository.SalvarProjeto(projeto);
                 return RedirectToPage("./Index");
             }
             catch (DomainException ex)

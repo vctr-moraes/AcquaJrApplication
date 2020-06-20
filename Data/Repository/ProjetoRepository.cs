@@ -17,11 +17,6 @@ namespace AcquaJrApplication.Data.Repository
             return await Db.Projetos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<Projeto>> ObterTodosProjetos()
-        {
-            return await Db.Projetos.AsNoTracking().OrderBy(p => p.Nome).ToListAsync();
-        }
-
         public List<Projeto> ObterProjetos()
         {
             return Db.Projetos.AsNoTracking().OrderBy(p => p.DataContrato).ToList();
@@ -35,6 +30,22 @@ namespace AcquaJrApplication.Data.Repository
         public List<Projeto> ObterProjetosConcluidos()
         {
             return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao != null).OrderBy(p => p.DataConclusao).ToList();
+        }
+
+        public async Task SalvarProjeto(Projeto projeto)
+        {
+            await Adicionar(projeto);
+        }
+
+        public async Task AtualizarProjeto(Projeto projeto)
+        {
+            await Atualizar(projeto);
+        }
+
+        public async Task ExcluirAsync(Guid id)
+        {
+            var projeto = await ObterProjeto(id);
+            await Remover(projeto.Id);
         }
     }
 }

@@ -8,10 +8,11 @@ namespace AcquaJrApplication.Interfaces
     public interface IProjetoRepository : IRepository<Projeto>
     {
         Task<Projeto> ObterProjeto(Guid id);
-        Task<IEnumerable<Projeto>> ObterTodosProjetos();
-
         List<Projeto> ObterProjetos();
         List<Projeto> ObterProjetosAtivos();
         List<Projeto> ObterProjetosConcluidos();
+        Task SalvarProjeto(Projeto projeto);
+        Task AtualizarProjeto(Projeto projeto);
+        Task ExcluirAsync(Guid id);
     }
 }

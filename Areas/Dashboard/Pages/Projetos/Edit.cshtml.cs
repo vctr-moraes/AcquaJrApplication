@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
-using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
 
@@ -22,7 +19,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
         private readonly IClienteRepository _clienteRepository;
         private readonly IServicoRepository _servicoRepository;
 
-        public EditModel(ApplicationDbContext context, IProjetoRepository projetoRepository, IClienteRepository clienteRepository, IServicoRepository servicoRepository)
+        public EditModel(ApplicationDbContext context,
+            IProjetoRepository projetoRepository,
+            IClienteRepository clienteRepository,
+            IServicoRepository servicoRepository)
         {
             _context = context;
             _projetoRepository = projetoRepository;
@@ -41,10 +41,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
             {
                 return NotFound();
             }
-
-            //Projeto = await _context.Projetos
-            //    .Include(p => p.Cliente)
-            //    .Include(p => p.Servico).FirstOrDefaultAsync(m => m.Id == id);
 
             var projeto = await _projetoRepository.ObterPorId(id);
 
@@ -92,7 +88,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 projeto.DataInicio = ProjetoVM.DataInicio;
                 projeto.DataConclusao = ProjetoVM.DataConclusao;
 
-                await _projetoRepository.Atualizar(projeto);
+                await _projetoRepository.AtualizarProjeto(projeto);
                 return await Task.FromResult(RedirectToPage("./Index"));
             }
             catch (DomainException ex)
