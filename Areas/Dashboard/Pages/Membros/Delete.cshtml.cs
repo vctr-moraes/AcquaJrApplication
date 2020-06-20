@@ -37,6 +37,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
             }
 
             MembroVM = new MembroViewModel(membro);
+
             return Page();
         }
 
@@ -53,7 +54,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
             {
                 try
                 {
-                    await _membroRepository.ExcluirAsync(id);
+                    await _membroRepository.ExcluirMembroAsync(id);
                 }
                 catch (DomainException ex)
                 {

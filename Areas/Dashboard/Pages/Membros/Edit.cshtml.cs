@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
@@ -75,7 +70,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 membro.DataSaida = MembroVM.DataSaida;
                 membro.Status = MembroVM.Status;
 
-                await _membroRepository.Atualizar(membro);
+                await _membroRepository.AtualizarMembro(membro);
                 return await Task.FromResult(RedirectToPage("./Index"));
             }
             catch (DomainException ex)

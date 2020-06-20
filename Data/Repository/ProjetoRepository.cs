@@ -42,7 +42,7 @@ namespace AcquaJrApplication.Data.Repository
             await Atualizar(projeto);
         }
 
-        public async Task ExcluirAsync(Guid id)
+        public async Task ExcluirProjeto(Guid id)
         {
             var projeto = await ObterProjeto(id);
             await Remover(projeto.Id);

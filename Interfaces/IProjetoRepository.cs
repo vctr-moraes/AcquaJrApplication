@@ -13,6 +13,6 @@ namespace AcquaJrApplication.Interfaces
         List<Projeto> ObterProjetosConcluidos();
         Task SalvarProjeto(Projeto projeto);
         Task AtualizarProjeto(Projeto projeto);
-        Task ExcluirAsync(Guid id);
+        Task ExcluirProjeto(Guid id);
     }
 }

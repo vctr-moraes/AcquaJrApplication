@@ -1,13 +1,8 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-using AcquaJrApplication.Data;
-using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
 
@@ -26,7 +21,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
         [BindProperty]
         public List<MembroViewModel> Membros { get; set; }
 
-        public async Task<ActionResult> OnGetAsync()
+        public ActionResult OnGet()
         {
             Membros = _membroRepository.ObterMembrosAtivos().Select(membro => new MembroViewModel(membro)).ToList();
 
