@@ -26,9 +26,6 @@ namespace AcquaJrApplication.Models
         private DateTime? _dataSaida;
         private bool _status;
 
-        /* EF Relation */
-        private readonly List<Projeto> _projetos = new List<Projeto>();
-
         public string Nome
         {
             get => _nome;
@@ -205,7 +202,5 @@ namespace AcquaJrApplication.Models
             get => _status;
             set => _status = value;
         }
-
-        public ICollection<Projeto> Projetos => _projetos;
     }
 }

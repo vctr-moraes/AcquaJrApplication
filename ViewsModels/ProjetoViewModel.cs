@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using AcquaJrApplication.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AcquaJrApplication.ViewsModels
 {
@@ -16,7 +17,6 @@ namespace AcquaJrApplication.ViewsModels
             MembrosId = projeto.Membros.Select(m => m.Id).ToArray();
             ClienteId = projeto.ClienteId;
             ServicoId = projeto.ServicoId;
-            //MembroId = projeto.MembroId;
             Nome = projeto.Nome;
             Descricao = projeto.Descricao;
             CustoMaoDeObra = projeto.CustoMaoDeObra;
@@ -42,7 +42,7 @@ namespace AcquaJrApplication.ViewsModels
         [Required(ErrorMessage = "É necessário selecionar algum membro atuante no projeto.")]
         public Guid MembroId { get; set; }
 
-        public IEnumerable<MembroViewModel> Membros { get; set; }
+        public IEnumerable<SelectListItem> Membros { get; set; }
 
         public Guid[] MembrosId { get; set; }
 
@@ -52,11 +52,15 @@ namespace AcquaJrApplication.ViewsModels
 
         public ClienteViewModel Cliente { get; set; }
 
+        public IEnumerable<SelectListItem> Clientes { get; set; }
+
         [Display(Name = "Serviço")]
         [Required(ErrorMessage = "É necessário selecionar um {0}.")]
         public Guid ServicoId { get; set; }
 
         public Servico Servico { get; set; }
+
+        public IEnumerable<SelectListItem> Servicos { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]

@@ -242,9 +242,6 @@ namespace AcquaJrApplication.Migrations
                     b.Property<string>("Logradouro")
                         .HasColumnType("varchar(150)");
 
-                    b.Property<Guid?>("MembroId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(150)");
@@ -261,8 +258,6 @@ namespace AcquaJrApplication.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("MembroId");
 
                     b.HasIndex("ServicoId");
 
@@ -507,10 +502,6 @@ namespace AcquaJrApplication.Migrations
                         .WithMany("Projetos")
                         .HasForeignKey("ClienteId")
                         .IsRequired();
-
-                    b.HasOne("AcquaJrApplication.Models.Membro", null)
-                        .WithMany("Projetos")
-                        .HasForeignKey("MembroId");
 
                     b.HasOne("AcquaJrApplication.Models.Servico", "Servico")
                         .WithMany("Projetos")

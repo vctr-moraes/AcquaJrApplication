@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AcquaJrApplication.Migrations
 {
-    public partial class RecriaçãoTabelas : Migration
+    public partial class TabelasSistema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

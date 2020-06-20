@@ -203,7 +203,7 @@ namespace AcquaJrApplication.Models
             set => _dataConclusao = value;
         }
 
-        public ICollection<MembroProjeto> Membros => _membros;
+        public IEnumerable<MembroProjeto> Membros => _membros;
 
         public void AdicionarMembro(Membro membro) => _membros.Add(new MembroProjeto(this, membro));
     }

@@ -42,10 +42,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
         public IActionResult OnGet()
         {
-            ProjetoVM = new ProjetoViewModel();
-            ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
-            ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
+            //ProjetoVM = new ProjetoViewModel();
+            //ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
+            //ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
+            //ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
             return Page();
         }
 
@@ -95,6 +95,39 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return Page();
             }
+        }
+
+        private void InicializarProjeto()
+        {
+            if (ProjetoVM != null)
+            {
+                ProjetoVM.Membros = _membroRepository.ObterMembrosAtivos()
+                    .Select(m => new SelectListItem
+                    {
+                        Text = m.Nome,
+                        Value = m.Id.ToString()
+                    });
+
+                ProjetoVM.Clientes = _clienteRepository.ObterClientes()
+                    .Select(c => new SelectListItem
+                    {
+                        Text = c.NomeFantasia,
+                        Value = c.Id.ToString()
+                    });
+
+                ProjetoVM.Servicos = _servicoRepository.ObterServicos()
+                    .Select(s => new SelectListItem
+                    {
+                        Text = s.Nome,
+                        Value = s.Id.ToString()
+                    });
+            };
+        }
+
+        public override PageResult Page()
+        {
+            InicializarProjeto();
+            return base.Page();
         }
     }
 }

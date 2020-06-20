@@ -35,13 +35,13 @@
             <div class="form-group">
                 <label asp-for="@Model.MembroId" class="control-label"></label>
                 <small id="passwordHelpInline" class="text-muted">*</small>
-                <select asp-for="@Model.MembroId" asp-items="ViewBag.MembroId" class="selectpicker form-control" title="Selecionar" multiple></select>
+                <select asp-for="@Model.MembroId" asp-items="Model.Membros" class="selectpicker form-control" title="Selecionar" multiple></select>
                 <span asp-validation-for="@Model.MembroId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.ClienteId" class="control-label"></label>
                 <small id="passwordHelpInline" class="text-muted">*</small>
-                <select asp-for="@Model.ClienteId" class="form-control" asp-items="ViewBag.ClienteId">
+                <select asp-for="@Model.ClienteId" class="form-control" asp-items="Model.Clientes">
                     <option value="" disabled selected>Selecionar</option>
                 </select>
                 <span asp-validation-for="@Model.ClienteId" class="text-danger"></span>
@@ -49,7 +49,7 @@
             <div class="form-group">
                 <label asp-for="@Model.ServicoId" class="control-label"></label>
                 <small id="passwordHelpInline" class="text-muted">*</small>
-                <select asp-for="@Model.ServicoId" class="form-control" asp-items="ViewBag.ServicoId">
+                <select asp-for="@Model.ServicoId" class="form-control" asp-items="Model.Servicos">
                     <option value="" disabled selected>Selecionar</option>
                 </select>
                 <span asp-validation-for="@Model.ServicoId" class="text-danger"></span>

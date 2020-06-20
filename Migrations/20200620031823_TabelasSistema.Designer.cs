@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AcquaJrApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200618010208_AtualizaçãoTabelaProjetos2")]
-    partial class AtualizaçãoTabelaProjetos2
+    [Migration("20200620031823_TabelasSistema")]
+    partial class TabelasSistema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -244,9 +244,6 @@ namespace AcquaJrApplication.Migrations
                     b.Property<string>("Logradouro")
                         .HasColumnType("varchar(150)");
 
-                    b.Property<Guid?>("MembroId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(150)");
@@ -263,8 +260,6 @@ namespace AcquaJrApplication.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("MembroId");
 
                     b.HasIndex("ServicoId");
 
@@ -509,10 +504,6 @@ namespace AcquaJrApplication.Migrations
                         .WithMany("Projetos")
                         .HasForeignKey("ClienteId")
                         .IsRequired();
-
-                    b.HasOne("AcquaJrApplication.Models.Membro", null)
-                        .WithMany("Projetos")
-                        .HasForeignKey("MembroId");
 
                     b.HasOne("AcquaJrApplication.Models.Servico", "Servico")
                         .WithMany("Projetos")

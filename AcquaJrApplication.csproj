@@ -8,6 +8,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200618003030_AtualizaçãoTabelaProjetos.cs" />
     <Compile Remove="Migrations\20200618003030_AtualizaçãoTabelaProjetos.Designer.cs" />
+    <Compile Remove="Migrations\20200620023549_AtualizaçãoTabela.cs" />
+    <Compile Remove="Migrations\20200620023549_AtualizaçãoTabela.Designer.cs" />
   </ItemGroup>
 
 
