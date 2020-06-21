@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,16 +19,19 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
         private readonly IProjetoRepository _projetoRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IServicoRepository _servicoRepository;
+        private readonly IMembroRepository _membroRepository;
 
         public EditModel(ApplicationDbContext context,
             IProjetoRepository projetoRepository,
             IClienteRepository clienteRepository,
-            IServicoRepository servicoRepository)
+            IServicoRepository servicoRepository,
+            IMembroRepository membroRepository)
         {
             _context = context;
             _projetoRepository = projetoRepository;
             _clienteRepository = clienteRepository;
             _servicoRepository = servicoRepository;
+            _membroRepository = membroRepository;
 
             ProjetoVM = new ProjetoViewModel();
         }
@@ -42,7 +46,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 return NotFound();
             }
 
-            var projeto = await _projetoRepository.ObterPorId(id);
+            var projeto = await _projetoRepository.ObterMembrosProjeto(id);
 
             if (projeto == null)
             {
@@ -51,9 +55,9 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             ProjetoVM = new ProjetoViewModel(projeto);
 
-            ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
-            ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
+            //ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
+            //ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
+            //ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
 
             return Page();
         }
@@ -69,7 +73,9 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
             {
                 Projeto projeto = await _projetoRepository.ObterPorId(ProjetoVM.Id);
 
+                projeto.Cliente = await _clienteRepository.ObterCliente(ProjetoVM.ClienteId);
                 projeto.ClienteId = ProjetoVM.ClienteId;
+                projeto.Servico = await _servicoRepository.ObterServico(ProjetoVM.ServicoId);
                 projeto.ServicoId = ProjetoVM.ServicoId;
                 projeto.Nome = ProjetoVM.Nome;
                 projeto.Descricao = ProjetoVM.Descricao;
@@ -96,6 +102,39 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return Page();
             }
+        }
+
+        private void InicializarProjeto()
+        {
+            if (ProjetoVM != null)
+            {
+                ProjetoVM.Membros = _membroRepository.ObterMembrosAtivos()
+                    .Select(m => new SelectListItem
+                    {
+                        Text = m.Nome,
+                        Value = m.Id.ToString()
+                    });
+
+                ProjetoVM.Clientes = _clienteRepository.ObterClientes()
+                    .Select(c => new SelectListItem
+                    {
+                        Text = c.NomeFantasia,
+                        Value = c.Id.ToString()
+                    });
+
+                ProjetoVM.Servicos = _servicoRepository.ObterServicos()
+                    .Select(s => new SelectListItem
+                    {
+                        Text = s.Nome,
+                        Value = s.Id.ToString()
+                    });
+            };
+        }
+
+        public override PageResult Page()
+        {
+            InicializarProjeto();
+            return base.Page();
         }
     }
 }

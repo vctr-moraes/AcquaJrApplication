@@ -42,19 +42,13 @@
         $('.cep').mask('00000-000');
 
         $(".limpar-modal-endereco").on("click", function () {
-            $("#input-logradouro").val("");
-            $("#input-ponto-referencia").val("");
-            $("#input-bairro").val("");
-            $("#input-cidade").val("");
-            $("#input-cep").val("");
-            $("#input-estado").val("");
+            $(".input-endereco").val("");
         });
 
         $(".limpar-modal-orcamento").on("click", function () {
-            $("#custo-mao-obra").val("");
-            $("#custo-projeto").val("");
-            $("#custo-insumos").val("");
-            $("#orcamento").val("");
+            $(".input-orcamento").val("");
         });
+
+        $('.selectpicker').selectpicker();
     </script>
 }

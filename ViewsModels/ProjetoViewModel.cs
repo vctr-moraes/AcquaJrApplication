@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using AcquaJrApplication.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -15,7 +15,9 @@ namespace AcquaJrApplication.ViewsModels
         {
             Id = projeto.Id;
             MembrosId = projeto.Membros.Select(m => m.Id).ToArray();
+            Cliente = projeto.Cliente;
             ClienteId = projeto.ClienteId;
+            Servico = projeto.Servico;
             ServicoId = projeto.ServicoId;
             Nome = projeto.Nome;
             Descricao = projeto.Descricao;
@@ -33,6 +35,12 @@ namespace AcquaJrApplication.ViewsModels
             DataPrevista = projeto.DataPrevista;
             DataInicio = projeto.DataInicio;
             DataConclusao = projeto.DataConclusao;
+            MembrosProjetos = new List<MembroProjetoViewModel>();
+
+            foreach (var item in projeto.Membros)
+            {
+                MembrosProjetos.Add(new MembroProjetoViewModel(item));
+            }
         }
 
         [Key]
@@ -44,13 +52,16 @@ namespace AcquaJrApplication.ViewsModels
 
         public IEnumerable<SelectListItem> Membros { get; set; }
 
+        public List<MembroProjetoViewModel> MembrosProjetos { get; set; }
+
         public Guid[] MembrosId { get; set; }
 
         [Display(Name = "Cliente")]
         [Required(ErrorMessage = "É necessário selecionar um {0}.")]
         public Guid ClienteId { get; set; }
 
-        public ClienteViewModel Cliente { get; set; }
+        [Display(Name= "Cliente")]
+        public Cliente Cliente { get; set; }
 
         public IEnumerable<SelectListItem> Clientes { get; set; }
 
@@ -58,6 +69,7 @@ namespace AcquaJrApplication.ViewsModels
         [Required(ErrorMessage = "É necessário selecionar um {0}.")]
         public Guid ServicoId { get; set; }
 
+        [Display(Name = "Serviço")]
         public Servico Servico { get; set; }
 
         public IEnumerable<SelectListItem> Servicos { get; set; }

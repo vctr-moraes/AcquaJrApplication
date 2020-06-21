@@ -54,7 +54,9 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
             {
                 Projeto projeto = new Projeto()
                 {
+                    Cliente = await _clienteRepository.ObterPorId(ProjetoVM.ClienteId),
                     ClienteId = ProjetoVM.ClienteId,
+                    Servico = await _servicoRepository.ObterPorId(ProjetoVM.ServicoId),
                     ServicoId = ProjetoVM.ServicoId,
                     Nome = ProjetoVM.Nome,
                     Descricao = ProjetoVM.Descricao,
@@ -74,11 +76,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     DataConclusao = ProjetoVM.DataConclusao
                 };
 
-                var membros = _membroRepository.ObterMembrosAtivos();
-
-                foreach (var item in membros)
+                foreach (var item in ProjetoVM.MembrosId)
                 {
-                    projeto.AdicionarMembro(item);
+                    var membro = await _membroRepository.ObterPorId(item);
+                    projeto.AdicionarMembro(membro);
                 }
 
                 await _projetoRepository.SalvarProjeto(projeto);
