@@ -47,13 +47,13 @@ namespace AcquaJrApplication.Data.Repository
             var membro = await ObterMembro(id);
             var projetos = _projetoRepository.ObterProjetos().ToList();
 
-            //foreach (var item in projetos)
-            //{
-            //    if (item.Membros.Any(p => p.MembroId == id))
-            //    {
-            //        DomainException.When(true, "Este membro não pode ser deletado, pois está vinculado a algum projeto.");
-            //    }
-            //}
+            foreach (var item in projetos)
+            {
+                if (item.Membros.Any(p => p.MembroId == id))
+                {
+                    DomainException.When(true, "Este membro não pode ser deletado, pois está vinculado a algum projeto.");
+                }
+            }
 
             await Remover(membro.Id);
         }

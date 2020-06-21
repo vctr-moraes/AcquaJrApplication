@@ -19,7 +19,12 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Projeto> ObterProjetos()
         {
-            return Db.Projetos.AsNoTracking().OrderBy(p => p.DataContrato).ToList();
+            return Db.Projetos.AsNoTracking()
+                .Include(p => p.Membros)
+                .Include(p => p.Cliente)
+                .Include(p => p.Servico)
+                .OrderBy(p => p.DataContrato)
+                .ToList();
         }
 
         public List<Projeto> ObterProjetosAtivos()
