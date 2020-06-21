@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
@@ -48,7 +43,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                     Descricao = ServicoVM.Descricao
                 };
 
-                await _servicoRepository.Adicionar(servico);
+                await _servicoRepository.SalvarServico(servico);
                 return RedirectToPage("./Index");
             }
             catch (DomainException ex)

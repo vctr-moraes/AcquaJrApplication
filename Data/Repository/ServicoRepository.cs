@@ -32,7 +32,17 @@ namespace AcquaJrApplication.Data.Repository
             return Db.Servicos.AsNoTracking().OrderBy(s => s.Nome).ToList();
         }
 
-        public async Task ExcluirAsync(Guid id)
+        public async Task SalvarServico(Servico servico)
+        {
+            await Adicionar(servico);
+        }
+
+        public async Task AtualizarServico(Servico servico)
+        {
+            await Atualizar(servico);
+        }
+
+        public async Task ExcluirServico(Guid id)
         {
             var servico = await ObterServico(id);
             var projetos = _projetoRepository.ObterProjetos().Where(projetos => projetos.ServicoId == id).ToList();

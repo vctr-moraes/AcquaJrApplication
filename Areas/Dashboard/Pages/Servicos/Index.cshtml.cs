@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-using AcquaJrApplication.Data;
-using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
 
@@ -23,12 +18,12 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
             _servicoRepository = servicoRepository;
         }
 
+        [BindProperty]
         public List<ServicoViewModel> Servicos { get; set; }
 
-        public async Task<ActionResult> OnGetAsync()
+        public ActionResult OnGet()
         {
             Servicos = _servicoRepository.ObterServicos().Select(servico => new ServicoViewModel(servico)).ToList();
-
             return Page();
         }
     }

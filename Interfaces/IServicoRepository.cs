@@ -11,6 +11,8 @@ namespace AcquaJrApplication.Interfaces
         Task<List<Servico>> ObterTodosServicos();
 
         List<Servico> ObterServicos();
-        Task ExcluirAsync(Guid id);
+        Task SalvarServico(Servico servico);
+        Task AtualizarServico(Servico servico);
+        Task ExcluirServico(Guid id);
     }
 }
