@@ -24,7 +24,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
         public ActionResult OnGet()
         {
             Clientes = _clienteRepository.ObterClientes().Select(cliente => new ClienteViewModel(cliente)).ToList();
-
             return Page();
         }
     }

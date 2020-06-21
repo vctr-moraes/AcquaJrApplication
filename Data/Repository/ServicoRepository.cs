@@ -22,11 +22,6 @@ namespace AcquaJrApplication.Data.Repository
             return await Db.Servicos.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id);
         }
 
-        public async Task<List<Servico>> ObterTodosServicos()
-        {
-            return await Db.Servicos.AsNoTracking().OrderBy(s => s.Nome).ToListAsync();
-        }
-
         public List<Servico> ObterServicos()
         {
             return Db.Servicos.AsNoTracking().OrderBy(s => s.Nome).ToList();

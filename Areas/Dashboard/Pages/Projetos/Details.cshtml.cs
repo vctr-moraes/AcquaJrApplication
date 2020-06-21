@@ -36,7 +36,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
             }
 
             ProjetoVM = new ProjetoViewModel(projeto);
-
             return Page();
         }
     }

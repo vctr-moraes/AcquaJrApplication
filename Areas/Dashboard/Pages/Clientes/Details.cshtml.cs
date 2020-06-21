@@ -41,7 +41,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
             }
 
             ClienteVM = new ClienteViewModel(cliente);
-
             return Page();
         }
     }

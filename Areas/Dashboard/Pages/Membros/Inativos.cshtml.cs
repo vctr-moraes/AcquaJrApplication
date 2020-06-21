@@ -24,7 +24,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
         public ActionResult OnGet()
         {
             Membros = _membroRepository.ObterMembrosInativos().Select(membro => new MembroViewModel(membro)).ToList();
-
             return Page();
         }
     }

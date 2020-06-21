@@ -24,7 +24,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
         public ActionResult OnGet()
         {
             Projetos = _projetoRepository.ObterProjetosConcluidos().Select(projeto => new ProjetoViewModel(projeto)).ToList();
-
             return Page();
         }
     }

@@ -36,7 +36,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
             }
 
             MembroVM = new MembroViewModel(membro);
-
             return Page();
         }
     }
