@@ -6,6 +6,15 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+<style>
+    .descricao-servico {
+        max-width: 45ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
 <partial name="_DashboardNavPartialView" />
 
 <h3>@ViewData["Title"]</h3>
@@ -44,7 +53,7 @@ else
                     <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
-                    <td class="descricao" title="@Html.DisplayFor(modelItem => item.Descricao)">
+                    <td class="descricao descricao-servico" title="@Html.DisplayFor(modelItem => item.Descricao)">
                         @Html.DisplayFor(modelItem => item.Descricao)
                     </td>
                     <td class="text-right">

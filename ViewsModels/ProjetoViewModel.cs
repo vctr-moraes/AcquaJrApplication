@@ -21,10 +21,10 @@ namespace AcquaJrApplication.ViewsModels
             ServicoId = projeto.ServicoId;
             Nome = projeto.Nome;
             Descricao = projeto.Descricao;
-            CustoMaoDeObra = projeto.CustoMaoDeObra;
-            CustoProjeto = projeto.CustoProjeto;
-            CustoInsumos = projeto.CustoInsumos;
-            Orcamento = projeto.Orcamento;
+            CustoMaoDeObra = Convert.ToString(projeto.CustoMaoDeObra);
+            CustoProjeto = Convert.ToString(projeto.CustoProjeto);
+            CustoInsumos = Convert.ToString(projeto.CustoInsumos);
+            Orcamento = Convert.ToString(projeto.Orcamento);
             Logradouro = projeto.Logradouro;
             PontoReferencia = projeto.PontoReferencia;
             Bairro = projeto.Bairro;
@@ -88,22 +88,22 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Custo da Mão de Obra")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public decimal? CustoMaoDeObra { get; set; }
+        public string? CustoMaoDeObra { get; set; }
 
         [Display(Name = "Custo do Projeto")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public decimal? CustoProjeto { get; set; }
+        public string? CustoProjeto { get; set; }
 
         [Display(Name = "Custo dos Insumos")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public decimal? CustoInsumos { get; set; }
+        public string? CustoInsumos { get; set; }
 
         [Display(Name = "Orçamento")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public decimal? Orcamento { get; set; }
+        public string? Orcamento { get; set; }
 
         [Display(Name = "Logradouro")]
         [MaxLength(150, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]

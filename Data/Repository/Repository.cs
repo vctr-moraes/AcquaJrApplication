@@ -49,8 +49,8 @@ namespace AcquaJrApplication.Data.Repository
 
         public virtual async Task Remover(Guid id)
         {
-            var cliente = await ObterPorId(id);
-            DbSet.Remove(cliente);
+            var entity = await ObterPorId(id);
+            DbSet.Remove(entity);
             await SaveChanges();
         }
 

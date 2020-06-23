@@ -14,3 +14,5 @@
 $('.cep').mask('00000-000');
 
 $('.selectpicker').selectpicker();
+
+$('.formata-valor').mask('#.##0,00', { reverse: true });

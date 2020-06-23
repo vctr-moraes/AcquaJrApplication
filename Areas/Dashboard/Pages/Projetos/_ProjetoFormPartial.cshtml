@@ -79,22 +79,22 @@
         <div class="tab-pane fade" id="nav-orcamento" role="tabpanel" aria-labelledby="nav-orcamento-tab">
             <div class="form-group">
                 <label asp-for="@Model.CustoMaoDeObra" class="control-label"></label>
-                <input asp-for="@Model.CustoMaoDeObra" type="text" oninput="calcularOrcamento()" name="CustoMaoDeObra" id="custo-mao-obra" class="form-control orcamento input-orcamento" placeholder="0.00" />
+                <input asp-for="@Model.CustoMaoDeObra" type="text" oninput="calcularOrcamento()" name="CustoMaoDeObra" id="custo-mao-obra" class="form-control orcamento formata-valor" placeholder="0.00" />
                 <span asp-validation-for="@Model.CustoMaoDeObra" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.CustoProjeto" class="control-label"></label>
-                <input asp-for="@Model.CustoProjeto" type="text" oninput="calcularOrcamento()" name="CustoProjeto" id="custo-projeto" class="form-control orcamento input-orcamento" placeholder="0.00" />
+                <input asp-for="@Model.CustoProjeto" type="text" oninput="calcularOrcamento()" name="CustoProjeto" id="custo-projeto" class="form-control orcamento formata-valor" placeholder="0.00" />
                 <span asp-validation-for="@Model.CustoProjeto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.CustoInsumos" class="control-label"></label>
-                <input asp-for="@Model.CustoInsumos" type="text" oninput="calcularOrcamento()" name="CustoInsumos" id="custo-insumos" class="form-control orcamento input-orcamento" placeholder="0.00" />
+                <input asp-for="@Model.CustoInsumos" type="text" oninput="calcularOrcamento()" name="CustoInsumos" id="custo-insumos" class="form-control orcamento formata-valor" placeholder="0.00" />
                 <span asp-validation-for="@Model.CustoInsumos" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Orcamento" class="control-label"></label>
-                <input asp-for="@Model.Orcamento" type="text" name="Orcamento" id="orcamento" class="form-control form-control-lg input-orcamento" placeholder="0.00" readonly />
+                <input asp-for="@Model.Orcamento" type="text" name="Orcamento" id="orcamento" class="form-control form-control-lg formata-valor" placeholder="0.00" readonly />
                 <span asp-validation-for="@Model.Orcamento" class="text-danger"></span>
             </div>
         </div>

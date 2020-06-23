@@ -13,6 +13,6 @@ namespace AcquaJrApplication.Interfaces
 
         Task SalvarMembro(Membro membro);
         Task AtualizarMembro(Membro membro);
-        Task ExcluirMembroAsync(Guid id);
+        Task ExcluirMembro(Guid id);
     }
 }

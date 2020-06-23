@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -60,10 +61,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     ServicoId = ProjetoVM.ServicoId,
                     Nome = ProjetoVM.Nome,
                     Descricao = ProjetoVM.Descricao,
-                    CustoMaoDeObra = ProjetoVM.CustoMaoDeObra,
-                    CustoProjeto = ProjetoVM.CustoProjeto,
-                    CustoInsumos = ProjetoVM.CustoInsumos,
-                    Orcamento = ProjetoVM.Orcamento,
+                    CustoMaoDeObra = Convert.ToDecimal(ProjetoVM.CustoMaoDeObra),
+                    CustoProjeto = Convert.ToDecimal(ProjetoVM.CustoProjeto),
+                    CustoInsumos = Convert.ToDecimal(ProjetoVM.CustoInsumos),
+                    Orcamento = Convert.ToDecimal(ProjetoVM.Orcamento),
                     Logradouro = ProjetoVM.Logradouro,
                     PontoReferencia = ProjetoVM.PontoReferencia,
                     Bairro = ProjetoVM.Bairro,

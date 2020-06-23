@@ -53,7 +53,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
             {
                 try
                 {
-                    await _membroRepository.ExcluirMembroAsync(id);
+                    await _membroRepository.ExcluirMembro(id);
                 }
                 catch (DomainException ex)
                 {

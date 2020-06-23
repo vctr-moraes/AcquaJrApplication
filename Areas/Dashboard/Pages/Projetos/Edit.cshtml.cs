@@ -79,10 +79,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 projeto.ServicoId = ProjetoVM.ServicoId;
                 projeto.Nome = ProjetoVM.Nome;
                 projeto.Descricao = ProjetoVM.Descricao;
-                projeto.CustoMaoDeObra = ProjetoVM.CustoMaoDeObra;
-                projeto.CustoProjeto = ProjetoVM.CustoProjeto;
-                projeto.CustoInsumos = ProjetoVM.CustoInsumos;
-                projeto.Orcamento = ProjetoVM.Orcamento;
+                projeto.CustoMaoDeObra = Convert.ToDecimal(ProjetoVM.CustoMaoDeObra);
+                projeto.CustoProjeto = Convert.ToDecimal(ProjetoVM.CustoProjeto);
+                projeto.CustoInsumos = Convert.ToDecimal(ProjetoVM.CustoInsumos);
+                projeto.Orcamento = Convert.ToDecimal(ProjetoVM.Orcamento);
                 projeto.Logradouro = ProjetoVM.Logradouro;
                 projeto.PontoReferencia = ProjetoVM.PontoReferencia;
                 projeto.Bairro = ProjetoVM.Bairro;

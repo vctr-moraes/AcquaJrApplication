@@ -42,7 +42,7 @@ namespace AcquaJrApplication.Data.Repository
             await Atualizar(membro);
         }
 
-        public async Task ExcluirMembroAsync(Guid id)
+        public async Task ExcluirMembro(Guid id)
         {
             var membro = await ObterMembro(id);
             var projetos = _projetoRepository.ObterProjetos().ToList();
