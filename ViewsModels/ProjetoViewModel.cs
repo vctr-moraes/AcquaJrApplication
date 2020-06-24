@@ -88,22 +88,22 @@ namespace AcquaJrApplication.ViewsModels
         [Display(Name = "Custo da Mão de Obra")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public string? CustoMaoDeObra { get; set; }
+        public string CustoMaoDeObra { get; set; }
 
         [Display(Name = "Custo do Projeto")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public string? CustoProjeto { get; set; }
+        public string CustoProjeto { get; set; }
 
         [Display(Name = "Custo dos Insumos")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public string? CustoInsumos { get; set; }
+        public string CustoInsumos { get; set; }
 
         [Display(Name = "Orçamento")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public string? Orcamento { get; set; }
+        public string Orcamento { get; set; }
 
         [Display(Name = "Logradouro")]
         [MaxLength(150, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
