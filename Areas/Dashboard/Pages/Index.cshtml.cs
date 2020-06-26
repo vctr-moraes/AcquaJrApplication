@@ -37,6 +37,20 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages
             ViewData["MembrosAtivos"] = _membroRepository.ObterMembrosAtivos().ToList().Count();
             ViewData["MembrosInativos"] = _membroRepository.ObterMembrosInativos().ToList().Count();
 
+            var projetosAtivos = _projetoRepository.ObterProjetosAtivos().ToList();
+            List<Guid> membrosIds = new List<Guid>();
+
+            foreach (var projeto in projetosAtivos)
+            {
+                foreach (var item in projeto.Membros)
+                {
+                    membrosIds.Add(item.MembroId);
+                }
+            }
+
+            var total = membrosIds.Distinct().Count();
+            ViewData["MembrosTrabalhando"] = total;
+
             return Page();
         }
     }
