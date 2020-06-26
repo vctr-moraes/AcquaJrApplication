@@ -32,6 +32,11 @@ namespace AcquaJrApplication.Data.Repository
             return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao == null).OrderBy(p => p.DataContrato).ToList();
         }
 
+        public List<Projeto> ObterProjetosAtrasados()
+        {
+            return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao == DateTime.Now).OrderBy(p => p.DataContrato).ToList();
+        }
+
         public List<Projeto> ObterProjetosConcluidos()
         {
             return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao != null).OrderBy(p => p.DataConclusao).ToList();

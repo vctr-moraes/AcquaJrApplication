@@ -14,74 +14,72 @@
 
 <hr />
 
-<div class="row">
-    <div class="col-md-6">
-        <section>
-            <ul class="nav nav-tabs">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">add</i>
-                        Cadastrar
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" asp-area="Dashboard" asp-page="/Membros/Create"><i class="material-icons">person</i>&nbsp; Membro</a>
-                        <a class="dropdown-item" asp-area="Dashboard" asp-page="/Clientes/Create"><i class="material-icons">business_center</i>&nbsp; Cliente</a>
-                        <a class="dropdown-item" asp-area="Dashboard" asp-page="/Projetos/Create"><i class="material-icons">square_foot</i>&nbsp; Projeto</a>
-                        <a class="dropdown-item" asp-area="Dashboard" asp-page="/Servicos/Create"><i class="material-icons">assignment</i>&nbsp; Serviço</a>
-                    </div>
-                </li>
-                @*<li class="nav-item">
-                    <a class="nav-link" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Disabled</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Outro</a>
-                </li>*@
-            </ul>
-        </section>
-    </div>
-    <div class="col-md-6">
-        <section>
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="typography-title">Projetos atuais</h6>
+@*<div class="col-md-4">
+    <section>
+        <ul class="nav nav-tabs">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">add</i>
+                    Cadastrar
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" asp-area="Dashboard" asp-page="/Membros/Create"><i class="material-icons">person</i>&nbsp; Membro</a>
+                    <a class="dropdown-item" asp-area="Dashboard" asp-page="/Clientes/Create"><i class="material-icons">business_center</i>&nbsp; Cliente</a>
+                    <a class="dropdown-item" asp-area="Dashboard" asp-page="/Projetos/Create"><i class="material-icons">square_foot</i>&nbsp; Projeto</a>
+                    <a class="dropdown-item" asp-area="Dashboard" asp-page="/Servicos/Create"><i class="material-icons">assignment</i>&nbsp; Serviço</a>
                 </div>
-                @if (Model.Projetos.Count == 0)
-                {
-                    <h5 class="text-black-hint" align="center">Não há projetos em curso cadastrados no sistema</h5><br />
-                }
-                else
-                {
-                    @foreach (var item in Model.Projetos)
-                    {
-                        <div class="list-group list-group-flush" id="accordionTwo">
-                            <div class="expansion-panel list-group-item">
-                                <a aria-controls="@Html.DisplayFor(modelItem => item.Id)" aria-expanded="false" class="expansion-panel-toggler collapsed" data-toggle="collapse" href="#@Html.DisplayFor(modelItem => item.Id)" id="headingFour">
-                                    @Html.DisplayFor(modelItem => item.Nome)
-                                    <div class="expansion-panel-icon ml-3 text-black-secondary">
-                                        @*@if(Html.DisplayFor(modelItem => item.DataPrevista) < DateTime.Now)
-                                        {
-                                            <span class="badge badge-danger badge-pill">Atrasado</span>
-                                        }*@
-                                        <i class="collapsed-show material-icons">keyboard_arrow_down</i>
-                                        <i class="collapsed-hide material-icons">keyboard_arrow_up</i>
-                                    </div>
-                                </a>
-                                <div aria-labelledby="headingFour" class="collapse" data-parent="#accordionTwo" id="@Html.DisplayFor(modelItem => item.Id)">
-                                    <div class="expansion-panel-body">
-                                        @Html.DisplayFor(modelItem => item.Descricao)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                }
+            </li>
+        </ul>
+    </section>
+</div>*@
+<div class="col-md-12 row justify-content-end pull-right">
+    <section class="">
+        <div class="card border-light mb-3" style="width: 18rem; margin: 0px 0px 0px 20px;">
+            <div class="card-header">
+                <h5 class="card-title">Projetos</h5>
             </div>
-        </section>
-    </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Ativos
+                    <span class="badge badge-primary badge-pill">
+                        @ViewData["ProjetosAtivos"]
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Atrasados
+                    <span class="badge badge-primary badge-pill">
+                        @ViewData["ProjetosAtrasados"]
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Concluídos
+                    <span class="badge badge-primary badge-pill">
+                        @ViewData["ProjetosConcluidos"]
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="">
+        <div class="card border-light mb-3" style="width: 18rem; margin: 0px 0px 0px 20px;">
+            <div class="card-header">
+                <h5 class="card-title">Membros</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Ativos
+                    <span class="badge badge-primary badge-pill">
+                        @ViewData["MembrosAtivos"]
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Inativos
+                    <span class="badge badge-primary badge-pill">
+                        @ViewData["MembrosInativos"]
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </section>
 </div>

@@ -10,7 +10,6 @@ namespace AcquaJrApplication.Interfaces
         Task<Membro> ObterMembro(Guid id);
         List<Membro> ObterMembrosAtivos();
         List<Membro> ObterMembrosInativos();
-
         Task SalvarMembro(Membro membro);
         Task AtualizarMembro(Membro membro);
         Task ExcluirMembro(Guid id);

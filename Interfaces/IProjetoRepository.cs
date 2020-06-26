@@ -10,6 +10,7 @@ namespace AcquaJrApplication.Interfaces
         Task<Projeto> ObterProjeto(Guid id);
         List<Projeto> ObterProjetos();
         List<Projeto> ObterProjetosAtivos();
+        List<Projeto> ObterProjetosAtrasados();
         List<Projeto> ObterProjetosConcluidos();
         Task<Projeto> ObterMembrosProjeto(Guid id);
         Task SalvarProjeto(Projeto projeto);

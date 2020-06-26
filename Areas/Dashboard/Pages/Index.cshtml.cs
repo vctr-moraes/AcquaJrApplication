@@ -16,19 +16,27 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly IProjetoRepository _projetoRepository;
+        private readonly IMembroRepository _membroRepository;
 
-        public IndexModel(ILogger<IndexModel> logger, IProjetoRepository projetoRepository)
+        public IndexModel(ILogger<IndexModel> logger, IProjetoRepository projetoRepository, IMembroRepository membroRepository)
         {
             _logger = logger;
             _projetoRepository = projetoRepository;
+            _membroRepository = membroRepository;
         }
 
         [BindProperty]
-        public List<ProjetoViewModel> Projetos { get; set; }
+        public DashboardViewModel Dashboard { get; set; }
 
         public ActionResult OnGet()
         {
-            Projetos = _projetoRepository.ObterProjetosAtivos().Select(projeto => new ProjetoViewModel(projeto)).ToList();
+            ViewData["ProjetosAtivos"] = _projetoRepository.ObterProjetosAtivos().ToList().Count();
+            ViewData["ProjetosAtrasados"] = _projetoRepository.ObterProjetosAtrasados().ToList().Count();
+            ViewData["ProjetosConcluidos"] = _projetoRepository.ObterProjetosConcluidos().ToList().Count();
+
+            ViewData["MembrosAtivos"] = _membroRepository.ObterMembrosAtivos().ToList().Count();
+            ViewData["MembrosInativos"] = _membroRepository.ObterMembrosInativos().ToList().Count();
+
             return Page();
         }
     }
