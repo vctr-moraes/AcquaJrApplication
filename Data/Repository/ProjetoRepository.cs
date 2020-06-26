@@ -34,7 +34,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Projeto> ObterProjetosAtrasados()
         {
-            return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao == DateTime.Now).OrderBy(p => p.DataContrato).ToList();
+            return Db.Projetos.AsNoTracking().Where(p => p.DataPrevista < DateTime.Now && p.DataConclusao == null).OrderBy(p => p.DataContrato).ToList();
         }
 
         public List<Projeto> ObterProjetosConcluidos()
