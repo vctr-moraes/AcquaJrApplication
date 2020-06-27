@@ -6,11 +6,18 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+<style>
+    ul {
+        list-style-type: none;
+    }
+</style>
+
 <partial name="_DashboardNavPartialView" />
 
 <h3>@ViewData["Title"]</h3>
 
 <h4 class="text-danger">Tem certeza que deseja deletar este membro?</h4>
+
 <div>
     <hr />
     <div asp-validation-summary="ModelOnly" class="alert alert-warning"></div>

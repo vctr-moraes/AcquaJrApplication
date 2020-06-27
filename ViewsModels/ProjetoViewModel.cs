@@ -14,7 +14,7 @@ namespace AcquaJrApplication.ViewsModels
         public ProjetoViewModel(Projeto projeto)
         {
             Id = projeto.Id;
-            MembrosId = projeto.Membros.Select(m => m.Id).ToArray();
+            MembrosId = projeto.Membros.Select(m => m.Membro.Id).ToArray();
             Cliente = projeto.Cliente;
             ClienteId = projeto.ClienteId;
             Servico = projeto.Servico;

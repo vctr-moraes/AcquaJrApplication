@@ -6,9 +6,17 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+<style>
+    ul {
+        list-style-type: none;
+    }
+</style>
+
+<partial name="_DashboardNavPartialView" />
+
 <h3>@ViewData["Title"]</h3>
 
-<h4>Tem certeza que deseja deletar este projeto?</h4>
+<h4 class="text-danger">Tem certeza que deseja deletar este projeto?</h4>
 
 <div>
     <hr />

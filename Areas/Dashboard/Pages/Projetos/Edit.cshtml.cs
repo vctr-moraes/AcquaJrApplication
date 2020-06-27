@@ -55,10 +55,6 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             ProjetoVM = new ProjetoViewModel(projeto);
 
-            //ViewData["MembroId"] = new SelectList(_context.Membros, "Id", "Nome");
-            //ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeFantasia");
-            //ViewData["ServicoId"] = new SelectList(_context.Servicos, "Id", "Nome");
-
             return Page();
         }
 
@@ -112,21 +108,24 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     .Select(m => new SelectListItem
                     {
                         Text = m.Nome,
-                        Value = m.Id.ToString()
+                        Value = m.Id.ToString(),
+                        Selected = true
                     });
 
                 ProjetoVM.Clientes = _clienteRepository.ObterClientes()
                     .Select(c => new SelectListItem
                     {
                         Text = c.NomeFantasia,
-                        Value = c.Id.ToString()
+                        Value = c.Id.ToString(),
+                        Selected = true
                     });
 
                 ProjetoVM.Servicos = _servicoRepository.ObterServicos()
                     .Select(s => new SelectListItem
                     {
                         Text = s.Nome,
-                        Value = s.Id.ToString()
+                        Value = s.Id.ToString(),
+                        Selected = true
                     });
             };
         }

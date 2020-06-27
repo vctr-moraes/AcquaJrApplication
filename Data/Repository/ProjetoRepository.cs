@@ -29,18 +29,28 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Projeto> ObterProjetosAtivos()
         {
-            return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao == null).OrderBy(p => p.DataContrato).Include(p => p.Membros).ToList();
+            return Db.Projetos.AsNoTracking()
+                .Where(p => p.DataConclusao == null)
+                .OrderBy(p => p.DataContrato)
+                .Include(p => p.Membros)
+                .Include("Membros.Membro")
+                .ToList();
         }
 
         public List<Projeto> ObterProjetosAtrasados()
         {
-            return Db.Projetos.AsNoTracking().Where(p => p.DataPrevista < DateTime.Now && p.DataConclusao == null)
-                .OrderBy(p => p.DataContrato).ToList();
+            return Db.Projetos.AsNoTracking()
+                .Where(p => p.DataPrevista < DateTime.Now && p.DataConclusao == null)
+                .OrderBy(p => p.DataContrato)
+                .ToList();
         }
 
         public List<Projeto> ObterProjetosConcluidos()
         {
-            return Db.Projetos.AsNoTracking().Where(p => p.DataConclusao != null).OrderBy(p => p.DataConclusao).ToList();
+            return Db.Projetos.AsNoTracking()
+                .Where(p => p.DataConclusao != null)
+                .OrderBy(p => p.DataConclusao)
+                .ToList();
         }
 
         public async Task<Projeto> ObterMembrosProjeto(Guid id)
@@ -49,6 +59,7 @@ namespace AcquaJrApplication.Data.Repository
                 .Include(p => p.Membros)
                 .Include(p => p.Cliente)
                 .Include(p => p.Servico)
+                .Include("Membros.Membro")
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
