@@ -47,6 +47,8 @@ namespace AcquaJrApplication.Data.Repository
             var membro = await ObterMembro(id);
             var projetos = _projetoRepository.ObterProjetos().ToList();
 
+            DomainException.When(membro.Status == true, "Não é permitido deletar um membro ativo.");
+
             foreach (var item in projetos)
             {
                 if (item.Membros.Any(p => p.MembroId == id))
