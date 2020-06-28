@@ -53,6 +53,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 
                 servico.Nome = ServicoVM.Nome;
                 servico.Descricao = ServicoVM.Descricao;
+                servico.Status = ServicoVM.Status;
 
                 await _servicoRepository.AtualizarServico(servico);
                 return await Task.FromResult(RedirectToPage("./Index"));

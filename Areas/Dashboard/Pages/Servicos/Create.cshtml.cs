@@ -40,7 +40,8 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                 Servico servico = new Servico()
                 {
                     Nome = ServicoVM.Nome,
-                    Descricao = ServicoVM.Descricao
+                    Descricao = ServicoVM.Descricao,
+                    Status = ServicoVM.Status
                 };
 
                 await _servicoRepository.SalvarServico(servico);

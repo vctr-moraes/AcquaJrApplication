@@ -1,0 +1,74 @@
+﻿@page
+@model AcquaJrApplication.Areas.Dashboard.Pages.Servicos.InativosModel
+
+@{
+    ViewData["Title"] = "Serviços inativos";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<style>
+    .descricao-servico {
+        max-width: 45ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+<partial name="_DashboardNavPartialView" />
+
+<h3>@ViewData["Title"]</h3>
+
+<p>
+    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
+        <i class="material-icons">add</i>
+        Novo serviço
+    </a>
+</p>
+
+@if (Model.Servicos.Count == 0)
+{
+    <div class="vertical-center justify-content-center">
+        <h4 class="text-muted" align="center">Não há serviços inativos</h4>
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-condensed">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servicos[0].Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servicos[0].Descricao)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Servicos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td class="descricao descricao-servico" title="@Html.DisplayFor(modelItem => item.Descricao)">
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td class="text-right">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Editar">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Detalhes">
+                            <i class="material-icons">search</i>
+                        </a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Deletar">
+                            <i class="material-icons">delete_forever</i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

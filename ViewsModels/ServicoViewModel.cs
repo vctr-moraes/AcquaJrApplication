@@ -13,6 +13,7 @@ namespace AcquaJrApplication.ViewsModels
             Id = servico.Id;
             Nome = servico.Nome;
             Descricao = servico.Descricao;
+            Status = servico.Status;
         }
 
         [Key]
@@ -28,5 +29,8 @@ namespace AcquaJrApplication.ViewsModels
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [MaxLength(700, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string Descricao { get; set; }
+
+        [Display(Name = "Serviço Ativo?")]
+        public bool Status { get; set; } = true;
     }
 }

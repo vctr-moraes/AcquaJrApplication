@@ -22,9 +22,14 @@ namespace AcquaJrApplication.Data.Repository
             return await Db.Servicos.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id);
         }
 
-        public List<Servico> ObterServicos()
+        public List<Servico> ObterServicosAtivos()
         {
-            return Db.Servicos.AsNoTracking().OrderBy(s => s.Nome).ToList();
+            return Db.Servicos.AsNoTracking().Where(m => m.Status == true).OrderBy(s => s.Nome).ToList();
+        }
+
+        public List<Servico> ObterServicosInativos()
+        {
+            return Db.Servicos.AsNoTracking().Where(m => m.Status == false).OrderBy(s => s.Nome).ToList();
         }
 
         public async Task SalvarServico(Servico servico)

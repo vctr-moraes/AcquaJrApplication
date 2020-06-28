@@ -120,7 +120,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                         Selected = true
                     });
 
-                ProjetoVM.Servicos = _servicoRepository.ObterServicos()
+                ProjetoVM.Servicos = _servicoRepository.ObterServicosAtivos()
                     .Select(s => new SelectListItem
                     {
                         Text = s.Nome,

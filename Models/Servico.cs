@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace AcquaJrApplication.Models
 {
@@ -9,6 +6,7 @@ namespace AcquaJrApplication.Models
     {
         private string _nome;
         private string _descricao;
+        private bool _status;
 
         /* EF Relation */
         private readonly List<Projeto> _projetos = new List<Projeto>();
@@ -35,6 +33,12 @@ namespace AcquaJrApplication.Models
                 DomainException.When(value.Trim().Length > 700, "O campo Descrição não pode conter mais que 1000 caracteres.");
                 _descricao = value.Trim();
             }
+        }
+
+        public bool Status
+        {
+            get => _status;
+            set => _status = value;
         }
 
         public ICollection<Projeto> Projetos => _projetos;

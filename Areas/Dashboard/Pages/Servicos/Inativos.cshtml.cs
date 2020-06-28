@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 {
     [Authorize]
-    public class IndexModel : PageModel
+    public class InativosModel : PageModel
     {
         private readonly IServicoRepository _servicoRepository;
 
-        public IndexModel(IServicoRepository servicoRepository)
+        public InativosModel(IServicoRepository servicoRepository)
         {
             _servicoRepository = servicoRepository;
         }
@@ -23,7 +23,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 
         public ActionResult OnGet()
         {
-            Servicos = _servicoRepository.ObterServicosAtivos().Select(servico => new ServicoViewModel(servico)).ToList();
+            Servicos = _servicoRepository.ObterServicosInativos().Select(servico => new ServicoViewModel(servico)).ToList();
             return Page();
         }
     }
