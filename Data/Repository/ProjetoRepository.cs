@@ -65,11 +65,13 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task SalvarProjeto(Projeto projeto)
         {
+            DomainException.When(projeto.Membros.Count() == 0, "O projeto precisa conter, ao menos, um membro participante.");
             await Adicionar(projeto);
         }
 
         public async Task AtualizarProjeto(Projeto projeto)
         {
+            DomainException.When(projeto.Membros.Count() == 0, "O projeto precisa conter, ao menos, um membro participante.");
             await Atualizar(projeto);
         }
 

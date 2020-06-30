@@ -9,6 +9,7 @@ using AcquaJrApplication.Models;
 using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.ViewsModels;
 using AcquaJrApplication.Interfaces;
+using System.Collections;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {
@@ -77,7 +78,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     DataConclusao = ProjetoVM.DataConclusao
                 };
 
-                foreach (var item in ProjetoVM.MembrosId)
+                foreach (var item in ProjetoVM.MembrosId ?? Enumerable.Empty<Guid>())
                 {
                     var membro = await _membroRepository.ObterPorId(item);
                     projeto.AdicionarMembro(membro);

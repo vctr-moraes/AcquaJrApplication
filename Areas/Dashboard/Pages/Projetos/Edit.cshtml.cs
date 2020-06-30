@@ -90,6 +90,12 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 projeto.DataInicio = ProjetoVM.DataInicio;
                 projeto.DataConclusao = ProjetoVM.DataConclusao;
 
+                foreach (var item in ProjetoVM.MembrosId ?? Enumerable.Empty<Guid>())
+                {
+                    var membro = await _membroRepository.ObterMembro(item);
+                    projeto.AtualizarMembros(membro);
+                }
+
                 await _projetoRepository.AtualizarProjeto(projeto);
                 return await Task.FromResult(RedirectToPage("./Index"));
             }

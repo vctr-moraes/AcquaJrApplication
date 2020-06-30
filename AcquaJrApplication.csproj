@@ -12,6 +12,8 @@
     <Compile Remove="Migrations\20200620023549_AtualizaçãoTabela.Designer.cs" />
     <Compile Remove="Migrations\20200623004010_AtualizaçãoTabelaMembrosProjetos.cs" />
     <Compile Remove="Migrations\20200623004010_AtualizaçãoTabelaMembrosProjetos.Designer.cs" />
+    <Compile Remove="Migrations\20200630005305_AtualizaçãoTabelaProjetos.cs" />
+    <Compile Remove="Migrations\20200630005305_AtualizaçãoTabelaProjetos.Designer.cs" />
   </ItemGroup>
 
 
