@@ -22,6 +22,18 @@ namespace AcquaJrApplication.Data.Repository
             return await Db.Membros.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
         }
 
+        public IEnumerable<Membro> ObterMembrosPorId(Guid[] MembrosIds)
+        {
+            IEnumerable<Membro> membros = ObterMembrosAtivos();
+
+            if (MembrosIds != null)
+            {
+                membros = membros.Where(m => MembrosIds.Contains(m.Id));
+            }
+
+            return membros;
+        }
+
         public List<Membro> ObterMembrosAtivos()
         {
             return Db.Membros.AsNoTracking().Where(m => m.Status == true).OrderBy(m => m.Nome).ToList();

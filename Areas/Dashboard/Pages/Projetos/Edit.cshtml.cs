@@ -67,7 +67,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             try
             {
-                Projeto projeto = await _projetoRepository.ObterPorId(ProjetoVM.Id);
+                Projeto projeto = await _projetoRepository.ObterProjeto(ProjetoVM.Id);
 
                 projeto.Cliente = await _clienteRepository.ObterCliente(ProjetoVM.ClienteId);
                 projeto.ClienteId = ProjetoVM.ClienteId;
@@ -90,10 +90,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 projeto.DataInicio = ProjetoVM.DataInicio;
                 projeto.DataConclusao = ProjetoVM.DataConclusao;
 
-                foreach (var item in ProjetoVM.MembrosId ?? Enumerable.Empty<Guid>())
+                if (ProjetoVM.MembrosId != null)
                 {
-                    var membro = await _membroRepository.ObterMembro(item);
-                    projeto.AtualizarMembros(membro);
+                    var membros = _membroRepository.ObterMembrosPorId(ProjetoVM.MembrosId);
+                    projeto.AtualizarMembros(membros);
                 }
 
                 await _projetoRepository.AtualizarProjeto(projeto);

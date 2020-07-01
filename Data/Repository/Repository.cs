@@ -28,6 +28,8 @@ namespace AcquaJrApplication.Data.Repository
 
         public virtual async Task Atualizar(TEntity entity)
         {
+            var oldEntity = Db.Set<TEntity>().Find(entity.Id);
+            Db.Entry(oldEntity).State = EntityState.Modified;
             DbSet.Update(entity);
             await SaveChanges();
         }

@@ -14,13 +14,17 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Projeto> ObterProjeto(Guid id)
         {
-            return await Db.Projetos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+            return await Db.Projetos
+                .Include(p => p.Membros)
+                .Include("Membros.Membro")
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public List<Projeto> ObterProjetos()
         {
             return Db.Projetos.AsNoTracking()
                 .Include(p => p.Membros)
+                .Include("Membros.Membro")
                 .Include(p => p.Cliente)
                 .Include(p => p.Servico)
                 .OrderBy(p => p.DataContrato)
@@ -55,7 +59,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Projeto> ObterMembrosProjeto(Guid id)
         {
-            return await Db.Projetos.AsNoTracking()
+            return await Db.Projetos
                 .Include(p => p.Membros)
                 .Include(p => p.Cliente)
                 .Include(p => p.Servico)

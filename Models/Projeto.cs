@@ -207,18 +207,22 @@ namespace AcquaJrApplication.Models
 
         public void AdicionarMembro(Membro membro) => _membros.Add(new MembroProjeto(this, membro));
 
-        public void AtualizarMembros(Membro membro)
+        public void AtualizarMembros(IEnumerable<Membro> membros)
         {
-            if (!_membros.Any(mp => mp.MembroId == membro.Id))
+            foreach (var item in membros)
             {
-                AdicionarMembro(membro);
+                if (!_membros.Any(mp => mp.MembroId == item.Id))
+                {
+                    AdicionarMembro(item);
+                }
             }
 
             var membrosRemovidos = new List<MembroProjeto>();
 
             foreach (var item in _membros)
             {
-                if (!(item.MembroId == membro.Id)){
+                if (!membros.Any(m => m.Id == item.MembroId))
+                {
                     membrosRemovidos.Add(item);
                 }
             }
