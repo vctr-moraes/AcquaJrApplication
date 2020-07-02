@@ -54,11 +54,12 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             try
             {
-                Projeto projeto = new Projeto()
+                var cliente = await _clienteRepository.ObterPorId(ProjetoVM.ClienteId);
+                var servico = await _servicoRepository.ObterPorId(ProjetoVM.ServicoId);
+            
+                Projeto projeto = new Projeto(cliente, servico)
                 {
-                    Cliente = await _clienteRepository.ObterPorId(ProjetoVM.ClienteId),
                     ClienteId = ProjetoVM.ClienteId,
-                    Servico = await _servicoRepository.ObterPorId(ProjetoVM.ServicoId),
                     ServicoId = ProjetoVM.ServicoId,
                     Nome = ProjetoVM.Nome,
                     Descricao = ProjetoVM.Descricao,

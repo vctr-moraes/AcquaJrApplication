@@ -31,6 +31,17 @@ namespace AcquaJrApplication.Models
         private Servico _servico;
         private readonly List<MembroProjeto> _membros = new List<MembroProjeto>();
 
+        public Projeto() { }
+
+        public Projeto(Cliente cliente, Servico servico)
+        {
+            DomainException.When(cliente == null, "O projeto precisa conter um cliente.");
+            DomainException.When(servico == null, "O projeto precisa conter um serviço.");
+
+            Cliente = cliente;
+            Servico = servico;
+        }
+
         public string Nome
         {
             get => _nome;
