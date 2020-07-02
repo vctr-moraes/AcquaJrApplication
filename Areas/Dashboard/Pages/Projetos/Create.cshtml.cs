@@ -9,7 +9,6 @@ using AcquaJrApplication.Models;
 using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.ViewsModels;
 using AcquaJrApplication.Interfaces;
-using System.Collections;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {

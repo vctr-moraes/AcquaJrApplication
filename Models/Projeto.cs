@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace AcquaJrApplication.Models
 {
@@ -69,25 +68,41 @@ namespace AcquaJrApplication.Models
         public decimal? CustoMaoDeObra
         {
             get => _custoMaoDeObra;
-            set => _custoMaoDeObra = value;
+            set
+            {
+                DomainException.When(value < 0, "O custo da mão de obra não deve ser negativo. Certifique-se de informar o valor correto.");
+                _custoMaoDeObra = value;
+            }
         }
 
         public decimal? CustoProjeto
         {
             get => _custoProjeto;
-            set => _custoProjeto = value;
+            set
+            {
+                DomainException.When(value < 0, "O custo do projeto não deve ser negativo. Certifique-se de informar o valor correto.");
+                _custoProjeto = value;
+            }
         }
 
         public decimal? CustoInsumos
         {
             get => _custoInsumos;
-            set => _custoInsumos = value;
+            set
+            {
+                DomainException.When(value < 0, "O custo dos insumos não deve ser negativo. Certifique-se de informar o valor correto.");
+                _custoInsumos = value;
+            }
         }
 
         public decimal? Orcamento
         {
             get => _orcamento;
-            set => _orcamento = value;
+            set
+            {
+                DomainException.When(value < 0, "O valor total do orçamento não deve ser negativo.");
+                _orcamento = value;
+            }
         }
 
         public string Logradouro
