@@ -55,7 +55,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
             {
                 var cliente = await _clienteRepository.ObterPorId(ProjetoVM.ClienteId);
                 var servico = await _servicoRepository.ObterPorId(ProjetoVM.ServicoId);
-            
+                
                 Projeto projeto = new Projeto(cliente, servico)
                 {
                     ClienteId = ProjetoVM.ClienteId,

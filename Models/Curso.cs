@@ -9,18 +9,18 @@ namespace AcquaJrApplication.Models
     public enum Curso
     {
         [Display(Name = "Engenharia de Aquicultura")]
-        Aquicultura = 1,
+        EngenhariaAquicultura = 1,
 
         [Display(Name = "Bacharelado em Ciências Biológicas")]
-        BiologiaBacharelado = 2,
+        BachareladoBiologia = 2,
 
         [Display(Name = "Licenciatura em Ciências Biológicas")]
-        BiologiaLicenciatura = 3,
+        LicenciaturaBiologia = 3,
 
         [Display(Name = "Cafeicultura")]
         Cafeicultura = 4,
 
         [Display(Name = "Análise e Desenvolvimento de Sistemas")]
-        AnaliseDeSistemas = 5
+        AnaliseDesenvolvimentoSistemas = 5
     }
 }
