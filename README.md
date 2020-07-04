@@ -7,7 +7,6 @@ Este é um projeto de desenvolvimento web para gestão dos recursos e negócios 
 * Entity Framework Core
 * .NET Core injeção de depência nativa
 * C#
-* MSTest
 * Javascript
 * HTML
 * CSS
