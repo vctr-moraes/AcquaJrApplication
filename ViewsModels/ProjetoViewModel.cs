@@ -46,14 +46,12 @@ namespace AcquaJrApplication.ViewsModels
         [Key]
         public Guid Id { get; set; }
 
-        [Display(Name = "Membros atuantes no projeto")]
-        [Required(ErrorMessage = "É necessário selecionar algum membro atuante no projeto.")]
-        public Guid MembroId { get; set; }
-
         public IEnumerable<SelectListItem> Membros { get; set; }
 
         public List<MembroProjetoViewModel> MembrosProjetos { get; set; }
 
+        [Display(Name = "Membros atuantes no projeto")]
+        [Required(ErrorMessage = "É necessário selecionar algum membro atuante.")]
         public Guid[] MembrosId { get; set; }
 
         [Display(Name = "Cliente")]

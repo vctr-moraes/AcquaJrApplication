@@ -78,10 +78,17 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     DataConclusao = ProjetoVM.DataConclusao
                 };
 
-                foreach (var item in ProjetoVM.MembrosId ?? Enumerable.Empty<Guid>())
+                if (ProjetoVM.MembrosId != null)
                 {
-                    var membro = await _membroRepository.ObterPorId(item);
-                    projeto.AdicionarMembro(membro);
+                    foreach (var item in ProjetoVM.MembrosId ?? Enumerable.Empty<Guid>())
+                    {
+                        var membro = await _membroRepository.ObterPorId(item);
+                        projeto.AdicionarMembro(membro);
+                    }
+                }
+                else
+                {
+                    DomainException.When(ProjetoVM.MembrosId == null, "O projeto precisa conter, ao menos, um membro participante.");
                 }
 
                 await _projetoRepository.SalvarProjeto(projeto);

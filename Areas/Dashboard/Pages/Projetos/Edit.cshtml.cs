@@ -95,6 +95,10 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     var membros = _membroRepository.ObterMembrosPorId(ProjetoVM.MembrosId);
                     projeto.AtualizarMembros(membros);
                 }
+                else
+                {
+                    DomainException.When(ProjetoVM.MembrosId == null, "O projeto precisa conter, ao menos, um membro participante.");
+                }
 
                 await _projetoRepository.AtualizarProjeto(projeto);
                 return await Task.FromResult(RedirectToPage("./Index"));
@@ -114,24 +118,21 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                     .Select(m => new SelectListItem
                     {
                         Text = m.Nome,
-                        Value = m.Id.ToString(),
-                        Selected = true
+                        Value = m.Id.ToString()
                     });
 
                 ProjetoVM.Clientes = _clienteRepository.ObterClientes()
                     .Select(c => new SelectListItem
                     {
                         Text = c.NomeFantasia,
-                        Value = c.Id.ToString(),
-                        Selected = true
+                        Value = c.Id.ToString()
                     });
 
                 ProjetoVM.Servicos = _servicoRepository.ObterServicosAtivos()
                     .Select(s => new SelectListItem
                     {
                         Text = s.Nome,
-                        Value = s.Id.ToString(),
-                        Selected = true
+                        Value = s.Id.ToString()
                     });
             };
         }
