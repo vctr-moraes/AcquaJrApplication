@@ -17,6 +17,8 @@ namespace AcquaJrApplication.Data.Repository
             return await Db.Projetos
                 .Include(p => p.Membros)
                 .Include("Membros.Membro")
+                .Include(p => p.Cliente)
+                .Include(p => p.Servico)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
@@ -38,6 +40,8 @@ namespace AcquaJrApplication.Data.Repository
                 .OrderBy(p => p.DataContrato)
                 .Include(p => p.Membros)
                 .Include("Membros.Membro")
+                .Include(p => p.Cliente)
+                .Include(p => p.Servico)
                 .ToList();
         }
 
@@ -46,6 +50,10 @@ namespace AcquaJrApplication.Data.Repository
             return Db.Projetos.AsNoTracking()
                 .Where(p => p.DataPrevista < DateTime.Now && p.DataConclusao == null)
                 .OrderBy(p => p.DataContrato)
+                .Include(p => p.Membros)
+                .Include("Membros.Membro")
+                .Include(p => p.Cliente)
+                .Include(p => p.Servico)
                 .ToList();
         }
 
@@ -54,6 +62,10 @@ namespace AcquaJrApplication.Data.Repository
             return Db.Projetos.AsNoTracking()
                 .Where(p => p.DataConclusao != null)
                 .OrderBy(p => p.DataConclusao)
+                .Include(p => p.Membros)
+                .Include("Membros.Membro")
+                .Include(p => p.Cliente)
+                .Include(p => p.Servico)
                 .ToList();
         }
 
@@ -61,9 +73,9 @@ namespace AcquaJrApplication.Data.Repository
         {
             return await Db.Projetos
                 .Include(p => p.Membros)
+                .Include("Membros.Membro")
                 .Include(p => p.Cliente)
                 .Include(p => p.Servico)
-                .Include("Membros.Membro")
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 

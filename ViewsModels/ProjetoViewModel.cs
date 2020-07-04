@@ -15,9 +15,9 @@ namespace AcquaJrApplication.ViewsModels
         {
             Id = projeto.Id;
             MembrosId = projeto.Membros.Select(m => m.Membro.Id).ToArray();
-            Cliente = projeto.Cliente;
+            Cliente = new ClienteViewModel(projeto.Cliente);
             ClienteId = projeto.ClienteId;
-            Servico = projeto.Servico;
+            Servico = new ServicoViewModel(projeto.Servico);
             ServicoId = projeto.ServicoId;
             Nome = projeto.Nome;
             Descricao = projeto.Descricao;
@@ -61,7 +61,7 @@ namespace AcquaJrApplication.ViewsModels
         public Guid ClienteId { get; set; }
 
         [Display(Name= "Cliente")]
-        public Cliente Cliente { get; set; }
+        public ClienteViewModel Cliente { get; set; }
 
         public IEnumerable<SelectListItem> Clientes { get; set; }
 
@@ -70,7 +70,7 @@ namespace AcquaJrApplication.ViewsModels
         public Guid ServicoId { get; set; }
 
         [Display(Name = "Serviço")]
-        public Servico Servico { get; set; }
+        public ServicoViewModel Servico { get; set; }
 
         public IEnumerable<SelectListItem> Servicos { get; set; }
 
