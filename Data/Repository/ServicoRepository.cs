@@ -19,7 +19,10 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Servico> ObterServico(Guid id)
         {
-            return await Db.Servicos.Include(s => s.Projetos).Include("Projetos.Servico").FirstOrDefaultAsync(s => s.Id == id);
+            return await Db.Servicos
+                .Include(s => s.Projetos)
+                .Include("Projetos.Servico")
+                .FirstOrDefaultAsync(s => s.Id == id);
         }
 
         public List<Servico> ObterServicosAtivos()

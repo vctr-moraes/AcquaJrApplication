@@ -29,7 +29,7 @@ namespace AcquaJrApplication.Data.Repository
         public virtual async Task Atualizar(TEntity entity)
         {
             var oldEntity = Db.Set<TEntity>().Find(entity.Id);
-            Db.Entry(oldEntity).State = EntityState.Modified;
+            Db.Entry(oldEntity).State = EntityState.Detached;
             DbSet.Update(entity);
             await SaveChanges();
         }
@@ -46,7 +46,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public virtual async Task<List<TEntity>> ObterTodos()
         {
-            return await DbSet.ToListAsync();
+            return await DbSet.AsNoTracking().ToListAsync();
         }
 
         public virtual async Task Remover(Guid id)
