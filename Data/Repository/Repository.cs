@@ -31,7 +31,7 @@ namespace AcquaJrApplication.Data.Repository
             var oldEntity = Db.Set<TEntity>().Find(entity.Id);
             Db.Entry(oldEntity).State = EntityState.Detached;
             DbSet.Update(entity);
-            await SaveChanges();
+            await Db.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate)
