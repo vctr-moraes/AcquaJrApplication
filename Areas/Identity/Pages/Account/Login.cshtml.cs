@@ -52,7 +52,7 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Lembrar-me")]
+            [Display(Name = "Continuar conectado?")]
             public bool RememberMe { get; set; }
         }
 
