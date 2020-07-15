@@ -34,19 +34,9 @@ namespace AcquaJrApplication.Data.Repository
             await Db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate)
-        {
-            return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
-        }
-
         public virtual async Task<TEntity> ObterPorId(Guid id)
         {
             return await DbSet.FindAsync(id);
-        }
-
-        public virtual async Task<List<TEntity>> ObterTodos()
-        {
-            return await DbSet.AsNoTracking().ToListAsync();
         }
 
         public virtual async Task Remover(Guid id)
