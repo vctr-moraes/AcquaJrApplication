@@ -8,6 +8,7 @@ namespace AcquaJrApplication.Interfaces
     public interface IMembroRepository : IRepository<Membro>
     {
         Task<Membro> ObterMembro(Guid id);
+        Task<Membro> ObterMembroAtivo(Guid id);
         IEnumerable<Membro> ObterMembrosPorId(Guid[] ids);
         List<Membro> ObterMembrosAtivos();
         List<Membro> ObterMembrosInativos();

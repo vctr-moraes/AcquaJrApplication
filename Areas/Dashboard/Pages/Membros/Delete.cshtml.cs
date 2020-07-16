@@ -29,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 return NotFound();
             }
 
-            var membro = await _membroRepository.ObterPorId(id);
+            var membro = await _membroRepository.ObterMembroAtivo(id);
 
             if (membro == null)
             {
@@ -47,7 +47,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 return NotFound();
             }
 
-            var membro = await _membroRepository.ObterPorId(id);
+            var membro = await _membroRepository.ObterMembroAtivo(id);
 
             if (membro != null)
             {

@@ -52,7 +52,7 @@ namespace AcquaJrApplication.Data.Repository
 
             if (projetos.Count() > 0)
             {
-                DomainException.When(true, "Este serviço não pode ser deletado, pois está vinculado a algum projeto.");
+                DomainException.When(true, "Este serviço não pode ser deletado, pois está vinculado a algum projeto. Não oferece mais este serviço? Sugerimos torná-lo inativo.");
             }
             
             await Remover(servico.Id);
