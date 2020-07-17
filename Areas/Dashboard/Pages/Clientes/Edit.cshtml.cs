@@ -54,8 +54,8 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 cliente.TipoPessoa = ClienteVM.TipoPessoa;
                 cliente.NomeFantasia = ClienteVM.NomeFantasia;
                 cliente.RazaoSocial = ClienteVM.RazaoSocial;
-                cliente.Cpf = ClienteVM.Cpf;
-                cliente.Cnpj = ClienteVM.Cnpj;
+                cliente.Cpf = ClienteVM.TipoPessoa == TipoPessoa.PessoaFisica ? ClienteVM.Cpf : null;
+                cliente.Cnpj = ClienteVM.TipoPessoa == TipoPessoa.PessoaJuridica ? ClienteVM.Cnpj : null;
                 cliente.InscricaoEstadual = ClienteVM.InscricaoEstadual;
                 cliente.RgCtps = ClienteVM.RgCtps;
                 cliente.Logradouro = ClienteVM.Logradouro;
