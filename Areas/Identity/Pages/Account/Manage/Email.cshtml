@@ -6,7 +6,14 @@
 }
 
 <h4>@ViewData["Title"]</h4>
+
 <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div class="alert alert-info">
+    <i class="material-icons">build</i>
+    Desculpe, este serviço ainda não está disponível.
+</div>
+
 <div class="row">
     <div class="col-md-6">
         <form id="email-form" method="post">
@@ -33,7 +40,7 @@
                 <input asp-for="Input.NewEmail" class="form-control" />
                 <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
             </div>
-            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="btn btn-primary">Alterar e-mail</button>
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="btn btn-primary" disabled>Alterar e-mail</button>
         </form>
     </div>
 </div>

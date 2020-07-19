@@ -5,9 +5,9 @@
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
 
-<partial name="_StatusMessage" for="StatusMessage" />
-
 <h4>@ViewData["Title"]</h4>
+
+<partial name="_StatusMessage" for="StatusMessage" />
 
 <div class="alert alert-info">
     <i class="material-icons">build</i>
@@ -55,8 +55,8 @@
 }
 else
 {
-    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Setup authenticator app</a>
-    <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">Reset authenticator app</a>
+    <button id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary" disabled>Setup authenticator app</button>
+    <button id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary" disabled>Reset authenticator app</button>
 }
 
 @section Scripts {
