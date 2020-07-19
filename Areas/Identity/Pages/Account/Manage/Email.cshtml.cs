@@ -31,7 +31,7 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account.Manage
 
         public string Username { get; set; }
 
-        [Display(Name = "E-mail")]
+        [Display(Name = "E-mail atual")]
         public string Email { get; set; }
 
         public bool IsEmailConfirmed { get; set; }

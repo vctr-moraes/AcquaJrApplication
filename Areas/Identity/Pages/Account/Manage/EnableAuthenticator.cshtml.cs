@@ -55,6 +55,9 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            // TO-DO: Redireciona o usuário para a mesma página. Remover após implementar a funcionalidade final.
+            return Redirect("./TwoFactorAuthentication");
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
