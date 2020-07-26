@@ -19,21 +19,21 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Membro> ObterMembro(Guid id)
         {
-            return await Db.Membros.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
+            return await Db.Membros.FirstOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<Membro> ObterMembroAtivo(Guid id)
         {
-            return await Db.Membros.AsNoTracking().Where(m => m.Status == false).FirstOrDefaultAsync(m => m.Id == id);
+            return await Db.Membros.Where(m => m.Status == false).FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public IEnumerable<Membro> ObterMembrosPorId(Guid[] MembrosIds)
+        public List<Membro> ObterMembrosPorId(Guid[] MembrosIds)
         {
-            IEnumerable<Membro> membros = ObterMembrosAtivos();
+            List<Membro> membros = ObterMembrosAtivos();
 
             if (MembrosIds != null)
             {
-                membros = membros.Where(m => MembrosIds.Contains(m.Id));
+                membros = membros.Where(m => MembrosIds.Contains(m.Id)).ToList();
             }
 
             return membros;
@@ -41,12 +41,12 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Membro> ObterMembrosAtivos()
         {
-            return Db.Membros.AsNoTracking().Where(m => m.Status == true).OrderBy(m => m.Nome).ToList();
+            return Db.Membros.Where(m => m.Status == true).OrderBy(m => m.Nome).ToList();
         }
 
         public List<Membro> ObterMembrosInativos()
         {
-            return Db.Membros.AsNoTracking().Where(m => m.Status == false).OrderBy(m => m.Nome).ToList();
+            return Db.Membros.Where(m => m.Status == false).OrderBy(m => m.Nome).ToList();
         }
 
         public async Task SalvarMembro(Membro membro)

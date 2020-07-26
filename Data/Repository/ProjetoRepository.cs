@@ -14,7 +14,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Projeto> ObterProjeto(Guid id)
         {
-            return await Db.Projetos.AsNoTracking()
+            return await Db.Projetos
                 .Include(p => p.Membros)
                 .Include("Membros.Membro")
                 .Include(p => p.Cliente)
@@ -24,7 +24,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Projeto> ObterProjetos()
         {
-            return Db.Projetos.AsNoTracking()
+            return Db.Projetos
                 .Include(p => p.Membros)
                 .Include("Membros.Membro")
                 .Include(p => p.Cliente)
@@ -35,7 +35,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Projeto> ObterProjetosAtivos()
         {
-            return Db.Projetos.AsNoTracking()
+            return Db.Projetos
                 .Where(p => p.DataConclusao == null)
                 .OrderBy(p => p.DataContrato)
                 .Include(p => p.Membros)
@@ -47,7 +47,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Projeto> ObterProjetosAtrasados()
         {
-            return Db.Projetos.AsNoTracking()
+            return Db.Projetos
                 .Where(p => p.DataPrevista < DateTime.Now && p.DataConclusao == null)
                 .OrderBy(p => p.DataContrato)
                 .Include(p => p.Membros)
@@ -59,7 +59,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Projeto> ObterProjetosConcluidos()
         {
-            return Db.Projetos.AsNoTracking()
+            return Db.Projetos
                 .Where(p => p.DataConclusao != null)
                 .OrderBy(p => p.DataConclusao)
                 .Include(p => p.Membros)
@@ -71,7 +71,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public async Task<Projeto> ObterMembrosProjeto(Guid id)
         {
-            return await Db.Projetos.AsNoTracking()
+            return await Db.Projetos
                 .Include(p => p.Membros)
                 .Include("Membros.Membro")
                 .Include(p => p.Cliente)

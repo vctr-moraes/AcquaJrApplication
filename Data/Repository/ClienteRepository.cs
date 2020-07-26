@@ -27,7 +27,7 @@ namespace AcquaJrApplication.Data.Repository
 
         public List<Cliente> ObterClientes()
         {
-            return Db.Clientes.AsNoTracking().OrderBy(c => c.NomeFantasia).ToList();
+            return Db.Clientes.OrderBy(c => c.NomeFantasia).ToList();
         }
 
         public async Task SalvarCliente(Cliente cliente)
