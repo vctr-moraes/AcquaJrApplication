@@ -235,7 +235,7 @@ namespace AcquaJrApplication.Models
 
         public void AtualizarMembros(IEnumerable<Membro> membros)
         {
-            foreach (var item in membros)
+            foreach (Membro item in membros)
             {
                 if (!_membros.Any(mp => mp.MembroId == item.Id))
                 {
@@ -243,9 +243,9 @@ namespace AcquaJrApplication.Models
                 }
             }
 
-            var membrosRemovidos = new List<MembroProjeto>();
+            List<MembroProjeto> membrosRemovidos = new List<MembroProjeto>();
 
-            foreach (var item in _membros)
+            foreach (MembroProjeto item in _membros)
             {
                 if (!membros.Any(m => m.Id == item.MembroId))
                 {
@@ -253,7 +253,7 @@ namespace AcquaJrApplication.Models
                 }
             }
 
-            foreach (var item in membrosRemovidos)
+            foreach (MembroProjeto item in membrosRemovidos)
             {
                 _membros.Remove(item);
             }

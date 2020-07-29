@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
-using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.ViewsModels;
 using AcquaJrApplication.Interfaces;
 
@@ -53,8 +53,8 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             try
             {
-                var cliente = await _clienteRepository.ObterPorId(ProjetoVM.ClienteId);
-                var servico = await _servicoRepository.ObterPorId(ProjetoVM.ServicoId);
+                Cliente cliente = await _clienteRepository.ObterPorId(ProjetoVM.ClienteId);
+                Servico servico = await _servicoRepository.ObterPorId(ProjetoVM.ServicoId);
                 
                 Projeto projeto = new Projeto(cliente, servico)
                 {
@@ -82,7 +82,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 {
                     foreach (var item in ProjetoVM.MembrosId ?? Enumerable.Empty<Guid>())
                     {
-                        var membro = await _membroRepository.ObterPorId(item);
+                        Membro membro = await _membroRepository.ObterPorId(item);
                         projeto.AdicionarMembro(membro);
                     }
                 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,19 +16,16 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
     [Authorize]
     public class EditModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
         private readonly IProjetoRepository _projetoRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IServicoRepository _servicoRepository;
         private readonly IMembroRepository _membroRepository;
 
-        public EditModel(ApplicationDbContext context,
-            IProjetoRepository projetoRepository,
+        public EditModel(IProjetoRepository projetoRepository,
             IClienteRepository clienteRepository,
             IServicoRepository servicoRepository,
             IMembroRepository membroRepository)
         {
-            _context = context;
             _projetoRepository = projetoRepository;
             _clienteRepository = clienteRepository;
             _servicoRepository = servicoRepository;
@@ -46,7 +44,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 return NotFound();
             }
 
-            var projeto = await _projetoRepository.ObterMembrosProjeto(id);
+            Projeto projeto = await _projetoRepository.ObterMembrosProjeto(id);
 
             if (projeto == null)
             {
@@ -92,7 +90,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
                 if (ProjetoVM.MembrosId != null)
                 {
-                    var membros = _membroRepository.ObterMembrosPorId(ProjetoVM.MembrosId);
+                    IEnumerable<Membro> membros = _membroRepository.ObterMembrosPorId(ProjetoVM.MembrosId);
                     projeto.AtualizarMembros(membros);
                 }
                 else
