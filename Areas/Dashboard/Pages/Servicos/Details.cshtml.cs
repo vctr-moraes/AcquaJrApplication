@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
 {
@@ -28,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                 return NotFound();
             }
 
-            var servico = await _servicoRepository.ObterPorId(id);
+            Servico servico = await _servicoRepository.ObterPorId(id);
 
             if (servico == null)
             {

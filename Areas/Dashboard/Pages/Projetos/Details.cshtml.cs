@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {
@@ -28,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 return NotFound();
             }
 
-            var projeto = await _projetoRepository.ObterMembrosProjeto(id);
+            Projeto projeto = await _projetoRepository.ObterMembrosProjeto(id);
 
             if (projeto == null)
             {

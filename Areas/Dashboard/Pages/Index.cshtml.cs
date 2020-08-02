@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages
 {
@@ -36,7 +37,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages
             ViewData["MembrosAtivos"] = _membroRepository.ObterMembrosAtivos().ToList().Count();
             ViewData["MembrosInativos"] = _membroRepository.ObterMembrosInativos().ToList().Count();
 
-            var projetosAtivos = _projetoRepository.ObterProjetosAtivos().ToList();
+            List<Projeto> projetosAtivos = _projetoRepository.ObterProjetosAtivos().ToList();
             List<Guid> membrosIds = new List<Guid>();
 
             foreach (var projeto in projetosAtivos)

@@ -29,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 return NotFound();
             }
 
-            var cliente = await _clienteRepository.ObterPorId(id);
+            Cliente cliente = await _clienteRepository.ObterPorId(id);
 
             if (cliente == null)
             {
@@ -47,7 +47,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 return NotFound();
             }
 
-            var cliente = await _clienteRepository.ObterPorId(id);
+            Cliente cliente = await _clienteRepository.ObterPorId(id);
 
             if (cliente != null)
             {

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
-using AcquaJrApplication.Data;
 using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;

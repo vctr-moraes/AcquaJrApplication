@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
+using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 {
@@ -28,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 return NotFound();
             }
 
-            var membro = await _membroRepository.ObterPorId(id);
+            Membro membro = await _membroRepository.ObterPorId(id);
 
             if (membro == null)
             {

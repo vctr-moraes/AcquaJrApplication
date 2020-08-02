@@ -29,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                 return NotFound();
             }
 
-            var servico = await _servicoRepository.ObterPorId(id);
+            Servico servico = await _servicoRepository.ObterPorId(id);
 
             if (servico == null)
             {
@@ -47,7 +47,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                 return NotFound();
             }
 
-            var servico = await _servicoRepository.ObterPorId(id);
+            Servico servico = await _servicoRepository.ObterPorId(id);
 
             if (servico != null)
             {

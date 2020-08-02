@@ -29,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 return NotFound();
             }
 
-            var membro = await _membroRepository.ObterPorId(id);
+            Membro membro = await _membroRepository.ObterPorId(id);
 
             if (membro == null)
             {

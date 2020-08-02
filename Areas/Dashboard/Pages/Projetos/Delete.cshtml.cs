@@ -29,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 return NotFound();
             }
 
-            var projeto = await _projetoRepository.ObterMembrosProjeto(id);
+            Projeto projeto = await _projetoRepository.ObterMembrosProjeto(id);
 
             if (projeto == null)
             {
@@ -47,7 +47,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 return NotFound();
             }
 
-            var projeto = await _projetoRepository.ObterPorId(id);
+            Projeto projeto = await _projetoRepository.ObterPorId(id);
 
             if (projeto != null)
             {
