@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AcquaJrApplication.Areas.Identity.Pages.Account
 {
-    [Authorize]
+    //[Authorize]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;

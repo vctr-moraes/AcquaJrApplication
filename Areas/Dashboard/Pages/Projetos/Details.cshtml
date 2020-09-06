@@ -15,6 +15,12 @@
     @{ await Html.RenderPartialAsync("_ProjetoDetalhesPartial.cshtml", Model.ProjetoVM); }
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.ProjetoVM.Id">Editar</a> |
-    <a href="javascript:window.history.back();">Voltar</a>
+    <a class="btn btn-dark" href="javascript:window.history.back();">
+        <i class="material-icons">arrow_back</i>
+        Voltar
+    </a>
+    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@Model.ProjetoVM.Id">
+        <i class="material-icons">edit</i>
+        Editar
+    </a>
 </div>

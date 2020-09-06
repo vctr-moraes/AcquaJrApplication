@@ -30,7 +30,13 @@
 
     <form method="post">
         <input type="hidden" asp-for="ClienteVM.Id" />
-        <input type="submit" value="Deletar" class="btn btn-danger" /> |
-        <a asp-page="./Index">Voltar</a>
+        <a class="btn btn-dark" href="javascript:window.history.back();">
+            <i class="material-icons">arrow_back</i>
+            Voltar
+        </a>
+        <button type="submit" value="Deletar" class="btn btn-danger">
+            <i class="material-icons">delete_forever</i>
+            Deletar
+        </button>
     </form>
 </div>
