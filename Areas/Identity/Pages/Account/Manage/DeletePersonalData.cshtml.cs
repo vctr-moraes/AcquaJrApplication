@@ -39,8 +39,8 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGet()
         {
-            // TO-DO: Redireciona o usuário para a mesma página, impedindo a exclusão da conta. Remover após implementar a funcionalidade final.
-            return Redirect("./PersonalData");
+            // TODO: Redireciona o usuário para a mesma página, impedindo a exclusão da conta. Remover após implementar a funcionalidade final.
+            // return Redirect("./PersonalData");
 
             var user = await _userManager.GetUserAsync(User);
             if (user == null)

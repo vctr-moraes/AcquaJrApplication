@@ -66,12 +66,12 @@ namespace AcquaJrApplication.Data.Mappings
                 .WithOne(m => m.Projeto)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // 1 : 1 => Projeto : Cliente
+            // 1 : N => Projeto : Cliente
             builder.HasOne(p => p.Cliente)
                 .WithMany(c => c.Projetos)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // 1 : 1 => Projeto : Serviço
+            // 1 : N => Projeto : Serviço
             builder.HasOne(p => p.Servico)
                 .WithMany(s => s.Projetos)
                 .OnDelete(DeleteBehavior.Restrict);

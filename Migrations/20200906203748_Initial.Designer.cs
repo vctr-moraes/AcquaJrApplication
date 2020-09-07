@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AcquaJrApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200628010415_NovoCampoStatusTabelaServiços")]
-    partial class NovoCampoStatusTabelaServiços
+    [Migration("20200906203748_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

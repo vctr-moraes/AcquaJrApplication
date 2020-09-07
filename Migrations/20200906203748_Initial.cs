@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AcquaJrApplication.Migrations
 {
-    public partial class TabelasSistema : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -110,7 +110,8 @@ namespace AcquaJrApplication.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(700)", nullable: false)
+                    Descricao = table.Column<string>(type: "varchar(700)", nullable: false),
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -280,13 +281,13 @@ namespace AcquaJrApplication.Migrations
                         column: x => x.MembroId,
                         principalTable: "Membros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_MembroProjetos_Projetos_ProjetoId",
                         column: x => x.ProjetoId,
                         principalTable: "Projetos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
