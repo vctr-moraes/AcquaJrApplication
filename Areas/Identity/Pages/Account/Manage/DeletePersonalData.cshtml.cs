@@ -37,19 +37,19 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account.Manage
 
         public bool RequirePassword { get; set; }
 
-        public async Task<IActionResult> OnGet()
+        public IActionResult OnGet()
         {
-            // TODO: Redireciona o usuário para a mesma página, impedindo a exclusão da conta. Remover após implementar a funcionalidade final.
-            // return Redirect("./PersonalData");
+            // TODO: Redireciona o usuário para a mesma página, impedindo a exclusão da conta.
+            return Redirect("./PersonalData");
 
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Não foi possível carregar o usuário com o ID '{_userManager.GetUserId(User)}'.");
-            }
+            //var user = await _userManager.GetUserAsync(User);
+            //if (user == null)
+            //{
+            //    return NotFound($"Não foi possível carregar o usuário com o ID '{_userManager.GetUserId(User)}'.");
+            //}
 
-            RequirePassword = await _userManager.HasPasswordAsync(user);
-            return Page();
+            //RequirePassword = await _userManager.HasPasswordAsync(user);
+            //return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()

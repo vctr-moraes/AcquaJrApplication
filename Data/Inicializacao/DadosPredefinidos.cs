@@ -1,14 +1,9 @@
-﻿using AcquaJrApplication.Models;
-//using AutoMapper.Configuration;
+﻿using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AcquaJrApplication.Data.Constantes;
 using Microsoft.EntityFrameworkCore;
+using AcquaJrApplication.Data.Constantes;
 
 namespace AcquaJrApplication.Data.Inicializacao
 {
@@ -18,7 +13,7 @@ namespace AcquaJrApplication.Data.Inicializacao
         {
             using (var context = serviceProvider.GetRequiredService<ApplicationDbContext>())
             {
-                var userManager = serviceProvider.GetRequiredService <UserManager<User>>();
+                var userManager = serviceProvider.GetRequiredService <UserManager<IdentityUser>>();
                 var config = serviceProvider.GetRequiredService<IConfiguration>();
 
                 CriarUsuarioAdministrativo(config, userManager);
@@ -26,7 +21,7 @@ namespace AcquaJrApplication.Data.Inicializacao
             }
         }
 
-        public static void CriarUsuarioAdministrativo(IConfiguration configuration, UserManager<User> userManager)
+        public static void CriarUsuarioAdministrativo(IConfiguration configuration, UserManager<IdentityUser> userManager)
         {
             var email = configuration.GetSection(ConstantesConfiguracao.ConfigEmailUsuarioAdministrativo).Value;
             var senha = configuration.GetSection(ConstantesConfiguracao.ConfigSenhaUsuarioAdministrativo).Value;
@@ -34,10 +29,11 @@ namespace AcquaJrApplication.Data.Inicializacao
 
             if (usuario == null)
             {
-                usuario = new User
+                usuario = new IdentityUser
                 {
                     UserName = email,
-                    Email = email
+                    Email = email,
+                    EmailConfirmed = true
                 };
 
                 var resultado = userManager.CreateAsync(usuario, senha).Result;

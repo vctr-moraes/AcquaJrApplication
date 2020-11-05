@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AcquaJrApplication.Areas.Identity.Pages.Account
 {
-    //[Authorize]
+    [Authorize]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -62,10 +62,11 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public IActionResult OnGetAsync(string returnUrl = null)
         {
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            return Redirect("/Identity/Account/Manage");
+            //ReturnUrl = returnUrl;
+            //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
