@@ -1,6 +1,5 @@
 ﻿@page
 @model AcquaJrApplication.Areas.Dashboard.Pages.Clientes.CreateModel
-@using AcquaJrApplication.Models
 
 @{
     ViewData["Title"] = "Novo cliente";
@@ -16,10 +15,6 @@
     <div class="col-md-4">
         @{ await Html.RenderPartialAsync("_ClienteFormPartial", Model.ClienteVM); }
     </div>
-</div>
-
-<div>
-    <a asp-page="Index">Voltar</a>
 </div>
 
 @section Scripts {

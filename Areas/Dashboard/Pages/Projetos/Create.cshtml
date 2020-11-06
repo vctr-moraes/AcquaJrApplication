@@ -1,6 +1,5 @@
 ﻿@page
 @model AcquaJrApplication.Areas.Dashboard.Pages.Projetos.CreateModel
-@using AcquaJrApplication.Models
 
 @{
     ViewData["Title"] = "Novo projeto";
@@ -16,10 +15,6 @@
     <div class="col-md-12">
         @{ await Html.RenderPartialAsync("_ProjetoFormPartial", Model.ProjetoVM); }
     </div>
-</div>
-
-<div>
-    <a href="javascript:window.history.back();">Voltar</a>
 </div>
 
 @section Scripts {

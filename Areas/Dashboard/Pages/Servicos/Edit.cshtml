@@ -1,6 +1,5 @@
 ﻿@page
 @model AcquaJrApplication.Areas.Dashboard.Pages.Servicos.EditModel
-@using AcquaJrApplication.Models
 
 @{
     ViewData["Title"] = "Editar serviço";
@@ -16,10 +15,6 @@
     <div class="col-md-4">
         @{ await Html.RenderPartialAsync("_ServicoFormPartial", Model.ServicoVM); }
     </div>
-</div>
-
-<div>
-    <a href="javascript:window.history.back();">Voltar</a>
 </div>
 
 @section Scripts {
