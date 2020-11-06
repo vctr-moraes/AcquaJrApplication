@@ -11,6 +11,8 @@
 <h3>@ViewData["Title"]</h3>
 
 <hr />
+<partial name="~/Pages/Components/Summary/_ValidationSummaryAllPartial.cshtml" />
+
 <div class="row">
     <div class="col-md-4">
         @{ await Html.RenderPartialAsync("_MembroFormPartial", Model.MembroVM); }
@@ -19,7 +21,7 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    
+
     <script src="~/js/Membro.js"></script>
 
     <script>
