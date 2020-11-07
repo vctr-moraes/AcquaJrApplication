@@ -92,7 +92,7 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.RefreshSignInAsync(user);
             _logger.LogInformation("Usuário alterou sua senha com sucesso.");
-            StatusMessage = "Sua senha foi alterada com sucesso!.";
+            StatusMessage = "Sua senha foi alterada com sucesso!";
 
             return RedirectToPage();
         }
