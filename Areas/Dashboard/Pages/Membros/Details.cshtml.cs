@@ -29,7 +29,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 return NotFound();
             }
 
-            Membro membro = await _membroRepository.ObterPorId(id);
+            Membro membro = await _membroRepository.ObterMembro(id);
 
             if (membro == null)
             {
@@ -38,6 +38,38 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
 
             MembroVM = new MembroViewModel(membro);
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(Guid id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Membro membro = await _membroRepository.ObterMembro(id);
+
+            if (membro == null)
+            {
+                return NotFound();
+            }
+
+            if (membro != null)
+            {
+                try
+                {
+                    await _membroRepository.ExcluirMembro(id);
+                }
+                catch (DomainException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    MembroVM = new MembroViewModel(membro);
+
+                    return Page();
+                }
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }

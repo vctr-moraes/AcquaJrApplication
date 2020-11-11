@@ -57,14 +57,8 @@ else
                         @Html.DisplayFor(modelItem => item.Descricao)
                     </td>
                     <td class="text-right">
-                        <a asp-page="./Edit" asp-route-id="@item.Id" asp-route-origem="InativosModel" type="button" class="btn btn-sm btn-primary" title="Editar">
-                            <i class="material-icons">edit</i>
-                        </a>
                         <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Detalhes">
                             <i class="material-icons">search</i>
-                        </a>
-                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Deletar">
-                            <i class="material-icons">delete_forever</i>
                         </a>
                     </td>
                 </tr>

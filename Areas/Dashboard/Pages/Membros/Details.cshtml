@@ -2,7 +2,7 @@
 @model AcquaJrApplication.Areas.Dashboard.Pages.Membros.DetailsModel
 
 @{
-    ViewData["Title"] = "Detalhes";
+    ViewData["Title"] = "Detalhes do membro";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
@@ -12,15 +12,54 @@
 
 <div>
     <hr />
+    <partial name="~/Pages/Components/Summary/_ValidationSummaryModelOnlyPartial.cshtml" />
+
     @{ await Html.RenderPartialAsync("_MembroDetalhesPartial", Model.MembroVM); }
+
+    <form method="post">
+        <input type="hidden" asp-for="MembroVM.Id" />
+        <a class="btn btn-dark" asp-page="./Index">
+            <i class="material-icons">arrow_back</i>
+            Voltar
+        </a>
+        <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@Model.MembroVM.Id">
+            <i class="material-icons">edit</i>
+            Editar
+        </a>
+        <button type="button" value="Deletar" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+            <i class="material-icons">delete_forever</i>
+            Deletar
+        </button>
+    </form>
 </div>
-<div>
-    <a class="btn btn-dark"  asp-page="./Index">
-        <i class="material-icons">arrow_back</i>
-        Voltar
-    </a>
-    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@Model.MembroVM.Id">
-        <i class="material-icons">edit</i>
-        Editar
-    </a>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 500px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger" id="exampleModalLabel">
+                    Deletar membro
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Tem certeza que deseja deletar este membro?</h4>
+            </div>
+            <form method="post">
+                <input type="hidden" asp-for="MembroVM.Id" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="material-icons">close</i>
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="material-icons">delete_forever</i>
+                        Deletar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

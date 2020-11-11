@@ -39,5 +39,37 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
             ClienteVM = new ClienteViewModel(cliente);
             return Page();
         }
+
+        public async Task<IActionResult> OnPostAsync(Guid id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Cliente cliente = await _clienteRepository.ObterPorId(id);
+
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+
+            if (cliente != null)
+            {
+                try
+                {
+                    await _clienteRepository.ExcluirCliente(id);
+                }
+                catch (DomainException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    ClienteVM = new ClienteViewModel(cliente);
+
+                    return Page();
+                }
+            }
+
+            return RedirectToPage("./Index");
+        }
     }
 }

@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
+using AcquaJrApplication.Models;
 using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.ViewsModels;
-using AcquaJrApplication.Models;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 {
@@ -38,6 +38,38 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
 
             ProjetoVM = new ProjetoViewModel(projeto);
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(Guid id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Projeto projeto = await _projetoRepository.ObterPorId(id);
+
+            if (projeto == null)
+            {
+                return NotFound();
+            }
+
+            if (projeto != null)
+            {
+                try
+                {
+                    await _projetoRepository.ExcluirProjeto(id);
+                }
+                catch (DomainException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    ProjetoVM = new ProjetoViewModel(projeto);
+
+                    return Page();
+                }
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }
