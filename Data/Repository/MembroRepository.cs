@@ -68,10 +68,7 @@ namespace AcquaJrApplication.Data.Repository
 
             foreach (var item in projetos)
             {
-                if (item.Membros.Any(p => p.MembroId == id))
-                {
-                    DomainException.When(true, "Este membro não pode ser deletado, pois está vinculado a algum projeto.");
-                }
+                DomainException.When(item.Membros.Any(p => p.MembroId == id), "Este membro não pode ser deletado, pois está vinculado a algum projeto.");
             }
 
             await Remover(membro.Id);

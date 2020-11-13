@@ -45,10 +45,7 @@ namespace AcquaJrApplication.Data.Repository
             var cliente = await ObterCliente(id);
             var projetos = _projetoRepository.ObterProjetos().Where(p => p.ClienteId == id).ToList();
 
-            if (projetos.Count() > 0)
-            {
-                DomainException.When(true, "Este cliente não pode ser deletado, pois está vinculado a algum projeto.");
-            }
+            DomainException.When(projetos.Count() > 0, "Este cliente não pode ser deletado, pois está vinculado a algum projeto.");
             
             await Remover(cliente.Id);
         }

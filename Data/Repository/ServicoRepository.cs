@@ -50,10 +50,7 @@ namespace AcquaJrApplication.Data.Repository
             var servico = await ObterServico(id);
             var projetos = _projetoRepository.ObterProjetos().Where(projetos => projetos.ServicoId == id).ToList();
 
-            if (projetos.Count() > 0)
-            {
-                DomainException.When(true, "Este serviço não pode ser deletado, pois está vinculado a algum projeto.");
-            }
+            DomainException.When(projetos.Count() > 0, "Este serviço não pode ser deletado, pois está vinculado a algum projeto.");
             
             await Remover(servico.Id);
         }
