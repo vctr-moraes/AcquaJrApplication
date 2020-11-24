@@ -50,7 +50,7 @@ namespace AcquaJrApplication.ViewsModels
 
         public List<MembroProjetoViewModel> MembrosProjetos { get; set; }
 
-        [Display(Name = "Membros participante no projeto")]
+        [Display(Name = "Membros participantes no projeto")]
         [Required(ErrorMessage = "É necessário selecionar algum membro.")]
         public Guid[] MembrosId { get; set; }
 
