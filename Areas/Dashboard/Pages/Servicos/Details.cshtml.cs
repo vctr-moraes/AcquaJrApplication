@@ -60,7 +60,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                 {
                     await _servicoRepository.ExcluirServico(id);
                 }
-                catch (DomainException ex)
+                catch (Exception ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                     ServicoVM = new ServicoViewModel(servico);

@@ -60,7 +60,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 {
                     await _clienteRepository.ExcluirCliente(id);
                 }
-                catch (DomainException ex)
+                catch (Exception ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                     ClienteVM = new ClienteViewModel(cliente);

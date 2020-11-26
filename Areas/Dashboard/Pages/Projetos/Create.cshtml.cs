@@ -94,7 +94,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 await _projetoRepository.SalvarProjeto(projeto);
                 return RedirectToPage("./Index");
             }
-            catch (DomainException ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return Page();

@@ -58,7 +58,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Servicos
                 await _servicoRepository.AtualizarServico(servico);
                 return await Task.FromResult(RedirectToPage("./Index"));
             }
-            catch (DomainException ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return Page();

@@ -60,7 +60,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Projetos
                 {
                     await _projetoRepository.ExcluirProjeto(id);
                 }
-                catch (DomainException ex)
+                catch (Exception ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                     ProjetoVM = new ProjetoViewModel(projeto);

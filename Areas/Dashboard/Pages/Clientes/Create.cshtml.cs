@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
@@ -62,7 +63,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 await _clienteRepository.SalvarCliente(cliente);
                 return RedirectToPage("./Index");
             }
-            catch (DomainException ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return Page();

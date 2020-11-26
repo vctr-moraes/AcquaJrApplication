@@ -60,7 +60,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Membros
                 {
                     await _membroRepository.ExcluirMembro(id);
                 }
-                catch (DomainException ex)
+                catch (Exception ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                     MembroVM = new MembroViewModel(membro);

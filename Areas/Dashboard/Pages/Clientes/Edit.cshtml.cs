@@ -73,7 +73,7 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Clientes
                 await _clienteRepository.AtualizarCliente(cliente);
                 return await Task.FromResult(RedirectToPage("./Index"));
             }
-            catch (DomainException ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return Page();
