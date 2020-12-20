@@ -12,7 +12,7 @@ namespace AcquaJrApplication.Models
         /* EF Relation */
         private Evento _evento;
 
-        private DataEvento() { }
+        public DataEvento() { }
 
         public DataEvento(Evento evento)
         {

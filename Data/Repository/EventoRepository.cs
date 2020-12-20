@@ -1,20 +1,12 @@
 ﻿using AcquaJrApplication.Interfaces;
 using AcquaJrApplication.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AcquaJrApplication.Data.Repository
 {
     public class EventoRepository : Repository<Evento>, IEventoRepository
     {
-        private readonly IEventoRepository _eventoRepository;
-
-        public EventoRepository(ApplicationDbContext context, IEventoRepository eventoRepository) : base(context)
-        {
-            _eventoRepository = eventoRepository;
-        }
+        public EventoRepository(ApplicationDbContext context) : base(context) { }
 
         public async Task SalvarEvento(Evento evento)
         {

@@ -16,6 +16,8 @@ namespace AcquaJrApplication.Models
         private readonly List<DataEvento> _datas = new List<DataEvento>();
         private readonly List<Convidado> _convidados = new List<Convidado>();
 
+        public Evento() { }
+
         public string Nome
         {
             get => _nome;
@@ -83,8 +85,8 @@ namespace AcquaJrApplication.Models
             }
         }
 
-        public IEnumerable<DataEvento> Datas { get; set; }
+        public IEnumerable<DataEvento> Datas => _datas;
 
-        public IEnumerable<Convidado> Convidados { get; set; }
+        public IEnumerable<Convidado> Convidados => _convidados;
     }
 }
