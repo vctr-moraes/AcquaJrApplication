@@ -1,13 +1,25 @@
-﻿using System;
+﻿using AcquaJrApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AcquaJrApplication.ViewsModels
 {
     public class EventoViewModel
     {
+        public EventoViewModel() { }
+
+        public EventoViewModel(Evento evento)
+        {
+            Id = evento.Id;
+            Nome = evento.Nome;
+            Descricao = evento.Descricao;
+            Valor = evento.Valor;
+            Local = evento.Local;
+            PontoReferencia = evento.PontoReferencia;
+            OutrasInformacoes = evento.OutrasInformacoes;
+        }
+
         [Key]
         public Guid Id { get; set; }
 

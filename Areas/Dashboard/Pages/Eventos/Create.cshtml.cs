@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using AcquaJrApplication.Data;
-using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Eventos
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IEventoRepository _eventoRepository;
 
-        public CreateModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public CreateModel(IEventoRepository eventoRepository)
         {
-            _context = context;
+            _eventoRepository = eventoRepository;
         }
 
         public IActionResult OnGet()
@@ -25,10 +23,8 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Eventos
         }
 
         [BindProperty]
-        public Evento Evento { get; set; }
+        public EventoViewModel EventoVM { get; set; }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -36,8 +32,8 @@ namespace AcquaJrApplication.Areas.Dashboard.Pages.Eventos
                 return Page();
             }
 
-            _context.Eventos.Add(Evento);
-            await _context.SaveChangesAsync();
+            //_context.Eventos.Add(Evento);
+            //await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

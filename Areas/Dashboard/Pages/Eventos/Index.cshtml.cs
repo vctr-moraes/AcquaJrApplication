@@ -1,29 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using AcquaJrApplication.Data;
-using AcquaJrApplication.Models;
+using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.ViewsModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AcquaJrApplication.Areas.Dashboard.Pages.Eventos
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
-        private readonly AcquaJrApplication.Data.ApplicationDbContext _context;
+        private readonly IEventoRepository _eventoRepository;
 
-        public IndexModel(AcquaJrApplication.Data.ApplicationDbContext context)
+        public IndexModel(IEventoRepository eventoRepository)
         {
-            _context = context;
+            _eventoRepository = eventoRepository;
         }
 
-        public IList<Evento> Evento { get;set; }
+        [BindProperty]
+        public List<EventoViewModel> Eventos { get;set; }
 
-        public async Task OnGetAsync()
+        public ActionResult OnGet()
         {
-            Evento = await _context.Eventos.ToListAsync();
+            Eventos = _eventoRepository.ObterEventos().Select(evento => new EventoViewModel(evento)).ToList();
+            return Page();
         }
     }
 }

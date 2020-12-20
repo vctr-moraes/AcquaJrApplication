@@ -2,66 +2,58 @@
 @model AcquaJrApplication.Areas.Dashboard.Pages.Eventos.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Eventos";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<partial name="_DashboardNavPartialView" />
+
+<h3>@ViewData["Title"]</h3>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
+        <i class="material-icons">add</i>
+        Novo evento
+    </a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Evento[0].Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Evento[0].Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Evento[0].Valor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Evento[0].Local)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Evento[0].PontoReferencia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Evento[0].OutrasInformacoes)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Evento) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Local)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PontoReferencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OutrasInformacoes)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+
+@if (Model.Eventos.Count == 0)
+{
+    <div class="vertical-center justify-content-center">
+        <h4 class="text-muted" align="center">Não há eventos cadastrados no sistema</h4>
+    </div>
 }
-    </tbody>
-</table>
+else
+{
+    <table class="table table-bordered table-condensed">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Eventos[0].Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Eventos[0].Descricao)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Eventos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
