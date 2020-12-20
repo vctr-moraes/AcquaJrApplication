@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AcquaJrApplication.Models;
 
@@ -17,6 +13,9 @@ namespace AcquaJrApplication.Data
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<Projeto> Projetos { get; set; }
         public DbSet<MembroProjeto> MembroProjetos { get; set; }
+        public DbSet<Evento> Eventos { get; set; }
+        public DbSet<DataEvento> DataEventos { get; set; }
+        public DbSet<Convidado> Convidados { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

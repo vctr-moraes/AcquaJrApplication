@@ -34,7 +34,6 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(string.IsNullOrEmpty(value), "O campo Descrição é obrigatório.");
                 DomainException.When(value.Trim().Length > 1000, "O campo Descrição não pode conter mais que 1000 caracteres.");
                 _descricao = value.Trim();
             }
@@ -57,7 +56,6 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(string.IsNullOrEmpty(value), "O campo Local é obrigatório.");
                 DomainException.When(value.Trim().Length > 300, "O campo Local não pode conter mais que 300 caracteres.");
                 _local = value.Trim();
             }
@@ -84,5 +82,9 @@ namespace AcquaJrApplication.Models
                 _outrasInformacoes = value.Trim();
             }
         }
+
+        public IEnumerable<DataEvento> Datas { get; set; }
+
+        public IEnumerable<Convidado> Convidados { get; set; }
     }
 }

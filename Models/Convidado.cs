@@ -61,7 +61,7 @@ namespace AcquaJrApplication.Models
 
             set
             {
-                DomainException.When(value.Trim().Length > 150, "O campo Instituição não pode conter mais que 150 caracteres.");
+                DomainException.When(value.Trim().Length > 200, "O campo Instituição não pode conter mais que 200 caracteres.");
                 _instituicao = value.Trim();
             }
         }
