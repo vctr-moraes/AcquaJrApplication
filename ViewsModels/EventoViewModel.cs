@@ -51,7 +51,7 @@ namespace AcquaJrApplication.ViewsModels
         [MaxLength(1000, ErrorMessage = "O campo {0} não pode conter mais que {1} caracteres.")]
         public string OutrasInformacoes { get; set; }
 
-        public List<DataEventoViewModel> Datas { get; set; }
+        public IEnumerable<DataEventoViewModel> Datas { get; set; }
 
         public List<ConvidadoViewModel> Convidados { get; set; }
     }

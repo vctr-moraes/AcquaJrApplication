@@ -55,7 +55,7 @@
 
     <footer class="border-top footer text-gray text-muted">
         <div class="container">
-            &copy; @DateTime.Now.Year - Acqua Jr. Application é um projeto desenvolvido por <a href="https://victormoraes.azurewebsites.net" target="_blank" class="text-black-50">Victor Moraes</a>
+            &copy; @DateTime.Now.Year - Acqua Jr. Application é um projeto desenvolvido por <a href="https://linktr.ee/vctr.moraes" target="_blank" class="text-black-50">Victor Moraes</a>
         </div>
     </footer>
 
@@ -66,6 +66,12 @@
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

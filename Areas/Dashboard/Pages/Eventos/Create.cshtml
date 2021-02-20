@@ -13,12 +13,14 @@
 <hr />
 <partial name="~/Pages/Components/Summary/_ValidationSummaryAllPartial.cshtml" />
 
-<div class="row">
-    <div class="col-12">
+<div class="">
+    <div class="">
         @{ await Html.RenderPartialAsync("_EventoFormPartial.cshtml", Model.EventoVM); }
     </div>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/Evento.js"></script>
 }

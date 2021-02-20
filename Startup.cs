@@ -31,6 +31,8 @@ namespace AcquaJrApplication
 
             services.AddRazorPages();
 
+            services.AddMvc();
+
             services.AddMessageConfiguration();
 
             services.ResolveDependencies();

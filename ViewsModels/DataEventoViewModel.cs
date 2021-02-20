@@ -13,15 +13,18 @@ namespace AcquaJrApplication.ViewsModels
 
         [Display(Name = "Data")]
         [DataType(DataType.Date)]
-        public DateTime Data { get; set; }
+        [Required(ErrorMessage = "É necessário preencher a data do evento.")]
+        public DateTime? Data { get; set; }
 
         [Display(Name = "Hora de Início")]
         [DataType(DataType.Time)]
-        public TimeSpan HoraInicio { get; set; }
+        [Required(ErrorMessage = "É necessário preencher a hora de início.")]
+        public TimeSpan? HoraInicio { get; set; }
 
         [Display(Name = "Hora de Encerramento")]
         [DataType(DataType.Time)]
-        public TimeSpan HoraEncerramento { get; set; }
+        [Required(ErrorMessage = "É necessário preencher a hora de encerramento.")]
+        public TimeSpan? HoraEncerramento { get; set; }
 
         public Guid EventoId { get; set; }
     }
