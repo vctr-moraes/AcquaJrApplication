@@ -63,17 +63,17 @@
                     <table class="col-12" id="lista-datas">
                         <thdead></thdead>
                         <tbody id="datas-incluidas">
-                            @if (Model != null)
+                            @if (Model != null && Model.Datas != null)
                             {
                                 foreach (var item in Model.Datas)
                                 {
-                                    @await Html.PartialAsync("_DataEventoPartialView.cshtml", item)
+                                    @await Html.PartialAsync("~/Areas/Dashboard/Pages/Eventos/_DataEventoPartialView.cshtml", item)
                                 }
                             }
                         </tbody>
                     </table>
                     <div class="form-group float-right">
-                        <button type="button" class="btn btn-float btn-success my-1 incluir-data" onclick="AbrirModalDataEvento(null, null, null, null, null)">
+                        <button type="button" class="btn btn-float btn-success my-1 incluir-data" onclick="AbrirModalDataEvento(null, null, null, null)">
                             <i class="material-icons">add</i>
                         </button>
                     </div>

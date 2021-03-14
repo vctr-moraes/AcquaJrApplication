@@ -13,11 +13,7 @@
 <hr />
 <partial name="~/Pages/Components/Summary/_ValidationSummaryAllPartial.cshtml" />
 
-<div class="row">
-    <div class="col-md-4">
-        @{ await Html.RenderPartialAsync("_ServicoFormPartial", Model.ServicoVM); }
-    </div>
-</div>
+@{ await Html.RenderPartialAsync("_ServicoFormPartial", Model.ServicoVM); }
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

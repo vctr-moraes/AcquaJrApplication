@@ -1,6 +1,16 @@
 ﻿@page
 @model LoginModel
 
+<style>
+    .content{
+        width: 100%;
+        height: 65vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
 @{
     ViewData["Title"] = "Entrar";
 }
@@ -8,44 +18,38 @@
 <h2>@ViewData["Title"]</h2>
 <hr />
 <partial name="~/Pages/Components/Summary/_ValidationSummaryModelOnlyPartial.cshtml" />
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <div class="form-group">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+    <div class="row content">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form id="account" method="post">
+                        <div class="form-group">
+                            <div class="textfield-box">
+                                <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="textfield-box">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" asp-for="Input.RememberMe" />
+                            <label class="custom-control-label" asp-for="Input.RememberMe">@Html.DisplayNameFor(m => m.Input.RememberMe)</label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                        </div>
+                        <a id="forgot-password" class="card-link" asp-page="./ForgotPassword">Esqueceu sua senha?</a>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="form-group custom-control custom-checkbox">
-                    <input class="custom-control-input" type="checkbox" asp-for="Input.RememberMe" />
-                    <label class="custom-control-label" asp-for="Input.RememberMe">@Html.DisplayNameFor(m => m.Input.RememberMe)</label>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </div>
-                <div class="form-group">
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu sua senha?</a>
-                    </p>
-                    @*<p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registre-se como um novo usuário</a>
-                    </p>*@
-                </div>
-            </form>
-        </section>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            
-        </section>
-    </div>
-</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

@@ -1,5 +1,5 @@
-﻿function AbrirModalDataEvento(id, eventoId, data, horaInicio, horaEncerramento) {
-    if (id == null && eventoId == null && data == null && horaInicio == null && horaEncerramento == null) {
+﻿function AbrirModalDataEvento(id, data, horaInicio, horaEncerramento) {
+    if (id == null && data == null && horaInicio == null && horaEncerramento == null) {
         $('#modalDataEvento').modal();
         $('#data_Data').val("");
         $('#data_HoraInicio').val("");
@@ -21,14 +21,12 @@ function IncluirDataEvento() {
 
     if (linha > 0) {
         tabela.rows[linha].cells[1].children[0].value = $('#data_Id').val();
-        tabela.rows[linha].cells[2].children[0].value = $('#data_EventoId').val();
         tabela.rows[linha].cells[3].children[0].value = $('#data_Data').val();
         tabela.rows[linha].cells[4].children[0].value = $('#data_HoraInicio').val();
         tabela.rows[linha].cells[5].children[0].value = $('#data_HoraEncerramento').val();
         $('#modalDataEvento').modal('hide');
     } else {
         evento.Id = 0;
-        evento.EventoId = $('#data_EventoId').val();
         evento.Data = $('#data_Data').val();
         evento.HoraInicio = $('#data_HoraInicio').val();
         evento.HoraEncerramento = $('#data_HoraEncerramento').val();
@@ -36,7 +34,7 @@ function IncluirDataEvento() {
         $.ajax({
             type: "POST",
             data: evento,
-            url: '/Evento/IncluirDataEvento',
+            url: '/Evento/IncluirData',
             headers: {
                 "RequestVerificationToken": requestVerificationToken
             }
