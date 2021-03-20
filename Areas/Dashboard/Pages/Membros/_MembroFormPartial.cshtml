@@ -19,14 +19,24 @@
         </div>
         <div class="form-group col-6">
             <div class="textfield-box">
+                <label asp-for="@Model.Cargo" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <select asp-for="@Model.Cargo" asp-items="Html.GetEnumSelectList<Cargo>()" class="form-control">
+                    <option value="" selected disabled>Selecionar</option>
+                </select>
+                <span asp-validation-for="@Model.Cargo" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
                 <label asp-for="@Model.Cpf" class="control-label"></label>
                 <small id="passwordHelpInline" class="text-muted">*</small>
                 <input asp-for="@Model.Cpf" class="form-control input-numerico cpf" />
                 <span asp-validation-for="@Model.Cpf" class="text-danger"></span>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
                 <label asp-for="@Model.DataNascimento" class="control-label"></label>
@@ -35,6 +45,8 @@
                 <span asp-validation-for="@Model.DataNascimento" class="text-danger"></span>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
                 <label asp-for="@Model.Logradouro" class="control-label"></label>
@@ -43,16 +55,16 @@
                 <span asp-validation-for="@Model.Logradouro" class="text-danger"></span>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
-            <label asp-for="@Model.Bairro" class="control-label"></label>
-            <small id="passwordHelpInline" class="text-muted">*</small>
-            <input asp-for="@Model.Bairro" class="form-control" />
-            <span asp-validation-for="@Model.Bairro" class="text-danger"></span>
+                <label asp-for="@Model.Bairro" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.Bairro" class="form-control" />
+                <span asp-validation-for="@Model.Bairro" class="text-danger"></span>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
                 <label asp-for="@Model.Cidade" class="control-label"></label>
@@ -61,8 +73,6 @@
                 <span asp-validation-for="@Model.Cidade" class="text-danger"></span>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
                 <label asp-for="@Model.Cep" class="control-label"></label>
@@ -71,6 +81,8 @@
                 <span asp-validation-for="@Model.Cep" class="text-danger"></span>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
                 <label asp-for="@Model.Estado" class="control-label"></label>
@@ -108,8 +120,6 @@
                 <span asp-validation-for="@Model.Estado" class="text-danger"></span>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
                 <label asp-for="@Model.Email" class="control-label"></label>
@@ -118,6 +128,8 @@
                 <span asp-validation-for="@Model.Email" class="text-danger"></span>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
             <label asp-for="@Model.Telefone" class="control-label"></label>
@@ -126,8 +138,6 @@
             <span asp-validation-for="@Model.Telefone" class="text-danger"></span>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
                 <label asp-for="@Model.Curso" class="control-label"></label>
@@ -138,24 +148,14 @@
                 <span asp-validation-for="@Model.Curso" class="text-danger"></span>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="form-group col-6">
             <div class="textfield-box">
                 <label asp-for="@Model.MatriculaAcademica" class="control-label"></label>
                 <small id="passwordHelpInline" class="text-muted">*</small>
                 <input asp-for="@Model.MatriculaAcademica" class="form-control" />
                 <span asp-validation-for="@Model.MatriculaAcademica" class="text-danger"></span>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-6">
-            <div class="textfield-box">
-                <label asp-for="@Model.Cargo" class="control-label"></label>
-                <small id="passwordHelpInline" class="text-muted">*</small>
-                <select asp-for="@Model.Cargo" asp-items="Html.GetEnumSelectList<Cargo>()" class="form-control">
-                    <option value="" selected disabled>Selecionar</option>
-                </select>
-                <span asp-validation-for="@Model.Cargo" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group col-6">

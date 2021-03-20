@@ -44,10 +44,12 @@ namespace AcquaJrApplication
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseStatusCodePagesWithRedirects("/Errors/{0}");
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithRedirects("/Errors/{0}");
+                //app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
 
