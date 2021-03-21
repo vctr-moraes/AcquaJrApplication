@@ -1,8 +1,8 @@
 ﻿@page
-@model AcquaJrApplication.Areas.Dashboard.Pages.Servicos.CreateModel
+@model AcquaJrApplication.Areas.Dashboard.Pages.Eventos.CreateModel
 
 @{
-    ViewData["Title"] = "Novo serviço";
+    ViewData["Title"] = "Novo evento";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
@@ -13,8 +13,14 @@
 <hr />
 <partial name="~/Pages/Components/Summary/_ValidationSummaryAllPartial.cshtml" />
 
-@{ await Html.RenderPartialAsync("_ServicoFormPartial", Model.ServicoVM); }
+<div class="">
+    <div class="">
+        @{ await Html.RenderPartialAsync("_EventoFormPartial.cshtml", Model.EventoVM); }
+    </div>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/Evento.js"></script>
 }

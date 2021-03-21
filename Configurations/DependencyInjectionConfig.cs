@@ -14,6 +14,7 @@ namespace AcquaJrApplication.Configurations
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IProjetoRepository, ProjetoRepository>();
+            services.AddScoped<IEventoRepository, EventoRepository>();
 
             return services;
         }

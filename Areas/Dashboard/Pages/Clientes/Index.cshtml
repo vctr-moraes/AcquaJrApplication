@@ -1,6 +1,12 @@
 ﻿@page
 @model AcquaJrApplication.Areas.Dashboard.Pages.Clientes.IndexModel
 
+<style>
+    .id-cliente {
+        cursor: pointer;
+    }
+</style>
+
 @{
     ViewData["Title"] = "Clientes";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -11,7 +17,7 @@
 <h3>@ViewData["Title"]</h3>
 
 <p>
-    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
+    <a asp-page="Create" type="button" class="btn btn-success">
         <i class="material-icons">add</i>
         Novo cliente
     </a>
@@ -25,7 +31,7 @@
 }
 else
 {
-    <table class="table table-bordered table-condensed">
+    <table class="table border table-hover">
         <thead class="thead-light">
             <tr>
                 <th>
@@ -37,13 +43,12 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.Clientes[0].Telefone1)
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Clientes)
             {
-                <tr>
+                <tr class="id-cliente" data-cliente="@item.Id">
                     <td>
                         @Html.DisplayFor(modelItem => item.NomeFantasia)
                     </td>
@@ -53,13 +58,15 @@ else
                     <td>
                         @Html.DisplayFor(modelItem => item.Telefone1)
                     </td>
-                    <td class="text-right">
-                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Detalhes">
-                            <i class="material-icons">search</i>
-                        </a>
-                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
+
+<script>
+    $(".id-cliente").click(function () {
+        const id_cliente = $(this).data('cliente');
+        window.location.href = "/Dashboard/Clientes/Details?id=" + id_cliente
+    });
+</script>

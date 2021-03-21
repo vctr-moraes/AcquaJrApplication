@@ -1,0 +1,35 @@
+﻿@model AcquaJrApplication.ViewsModels.DataEventoViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+
+<tr>
+    @using (Html.BeginCollectionItem("Datas"))
+    {
+        <td style="padding-bottom:10px;">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-right">
+                        <div style="font-size:28px;" title="Excluir data">&times;</div>
+                    </div>
+                    <div class="row">
+                        <input type="hidden" asp-for="@Model.Id" />
+                        <div class="col-4">
+                            <label asp-for="@Model.Data" class="control-label"></label>
+                            <input asp-for="@Model.Data" class="form-control" />
+                            <span asp-validation-for="@Model.Data" class="text-danger"></span>
+                        </div>
+                        <div class="col-4">
+                            <label asp-for="@Model.HoraInicio" class="control-label"></label>
+                            <input asp-for="@Model.HoraInicio" class="form-control" />
+                            <span asp-validation-for="@Model.HoraInicio" class="text-danger"></span>
+                        </div>
+                        <div class="col-4">
+                            <label asp-for="@Model.HoraEncerramento" class="control-label"></label>
+                            <input asp-for="@Model.HoraEncerramento" class="form-control" />
+                            <span asp-validation-for="@Model.HoraEncerramento" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    }
+</tr>

@@ -1,141 +1,194 @@
 ﻿@model AcquaJrApplication.ViewsModels.MembroViewModel
 @using AcquaJrApplication.Models
 
+<style>
+    .teste {
+        cursor: pointer;
+    }
+</style>
+
 <form method="post">
-    <div class="form-group">
-        <label asp-for="@Model.Nome" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Nome" class="form-control" />
-        <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Nome" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.Nome" class="form-control" />
+                <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Cargo" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <select asp-for="@Model.Cargo" asp-items="Html.GetEnumSelectList<Cargo>()" class="form-control">
+                    <option value="" selected disabled>Selecionar</option>
+                </select>
+                <span asp-validation-for="@Model.Cargo" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.Cpf" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Cpf" class="form-control input-numerico cpf" />
-        <span asp-validation-for="@Model.Cpf" class="text-danger"></span>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Cpf" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.Cpf" class="form-control input-numerico cpf" />
+                <span asp-validation-for="@Model.Cpf" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.DataNascimento" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.DataNascimento" class="form-control" />
+                <span asp-validation-for="@Model.DataNascimento" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.DataNascimento" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.DataNascimento" class="form-control" />
-        <span asp-validation-for="@Model.DataNascimento" class="text-danger"></span>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Logradouro" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.Logradouro" class="form-control" />
+                <span asp-validation-for="@Model.Logradouro" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Bairro" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.Bairro" class="form-control" />
+                <span asp-validation-for="@Model.Bairro" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.Logradouro" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Logradouro" class="form-control" />
-        <span asp-validation-for="@Model.Logradouro" class="text-danger"></span>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Cidade" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.Cidade" class="form-control" />
+                <span asp-validation-for="@Model.Cidade" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Cep" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.Cep" class="form-control input-numerico cep" id="cep" />
+                <span asp-validation-for="@Model.Cep" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.Bairro" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Bairro" class="form-control" />
-        <span asp-validation-for="@Model.Bairro" class="text-danger"></span>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Estado" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <select asp-for="@Model.Estado" class="form-control">
+                    <option value="" disabled selected>Selecionar</option>
+                    <option value="Acre">Acre</option>
+                    <option value="Alagoas">Alagoas</option>
+                    <option value="Amapá">Amapá</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Bahia">Bahia</option>
+                    <option value="Ceará">Ceará</option>
+                    <option value="Distrito Federal">Distrito Federal</option>
+                    <option value="Espírito Santo">Espírito Santo</option>
+                    <option value="Goiás">Goiás</option>
+                    <option value="Maranhão">Maranhão</option>
+                    <option value="Mato Grosso">Mato Grosso</option>
+                    <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                    <option value="Minas Gerais">Minas Gerais</option>
+                    <option value="Pará">Pará</option>
+                    <option value="Paraíba">Paraíba</option>
+                    <option value="Paraná">Paraná</option>
+                    <option value="Pernambuco">Pernambuco</option>
+                    <option value="Piauí">Piauí</option>
+                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                    <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                    <option value="Rondônia">Rondônia</option>
+                    <option value="Roraima">Roraima</option>
+                    <option value="Santa Catarina">Santa Catarina</option>
+                    <option value="São Paulo">São Paulo</option>
+                    <option value="Sergipe">Sergipe</option>
+                    <option value="Tocantins">Tocantins</option>
+                </select>
+                <span asp-validation-for="@Model.Estado" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Email" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.Email" class="form-control" />
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.Cidade" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Cidade" class="form-control" />
-        <span asp-validation-for="@Model.Cidade" class="text-danger"></span>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
+            <label asp-for="@Model.Telefone" class="control-label"></label>
+            <small id="passwordHelpInline" class="text-muted">*</small>
+            <input asp-for="@Model.Telefone" class="form-control input-numerico phone_with_ddd" />
+            <span asp-validation-for="@Model.Telefone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.Curso" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <select asp-for="@Model.Curso" asp-items="Html.GetEnumSelectList<Curso>()" class="form-control">
+                    <option value="" selected disabled>Selecionar</option>
+                </select>
+                <span asp-validation-for="@Model.Curso" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.Cep" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Cep" class="form-control input-numerico cep" id="cep" />
-        <span asp-validation-for="@Model.Cep" class="text-danger"></span>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.MatriculaAcademica" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.MatriculaAcademica" class="form-control" />
+                <span asp-validation-for="@Model.MatriculaAcademica" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.DataEntrada" class="control-label"></label>
+                <small id="passwordHelpInline" class="text-muted">*</small>
+                <input asp-for="@Model.DataEntrada" class="form-control" />
+                <span asp-validation-for="@Model.DataEntrada" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.Estado" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <select asp-for="@Model.Estado" class="form-control">
-            <option value="" disabled selected>Selecionar</option>
-            <option value="Acre">Acre</option>
-            <option value="Alagoas">Alagoas</option>
-            <option value="Amapá">Amapá</option>
-            <option value="Amazonas">Amazonas</option>
-            <option value="Bahia">Bahia</option>
-            <option value="Ceará">Ceará</option>
-            <option value="Distrito Federal">Distrito Federal</option>
-            <option value="Espírito Santo">Espírito Santo</option>
-            <option value="Goiás">Goiás</option>
-            <option value="Maranhão">Maranhão</option>
-            <option value="Mato Grosso">Mato Grosso</option>
-            <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-            <option value="Minas Gerais">Minas Gerais</option>
-            <option value="Pará">Pará</option>
-            <option value="Paraíba">Paraíba</option>
-            <option value="Paraná">Paraná</option>
-            <option value="Pernambuco">Pernambuco</option>
-            <option value="Piauí">Piauí</option>
-            <option value="Rio de Janeiro">Rio de Janeiro</option>
-            <option value="Rio Grande do Norte">Rio Grande do Norte</option>
-            <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-            <option value="Rondônia">Rondônia</option>
-            <option value="Roraima">Roraima</option>
-            <option value="Santa Catarina">Santa Catarina</option>
-            <option value="São Paulo">São Paulo</option>
-            <option value="Sergipe">Sergipe</option>
-            <option value="Tocantins">Tocantins</option>
-        </select>
-        <span asp-validation-for="@Model.Estado" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Email" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Email" class="form-control" />
-        <span asp-validation-for="@Model.Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Telefone" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.Telefone" class="form-control input-numerico phone_with_ddd" />
-        <span asp-validation-for="@Model.Telefone" class="text-danger"></span>
-    </div>
-    <div class="form-group custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="input-seguro" asp-for="@Model.TemSeguro" />
-        <label class="custom-control-label" for="input-seguro">@Html.DisplayNameFor(model => model.TemSeguro)</label>
-    </div>
-    <div class="form-group custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="input-cnh" asp-for="@Model.TemCnh" />
-        <label class="custom-control-label" for="input-cnh">@Html.DisplayNameFor(model => model.TemCnh)</label>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Curso" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <select asp-for="@Model.Curso" asp-items="Html.GetEnumSelectList<Curso>()" class="form-control">
-            <option value="" selected disabled>Selecionar</option>
-        </select>
-        <span asp-validation-for="@Model.Curso" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.MatriculaAcademica" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.MatriculaAcademica" class="form-control" />
-        <span asp-validation-for="@Model.MatriculaAcademica" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Cargo" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <select asp-for="@Model.Cargo" asp-items="Html.GetEnumSelectList<Cargo>()" class="form-control">
-            <option value="" selected disabled>Selecionar</option>
-        </select>
-        <span asp-validation-for="@Model.Cargo" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.DataEntrada" class="control-label"></label>
-        <small id="passwordHelpInline" class="text-muted">*</small>
-        <input asp-for="@Model.DataEntrada" class="form-control" />
-        <span asp-validation-for="@Model.DataEntrada" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.DataSaida" class="control-label"></label>
-        <input asp-for="@Model.DataSaida" class="form-control" />
-        <span asp-validation-for="@Model.DataSaida" class="text-danger"></span>
-    </div>
-    <div class="form-group custom-control custom-switch">
-        <input class="custom-control-input" type="checkbox" id="input-status" asp-for="@Model.Status" />
-        <span class="custom-control-track"></span>
-        <label class="custom-control-label" for="input-status">@Html.DisplayNameFor(model => model.Status)</label>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="textfield-box">
+                <label asp-for="@Model.DataSaida" class="control-label"></label>
+                <input asp-for="@Model.DataSaida" class="form-control" />
+                <span asp-validation-for="@Model.DataSaida" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-6"> <br>
+            <div class="form-group custom-control custom-checkbox teste">
+                <input class="custom-control-input" type="checkbox" id="input-seguro" asp-for="@Model.TemSeguro" />
+                <label class="custom-control-label" for="input-seguro">@Html.DisplayNameFor(model => model.TemSeguro)</label>
+            </div>
+            <div class="form-group custom-control custom-checkbox teste">
+                <input class="custom-control-input" type="checkbox" id="input-cnh" asp-for="@Model.TemCnh" />
+                <label class="custom-control-label" for="input-cnh">@Html.DisplayNameFor(model => model.TemCnh)</label>
+            </div>
+            <div class="form-group custom-control custom-checkbox teste">
+                <input class="custom-control-input" type="checkbox" id="input-status" asp-for="@Model.Status" />
+                <label class="custom-control-label" for="input-status">@Html.DisplayNameFor(model => model.Status)</label>
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <a class="btn btn-dark" asp-page="./Index">

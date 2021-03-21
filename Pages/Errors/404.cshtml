@@ -1,0 +1,27 @@
+﻿@page
+@{ 
+    ViewData["Title"] = "Página não encontrada";
+}
+
+<style>
+    .content {
+        width: 100%;
+        height: 65vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<div class="row content">
+    <div class="text-center">
+        <h1 class="typography-display-4">404</h1>
+        <h4>
+            A página ou recurso que você está tentando <br />acessar não existe ou está indisponível.
+        </h4>
+        <a class="btn btn-outline-secondary" asp-page="/Index">
+            <i class="material-icons">arrow_back</i>
+            Voltar para a página inicial
+        </a>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+﻿@model AcquaJrApplication.ViewsModels.EventoViewModel
+@using AcquaJrApplication.ViewsModels
+
+@{
+    var data = new DataEventoViewModel();
+}
+
+<style>
+    .inner, .bs-searchbox {
+        border-style: groove;
+        border-radius: 5px;
+    }
+</style>
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-informacoes-evento-tab" data-toggle="tab" href="#nav-informacoes-evento" role="tab" aria-controls="nav-informacoes-event" aria-selected="true">Informações do evento</a>
+        <a class="nav-item nav-link" id="nav-datas-tab" data-toggle="tab" href="#nav-datas" role="tab" aria-controls="nav-datas" aria-selected="false">Datas</a>
+        <a class="nav-item nav-link" id="nav-convidados-tab" data-toggle="tab" href="#nav-convidados" role="tab" aria-controls="nav-convidados" aria-selected="false">Convidados</a>
+    </div>
+</nav>
+
+<form method="post">
+    <div class="">
+        <div class="tab-content" id="nav-tabContent">
+            <br />
+            <div class="tab-pane fade show active" id="nav-informacoes-evento" role="tabpanel" aria-labelledby="nav-informacoes-evento-tab">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Nome" class="control-label"></label>
+                    <small id="passwordHelpInline" class="text-muted">*</small>
+                    <input asp-for="@Model.Nome" class="form-control" />
+                    <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Descricao" class="control-label"></label>
+                    <textarea asp-for="@Model.Descricao" class="form-control"></textarea>
+                    <span asp-validation-for="@Model.Descricao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Valor" class="control-label"></label>
+                    <input asp-for="@Model.Valor" class="form-control" />
+                    <span asp-validation-for="@Model.Valor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Local" class="control-label"></label>
+                    <input asp-for="@Model.Local" class="form-control" />
+                    <span asp-validation-for="@Model.Local" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.PontoReferencia" class="control-label"></label>
+                    <input asp-for="@Model.PontoReferencia" class="form-control" />
+                    <span asp-validation-for="@Model.PontoReferencia" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.OutrasInformacoes" class="control-label"></label>
+                    <textarea asp-for="@Model.OutrasInformacoes" class="form-control"></textarea>
+                    <span asp-validation-for="@Model.OutrasInformacoes" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-datas" role="tabpanel" aria-labelledby="nav-datas-tab">
+                <div class="form-group">
+                    <table class="col-12" id="lista-datas">
+                        <thdead></thdead>
+                        <tbody id="datas-incluidas">
+                            @if (Model != null && Model.Datas != null)
+                            {
+                                foreach (var item in Model.Datas)
+                                {
+                                    @await Html.PartialAsync("~/Areas/Dashboard/Pages/Eventos/_DataEventoPartialView.cshtml", item)
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    <div class="form-group float-right">
+                        <button type="button" class="btn btn-float btn-success my-1 incluir-data" onclick="AbrirModalDataEvento(null, null, null, null)">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-convidados" role="tabpanel" aria-labelledby="nav-convidados-tab">
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-dark" asp-page="./Index">
+            <i class="material-icons">arrow_back</i>
+            Voltar
+        </a>
+        <button type="submit" class="btn btn-primary">
+            <i class="material-icons">check</i>
+            Salvar
+        </button>
+    </div>
+</form>
+
+<!-- Modal - Incluir Data -->
+<div class="modal fade" id="modalDataEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 300px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Data do evento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" asp-for="@data.Id" />
+                <input type="hidden" asp-for="@data.EventoId" />
+                <input type="hidden" value="" id="linhaData" />
+                <div class="form-group">
+                    <label asp-for="@data.Data" class="control-label"></label>
+                    <input asp-for="@data.Data" class="form-control" />
+                    @*<span asp-validation-for="@data.Data" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="@data.HoraInicio" class="control-label"></label>
+                    <input asp-for="@data.HoraInicio" class="form-control" />
+                    @*<span asp-validation-for="@data.HoraInicio" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="@data.HoraEncerramento" class="control-label"></label>
+                    <input asp-for="@data.HoraEncerramento" class="form-control" />
+                    @*<span asp-validation-for="@data.HoraEncerramento" class="text-danger"></span>*@
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    <i class="material-icons">close</i>
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="IncluirDataEvento()">
+                    <i class="material-icons">check</i>
+                    Incluir
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

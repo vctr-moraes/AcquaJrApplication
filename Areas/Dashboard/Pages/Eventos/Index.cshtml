@@ -1,0 +1,59 @@
+﻿@page
+@model AcquaJrApplication.Areas.Dashboard.Pages.Eventos.IndexModel
+
+@{
+    ViewData["Title"] = "Eventos";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<partial name="_DashboardNavPartialView" />
+
+<h3>@ViewData["Title"]</h3>
+
+<p>
+    <a asp-page="Create" type="button" class="btn btn-success">
+        <i class="material-icons">add</i>
+        Novo evento
+    </a>
+</p>
+
+@if (Model.Eventos.Count == 0)
+{
+    <div class="vertical-center justify-content-center">
+        <h4 class="text-muted" align="center">Não há eventos cadastrados no sistema</h4>
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-condensed">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Eventos[0].Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Eventos[0].Descricao)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Eventos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

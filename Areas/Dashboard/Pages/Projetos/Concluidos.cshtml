@@ -1,6 +1,12 @@
 ﻿@page
 @model AcquaJrApplication.Areas.Dashboard.Pages.Projetos.ConcluidosModel
 
+<style>
+    .id-projeto {
+        cursor: pointer;
+    }
+</style>
+
 @{
     ViewData["Title"] = "Projetos concluídos";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -11,7 +17,7 @@
 <h3>@ViewData["Title"]</h3>
 
 <p>
-    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
+    <a asp-page="Create" type="button" class="btn btn-success">
         <i class="material-icons">add</i>
         Novo projeto
     </a>
@@ -25,7 +31,7 @@
 }
 else
 {
-    <table class="table table-bordered table-condensed">
+    <table class="table border table-hover">
         <thead class="thead-light">
             <tr>
                 <th>
@@ -40,13 +46,12 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.Projetos[0].DataConclusao)
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Projetos)
             {
-                <tr>
+                <tr class="id-projeto" data-projeto="@item.Id">
                     <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
@@ -59,13 +64,15 @@ else
                     <td>
                         @Html.DisplayFor(modelItem => item.DataConclusao)
                     </td>
-                    <td class="text-right">
-                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Detalhes">
-                            <i class="material-icons">search</i>
-                        </a>
-                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
+
+<script>
+    $(".id-projeto").click(function () {
+        const id_projeto = $(this).data('projeto');
+        window.location.href = "/Dashboard/Projetos/Details?id=" + id_projeto
+    });
+</script>

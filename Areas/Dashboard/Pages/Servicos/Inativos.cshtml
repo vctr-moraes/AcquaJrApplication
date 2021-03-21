@@ -1,6 +1,12 @@
 ﻿@page
 @model AcquaJrApplication.Areas.Dashboard.Pages.Servicos.InativosModel
 
+<style>
+    .id-servico {
+        cursor: pointer;
+    }
+</style>
+
 @{
     ViewData["Title"] = "Serviços inativos";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -20,7 +26,7 @@
 <h3>@ViewData["Title"]</h3>
 
 <p>
-    <a asp-page="Create" type="button" class="btn btn-light btn-outline-success">
+    <a asp-page="Create" type="button" class="btn btn-success">
         <i class="material-icons">add</i>
         Novo serviço
     </a>
@@ -34,7 +40,7 @@
 }
 else
 {
-    <table class="table table-bordered table-condensed">
+    <table class="table border table-hover">
         <thead class="thead-light">
             <tr>
                 <th>
@@ -43,26 +49,27 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.Servicos[0].Descricao)
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Servicos)
             {
-                <tr>
+                <tr class="id-servico" data-servico="@item.Id">
                     <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td class="descricao descricao-servico" title="@Html.DisplayFor(modelItem => item.Descricao)">
                         @Html.DisplayFor(modelItem => item.Descricao)
                     </td>
-                    <td class="text-right">
-                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-primary" title="Detalhes">
-                            <i class="material-icons">search</i>
-                        </a>
-                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
+
+<script>
+    $(".id-servico").click(function () {
+        const id_servico = $(this).data('servico');
+        window.location.href = "/Dashboard/Servicos/Details?id=" + id_servico
+    });
+</script>
