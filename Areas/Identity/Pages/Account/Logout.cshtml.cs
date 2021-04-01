@@ -26,7 +26,7 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account
         {
         }
 
-        public async Task<IActionResult> OnPost(string returnUrl = "/Identity/Account/Login")
+        public async Task<IActionResult> OnPost(string returnUrl = "/entrar")
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("Usuário desconectado.");

@@ -70,7 +70,7 @@ namespace AcquaJrApplication.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = "/Dashboard")
+        public async Task<IActionResult> OnPostAsync(string returnUrl = "/dashboard")
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
