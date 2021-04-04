@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AcquaJrApplication.Extensions;
 using AcquaJrApplication.Configurations;
+using System;
 
 namespace AcquaJrApplication
 {
@@ -36,6 +37,12 @@ namespace AcquaJrApplication
             services.AddMessageConfiguration();
 
             services.ResolveDependencies();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/entrar";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
