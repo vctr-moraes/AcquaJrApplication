@@ -1,6 +1,7 @@
 ﻿using AcquaJrApplication.Data;
 using AcquaJrApplication.Data.Repository;
 using AcquaJrApplication.Interfaces;
+using AcquaJrApplication.Notificacoes;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AcquaJrApplication.Configurations
@@ -15,6 +16,7 @@ namespace AcquaJrApplication.Configurations
             services.AddScoped<IServicoRepository, ServicoRepository>();
             services.AddScoped<IProjetoRepository, ProjetoRepository>();
             services.AddScoped<IEventoRepository, EventoRepository>();
+            services.AddScoped<INotificador, Notificador>();
 
             return services;
         }
