@@ -2,7 +2,7 @@
 @using AcquaJrApplication.Models
 
 <style>
-    .teste {
+    .lbl-checkbox {
         cursor: pointer;
     }
 </style>
@@ -176,17 +176,17 @@
             </div>
         </div>
         <div class="col-6"> <br>
-            <div class="form-group custom-control custom-checkbox teste">
+            <div class="form-group custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" id="input-seguro" asp-for="@Model.TemSeguro" />
-                <label class="custom-control-label" for="input-seguro">@Html.DisplayNameFor(model => model.TemSeguro)</label>
+                <label class="custom-control-label lbl-checkbox" for="input-seguro">@Html.DisplayNameFor(model => model.TemSeguro)</label>
             </div>
-            <div class="form-group custom-control custom-checkbox teste">
+            <div class="form-group custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" id="input-cnh" asp-for="@Model.TemCnh" />
-                <label class="custom-control-label" for="input-cnh">@Html.DisplayNameFor(model => model.TemCnh)</label>
+                <label class="custom-control-label lbl-checkbox" for="input-cnh">@Html.DisplayNameFor(model => model.TemCnh)</label>
             </div>
-            <div class="form-group custom-control custom-checkbox teste">
+            <div class="form-group custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" id="input-status" asp-for="@Model.Status" />
-                <label class="custom-control-label" for="input-status">@Html.DisplayNameFor(model => model.Status)</label>
+                <label class="custom-control-label lbl-checkbox" for="input-status">@Html.DisplayNameFor(model => model.Status)</label>
             </div>
         </div>
     </div>
