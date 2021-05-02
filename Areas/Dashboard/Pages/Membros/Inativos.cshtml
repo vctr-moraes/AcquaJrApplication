@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/membros-inativos"
 @model AcquaJrApplication.Areas.Dashboard.Pages.Membros.InativosModel
 
 <style>
@@ -67,6 +67,6 @@ else
 <script>
     $(".id-membro").click(function () {
         const id_membro = $(this).data('membro');
-        window.location.href = "/Dashboard/Membros/Details?id=" + id_membro
+        window.location.href = "/membros/detalhes-do-membro?id=" + id_membro
     });
 </script>

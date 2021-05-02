@@ -35,6 +35,12 @@ namespace AcquaJrApplication.Models
         Honorario = 10,
 
         [Display(Name = "Trainee")]
-        Trainne = 11
+        Trainne = 11,
+
+        [Display(Name = "Membro Efetivo")]
+        MembroEfetivo = 12,
+
+        [Display(Name = "Diretor Administrativo Executivo")]
+        DiretorAdministrativoExecutivo = 13
     }
 }

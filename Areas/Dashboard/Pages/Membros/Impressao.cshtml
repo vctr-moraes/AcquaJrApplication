@@ -1,0 +1,9 @@
+@page "/membros/imprimir-dados"
+@model AcquaJrApplication.Areas.Dashboard.Pages.Membros.ImpressaoModel
+
+@{
+    ViewData["Title"] = "Detalhes do membro";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@{ await Html.RenderPartialAsync("_ImpressaoPartialView", Model.MembroVM); }

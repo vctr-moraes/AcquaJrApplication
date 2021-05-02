@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/projetos-concluidos"
 @model AcquaJrApplication.Areas.Dashboard.Pages.Projetos.ConcluidosModel
 
 <style>
@@ -73,6 +73,6 @@ else
 <script>
     $(".id-projeto").click(function () {
         const id_projeto = $(this).data('projeto');
-        window.location.href = "/Dashboard/Projetos/Details?id=" + id_projeto
+        window.location.href = "/projetos/detalhes-do-projeto?id=" + id_projeto
     });
 </script>

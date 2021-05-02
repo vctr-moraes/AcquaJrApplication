@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/servicos"
 @model AcquaJrApplication.Areas.Dashboard.Pages.Servicos.IndexModel
 
 <style>
@@ -70,6 +70,6 @@ else
 <script>
     $(".id-servico").click(function () {
         const id_servico = $(this).data('servico');
-        window.location.href = "/Dashboard/Servicos/Details?id=" + id_servico
+        window.location.href = "/servicos/detalhes-do-servico?id=" + id_servico
     });
 </script>
