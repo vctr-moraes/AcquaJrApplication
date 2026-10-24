@@ -23,7 +23,7 @@ namespace AcquaJrApplication.Configurations
 
                 o.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            });
 
             return services;
         }

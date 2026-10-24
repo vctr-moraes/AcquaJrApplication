@@ -30,6 +30,8 @@ namespace AcquaJrApplication
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddErrorDescriber<IdentityMensagensPortugues>();
 
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
             services.AddRazorPages();
 
             services.AddMvc();
@@ -50,7 +52,6 @@ namespace AcquaJrApplication
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
                 app.UseStatusCodePagesWithRedirects("/Errors/{0}");
             }
             else

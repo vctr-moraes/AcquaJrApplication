@@ -6,7 +6,7 @@ Acqua Jr. Application é o projeto de desenvolvimento de um sistema de informaç
 A Acqua Jr. é uma Empresa Júnior pertencente aos alunos do curso de Bacharelado em Engenharia de Aquicultura do Instituto Federal do Espírito Santo – campus de Alegre no estado do Espírito Santo. A empresa presta serviços especializados de consultoria e treinamento técnicos para produtores aquícolas da região, além de instituições educacionais que promovem o ensino técnico.
 
 ### Tecnologias ###
-* ASP.NET Core 3.1 LTS Razor Pages
+* ASP.NET Core 8 Razor Pages
 * ASP.NET Identity Core
 * Entity Framework Core
 * C#
